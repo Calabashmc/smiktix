@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="5.8620415mm"
+   height="6.1118774mm"
+   viewBox="0 0 5.8620415 6.1118774"
+   version="1.1"
+   id="svg817"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview819"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs814" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-61.360746,-101.41818)">
+    <g
+       id="SVGRepo_iconCarrier-tickets"
+       transform="matrix(-0.26458333,0,0,0.26458333,67.222786,101.41818)"
+       inkscape:export-filename="ticket.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
+      <g
+         transform="translate(0,-1028.4)"
+         id="g833">
+        <path
+           d="m 2,1029.4 c -1.1046,0 -2,0.9 -2,2 v 7.1 0.1 c 0.016343,0.5 0.24566,1 0.59375,1.4 l 10.968,10.9 c 0.365,0.4 0.871,0.6 1.438,0.6 0.567,0 1.073,-0.2 1.438,-0.6 l 7.062,-7 c 0.408,-0.4 0.656,-0.9 0.656,-1.5 0,-0.6 -0.248,-1.2 -0.656,-1.5 l -10.906,-10.9 c -0.355,-0.4 -0.8668,-0.6 -1.4065,-0.6 h -0.0313 -7.1562 z m 3,3 c 1.1046,0 2,0.9 2,2 0,1.1 -0.8954,2 -2,2 -1.1046,0 -2,-0.9 -2,-2 0,-1.1 0.8954,-2 2,-2 z"
+           fill="#0d6efd"
+           id="path823" />
+        <path
+           d="M 2,0 C 0.8954,0 0,0.89544 0,2 v 7.1562 0.0626 c 0.016343,0.5271 0.24566,1.0272 0.59375,1.3752 l 10.968,10.968 c 0.365,0.38 0.871,0.594 1.438,0.594 0.567,0 1.073,-0.214 1.438,-0.594 l 7.062,-7.062 c 0.408,-0.366 0.656,-0.909 0.656,-1.5 0,-0.591 -0.248,-1.134 -0.656,-1.5 L 10.59375,0.594 C 10.23875,0.23874 9.72695,0.00836 9.18725,0 H 9.15595 1.99975 Z M 5,3 C 6.1046,3 7,3.8954 7,5 7,6.1046 6.1046,7 5,7 3.8954,7 3,6.1046 3,5 3,3.8954 3.8954,3 5,3 Z"
+           transform="translate(0,1028.4)"
+           fill="#0d6efd"
+           id="path825" />
+        <path
+           d="m 13,1049.4 7,-7 -8,-8 -7,7 z"
+           fill="#0d6efd"
+           id="path827" />
+        <path
+           d="M 13,20 20,13 12,5 5,12 Z"
+           transform="translate(0,1028.4)"
+           fill="#ecf0f1"
+           id="path829" />
+        <path
+           fill="#7f8c8d"
+           d="m 12,1036.4 -3.5,3.5 -0.5,0.5 0.5,0.5 4,-4 z m 2,2 -3.5,3.5 -0.5,0.5 0.5,0.5 4,-4 z m 2,2 -3.5,3.5 -0.5,0.5 0.5,0.5 4,-4 z"
+           id="path831" />
+      </g>
+    </g>
+  </g>
+</svg>

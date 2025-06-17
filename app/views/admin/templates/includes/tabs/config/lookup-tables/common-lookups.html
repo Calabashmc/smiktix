@@ -1,0 +1,40 @@
+{% from 'macros/macros.html' import render_field %}
+<div class="tab-content">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <h3>Office Hours</h3>
+                    <div class="d-flex gap-2">
+                        {{ render_field(form.location) }}
+                        {{ render_field(form.open_hour) }}
+                        {{ render_field(form.close_hour) }}
+                        {{ render_field(form.address) }}
+                        {{ render_field(form.province) }}
+                        {{ render_field(form.state) }}
+                        {{ render_field(form.country_name) }}
+                        {{ render_field(form.office_timezone) }}
+                        <button id="location-add-btn" type="button" class="btn btn-primary mt-4 mb-4">Add</button>
+                    </div>
+                    <div id="office-hours-table"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="location-table"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h3 class="fw-bold mt-4">Status</h3>
+                    <div class="d-flex gap-2">
+                        {{ render_field(form.status) }}
+                        {{ render_field(form.model) }}
+                        <button id="add-status-btn" type="button" class="btn btn-primary mt-4 mb-4">Add</button>
+                    </div>
+                    <div id="status-table"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

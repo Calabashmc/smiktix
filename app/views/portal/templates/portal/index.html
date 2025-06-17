@@ -1,0 +1,111 @@
+{% extends "layouts/base.html" %}
+
+{% block app_header %}
+    {% include "./includes/portal-header.html" %}
+{% endblock app_header %}
+
+{% block content %}
+    <div class="row m-4 justify-content-center">
+        <div class="col-4 d-flex flex-column ms-auto">
+            {% include "./includes/announcments.html" %}
+        </div>
+        <div class="col-3 d-flex flex-column ms-auto">
+            <div class="h5">At a Glance</div>
+            <div class="hstack gap-2">
+                <div class="vstack gap-2 mt-2">
+                    <div class="card overflow-hidden">
+                        <div class="card-body bg-danger-subtle">
+                            <div>Open Incidents</div>
+                            <div class="d-flex justify-content-center">
+                                <div class="mt-1">
+                                    <div class="number-font">
+                                        <div id="incident-count"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card overflow-hidden">
+                        <div class="card-body bg-success-subtle">
+                            <div>Open Requests</div>
+                            <div class="d-flex justify-content-center">
+                                <div class="number-font">
+                                    <div id="request-count"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vstack gap-2 mt-2">
+                    <div class="card overflow-hidden">
+                        <div class="card-body bg-success-subtle">
+                            <div>Proposed Ideas</div>
+                            <div class="d-flex justify-content-center">
+                                <div class="mt-1">
+                                    <div class="number-font">
+                                        <div id="idea-count">6</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card overflow-hidden">
+                        <div class="card-body bg-success-subtle">
+                            <div>Devices</div>
+                            <div class="d-flex justify-content-center">
+                                <div class="number-font">
+                                    <div id="device-count">3</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3 d-flex flex-column ms-auto">
+            <div class="h5 mt-2">Need Support?</div>
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="card-body">
+                        <p class="card-text">Contact the Service Desk:</p>
+                        <div class="text-muted mt-1 mb-1 pt-0">
+                            <i class="modal-link bi bi-envelope"
+                               title="Send email to Requester">
+                            </i>
+                            <a data-bs-toggle="modal"
+                               data-bs-target="#sendEmailModal"
+                               title="Send email to Requester"
+                               class="modal-link">
+                                {{ form.service_desk_email.data }}
+                            </a>
+                        </div>
+                        <div class="text-muted mt-1 mb-2 pt-0">
+                            <i class="bi bi-phone"></i>
+                            <a href='tel:{{ form.service_desk_phone.data }}' class="modal-link">
+                                {{ form.service_desk_phone() }}
+                            </a>
+                        </div>
+                        <div>
+                            <button id="get-help-btn" type="button" class="btn btn-outline-primary">Open New
+                                Support Ticket
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-4">
+        <div class="col">
+            {% include "/includes/service-catalogue.html" %}
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('portal_bp.static', filename='js/portal.js') }}"></script>
+{%- endblock scripts %}

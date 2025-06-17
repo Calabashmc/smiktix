@@ -1,0 +1,44 @@
+<div class="row w-100">
+    <div class="col-4">
+        <div class="d-flex justify-content-start align-items-start gap-3">
+            <div id="ticket-type" class="type-no-border"></div>
+            <div id="ticket-number" class="number-no-border"></div>
+        </div>
+        <div class="col">
+            {% if admin_title in ["CMDB", "Hardware", "Service", "Software"] %}
+                {{ render_field(cmdb_form.status_select) }}
+            {% else %}
+                {{ render_field(form.status_select) }}
+            {% endif %}
+
+        </div>
+    </div>
+    <div class="col">
+        <div class="titled-box">
+            <h3>Info</h3>
+            <div class="d-flex justify-content-between mt-4">
+                <div class="col">
+                    <div>Created</div>
+                <div>{{ form.created_at }}</div>
+                    {% if admin_title == "Knowledge" %}
+                        {% if form.published_at %}
+                            <div>Published</div> {% endif %}
+                        {% if form.reviewed_at %}
+                            <div>Reviewed</div> {% endif %}
+                    {% endif %}
+                </div>
+                <div class="col">
+                    <div>{{ render_field(form.created_by_id) }}</div>
+                    {% if admin_title == "Knowledge" %}
+                        {% if form.published_at %}
+                            <div>{{ form.published_at }}</div>
+                        {% endif %}
+                        {% if form.reviewed_at %}
+                            <div>{{ form.reviewed_at }}</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

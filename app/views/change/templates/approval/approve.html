@@ -1,0 +1,11 @@
+{% extends "approval/layout/approval-base.html" %}
+
+{% block content %}
+    <div class="mt-4">
+        <p>Hi {{ approver }}></p>
+        <p>Thanks for taking time to consider this change</p>
+        <p>You acknowledge that you <strong>APPROVE</strong> Change <strong>{{ ticket_number }}</strong> to proceed.</p>
+        <p>The Change owner is {{ change_owner }}</p>
+        <p>The change may still need other approvers and overall CAB approval before it can proceed.</p>
+    </div>
+{% endblock %}

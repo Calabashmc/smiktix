@@ -1,0 +1,26 @@
+# Ignore Python-related files
+__pycache__/
+*.pyc
+*.pyo
+
+.ipynb_checkpoints/
+
+# Ignore virtual environments
+venv/
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore PyCharm settings
+.idea/
+
+# Ignore database dumps
+*.sql
+
+package.json
+package-lock.json
+signal-desktop-keyring.gpg
+.env
+migrations/
+
+secrets/db_password

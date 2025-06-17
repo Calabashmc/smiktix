@@ -1,0 +1,30 @@
+<!-- modal to get SLA pause reason -->
+<div class="modal fade" id="slaPauseReasonModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="slaPauseReasonModalLabel"
+     aria-hidden="true" xmlns="http://www.w3.org/1999/html">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="slaPauseReasonModalLabel">Pause SLA - Provide Reason</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body text-center col-auto">
+                <i class="mdi mdi-timer-pause-fill h2"></i>
+                {{ form.sla_pause_reason(class="form-select mb-2 mr-sm-2 mb-sm-0") }}
+            </div>
+            <div class="modal-footer">
+                <button id="modal-pause-cancel-btn"
+                        type="button" class="btn btn-secondary">
+                    Cancel
+                </button>
+                <button id="modal-pause-sla-btn"
+                        type="button"
+                        class="btn btn-primary">
+                    Pause
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

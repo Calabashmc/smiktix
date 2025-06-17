@@ -1,0 +1,17 @@
+<div class="tab-pane" id="change-test-tab-pane">
+    <div class="row">
+        <div class="col-3 ms-4 mt-4">
+        {{ render_field(form.test_lead) }}
+            {{ render_field(form.test_start_date) }}
+            {{ render_field(form.test_end_date) }}
+            {{ render_field(form.test_successful) }}
+        </div>
+
+        <div class="col me-4">
+            <div class="mt-4">
+                <h5>Test Results</h5>
+                {{ form.test_results }}
+            </div>
+        </div>
+    </div>
+</div>

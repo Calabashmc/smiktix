@@ -1,0 +1,54 @@
+{% extends "layouts/base.html" %}
+{% block title %} My Open Tickets {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block app_header %}
+    {% include '/includes/dash-header.html' %}
+
+{% endblock app_header %}
+
+{% block content %}
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link show active"
+                   id="cmdb-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#cmdb-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-person-arms-up h4 me-2"></i>All CIs</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="network-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#network-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-person-arms-up h4 me-2"></i>Network Map</span>
+                </a>
+            </li>
+        </ul>
+        {#  Tab Content    #}
+        <div class="tab-content" id="myTabContent">
+            {% include "/includes/dashboard/all-cis-tab-content.html" %}
+            {% include "/includes/dashboard/network-tab-content.html" %}
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('cmdb_bp.static', filename='js/dashboard.js') }}"></script>
+{% endblock scripts %}

@@ -1,0 +1,51 @@
+<!-- modal advising of incorrect ticket number in search -->
+<div class="modal" id="wrongTicket" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Ticket does not exist</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <p>The ticket number you searched for <span class="fw-bold">does not exist</span></p>
+          <p>Please try using an existing ticket number.</p>
+          <p>You can use the search fields spinner arrows, or mouse scroll within the field, instead of typing a number in as this will limit the selection to the max avalaible ticket number.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal to confirm ticket close -->
+<div class="modal" id="closeConfirm" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-dark">
+        <h5 class="modal-title">Close Ticket?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body bg-dark">
+          <div class="hstack text-center gap-3">
+              <i class="h1 bi bi-exclamation-triangle text-danger"></i>
+              <span class="fw-bold ms-auto me-auto"> Closed tickets cannot be reopened</span>
+              <i class="h1 text-center bi bi-exclamation-triangle text-danger"></i>
+          </div>
+          <hr>
+          <p>The ticket is <span class="fw-bold">Resolved</span>.
+              Resolved Tickets are automatically closed according to the configured schedule.
+          </p>
+          <p class="text-center"><span class="fw-bold">Note: If this is a Parent ticket all Child tickets will also be closed</span></p>
+
+      </div>
+      <div class="modal-footer bg-dark">
+        <button id="close-modal-cancel" type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button id="close-modal-ok" type="button" class="btn btn-primary" data-bs-dismiss="modal">Yes</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+

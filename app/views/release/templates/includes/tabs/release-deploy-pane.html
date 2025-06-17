@@ -1,0 +1,16 @@
+<div class="tab-pane" id="release-deploy-pane">
+    <div class="row m-4">
+        <div class="col-6">
+            {{ render_field(form.deployment_leader_id) }}
+        </div>
+        <div class="col-3">
+            {{ render_field(form.deployment_date) }}
+        </div>
+        <div class="col-3 mt-4">
+            {{ render_field(form.deployment_successful) }}
+        </div>
+    </div>
+    <div class="row m-4">
+        {{ render_field(form.deployment_notes) }}
+    </div>
+</div>

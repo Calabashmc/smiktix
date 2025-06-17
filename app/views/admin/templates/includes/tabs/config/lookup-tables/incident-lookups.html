@@ -1,0 +1,41 @@
+{% from 'macros/macros.html' import render_field %}
+<div class="tab-content active">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="col-6">
+                <h3>Incident/Request Categories</h3>
+                <div class="mb-3" id="incident-category-table"></div>
+                <h3>Support Source</h3>
+                <div class="row align-items-end">
+                    <div class="col">
+                        {{ render_field(form.source) }}
+                    </div>
+                    <div class="col">
+                        <button id="add-source" class="btn btn-primary mb-3">Add</button>
+                    </div>
+                </div>
+                <div class="mb-3" id="source-table"></div>
+            </div>
+            <div class="row mb-4">
+                <h3>Resolution Codes Lookup</h3>
+                <div class="row align-items-end">
+                    <div class="col">
+                        {{ render_field(form.resolution_code) }}
+                    </div>
+                    <div class="col">
+                        {{ render_field(form.resolution_comment) }}
+                    </div>
+                    <div class="col">
+                        <button id="add-resolution-code" class="btn btn-primary mb-3">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div id="incident-resolution-table"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

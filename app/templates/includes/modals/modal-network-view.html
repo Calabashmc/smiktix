@@ -1,0 +1,26 @@
+<div class="modal fade " id="network-view-modal" tabindex="-1" data-bs-keyboard="false" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered network-modal">
+        <div class="modal-content network-modal-content">
+            <div class="modal-header">
+                <div class="col-3">
+                    <h5 class="modal-title">Network View</h5>
+
+                    <div class="d-flex">
+                        <label for="network-depth" class="me-2 align-self-center">Depth:</label>
+                        <input type="number" id="network-depth" class="form-control" style="width:20%" value="2"
+                               min="1" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="modal-network-container">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="network-modal-close-btn" type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

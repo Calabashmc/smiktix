@@ -1,0 +1,22 @@
+<div class="tab-pane fade" id="journal-tab-pane">
+    <div class="mt-4 mx-2">
+        {{ form.journal() }}
+
+        <div class="d-grid gap-2 d-md-flex">
+            <button type="button"
+                    id="open-worknote-modal-btn"
+                    data-bs-toggle="modal"
+                    data-bs-target="#workNoteModal"
+                    class="btn btn-primary d-flex align-items-center live">
+                <i class="h2 bi bi-journal-check"></i>
+                <span class="ms-2">Add Note</span>
+            </button>
+        </div>
+        <hr>
+        <h4>Ticket Notes</h4>
+        <div class="timeline">
+            {# a list will be created here from journalTimeline() in journal-class.js   #}
+            <ul id="timeline"></ul>
+        </div>
+    </div>
+</div>

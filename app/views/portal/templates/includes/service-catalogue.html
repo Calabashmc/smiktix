@@ -1,0 +1,26 @@
+<div class="mt-4 h4 text-center">Service Catalogue</div>
+<hr>
+<div id="catalogue-container" class="container-lg grid-container d-flex justify-content-center">
+    {% for service in services %}
+        <div class="card">
+            <h3 class="card-header" id="heading{{ service.id }}">
+                {{ service.service }}
+            </h3>
+            <div id="card-body-{{ service.id }}" class="card-body">
+                <p><strong>Description:</strong> {{ service.description }}</p>
+                {% if service.owner %}
+                    <p><strong>Owner:</strong> {{ service.owner.full_name }}</p>
+                {% else %}
+                    <p><strong>Owner:</strong> No owner assigned</p>
+                {% endif %}
+                {% if service.service_hours %}
+                    <p><strong>Support hours:</strong> {{ service.service_hours }}</p>
+                {% else %}
+                    <p><strong>Support hours:</strong> Business Hours</p>
+
+                    <a class="btn">Details</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

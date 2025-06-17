@@ -1,0 +1,35 @@
+<div>
+    {# hide voting buttons for new Ideas #}
+    <div class="d-flex justify-content-evenly text-center">
+        <div class="d-flex flex-column mb-4">
+            <h4>Votes</h4>
+            {{ form.vote_count() }}
+        </div>
+        <div class="d-flex flex-column">
+            <h4>Score</h4>
+            {{ form.vote_score() }}
+        </div>
+    </div>
+    <div class="d-flex justify-content-evenly mb-4">
+        <input type="radio" class="btn-check" name="idea-rating" id="idea-neg" value="-1">
+        <label class="btn" for="idea-neg" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+               data-bs-original-title="I don't like! - remove 1 point">
+            <img class="img-fluid small-img" src="/static/images/idea/neutral.png"/>
+        </label>
+        <input type="radio" class="btn-check" name="idea-rating" id="idea-1" value="1">
+        <label class="btn" for="idea-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+               data-bs-original-title="I like it - nudge up with 1 points!">
+            <img class="img-fluid small-img" src="/static/images/idea/like.png"/>
+        </label>
+        <input type="radio" class="btn-check" name="idea-rating" id="idea-2" value="2">
+        <label class="btn" for="idea-2" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true"
+               data-bs-original-title="I like it a lot! - level up by 2 points">
+            <img class="img-fluid small-img" src="/static/images/idea/love.png"/>
+        </label>
+    </div>
+
+    <div class="border border-orange mt-4 p-2">
+        <div class="text-center h4">Likelihood the Idea will Proceed</div>
+        <div class="text-center"> {{ form.likelihood }} </div>
+    </div>
+</div>

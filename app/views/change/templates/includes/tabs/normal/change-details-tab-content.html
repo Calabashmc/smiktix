@@ -1,0 +1,244 @@
+<div class="tab-pane show active" id="change-details-tab-pane">
+    <div class="container-fluid mt-2">
+        <div class="row gap-2">
+            <div class="col gap-2  p-2 ms-4 mt-2">
+                <div class="titled-box">
+                    <h3>Risk</h3>
+                    <div class="d-flex gap-4 mt-4">
+                        <div class="col">
+                            {{ render_field(form.scale, label="", btn='true', button_label="<i class='bi bi-thermometer-half ms-auto text-warning h5'></i>", button_class="btn-outline-dark") }}
+                        </div>
+                        <div class="col">
+                            {{ render_field(form.people_impact) }}
+                        </div>
+                    </div>
+
+                    <!-- Accordion Container -->
+                    <div class="accordion mt-4" id="riskAccordion">
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center risk-header">
+                                <span class="risk-type-label">Risk Type</span>
+                                <span class="impact-label">Impact</span>
+                                <span class="vr-header">|</span>
+                                <span class="likelihood-label">Likelihood</span>
+                            </div>
+                        </div>
+                        <!-- Security Risk Accordion Item -->
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center" id="headingSecurity">
+                                <div class="ms-2">
+                                    {{ render_field(form.risk_security) }}
+                                </div>
+                                <button class="accordion-button d-flex flex-grow-1 align-items-center text-start"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSecurity"
+                                        aria-controls="collapseSecurity"
+                                        disabled
+                                >
+                                    <span class="flex-grow-1">Security</span>
+                                    <span id="risk_security_impact_span"
+                                          class="impact-likelihood-display  impact-value"
+                                          data-target-checkbox="risk_security"
+                                          data-target-impact="risk_security_impact"
+                                          data-target-likelihood="risk_security_likelihood">--
+                                    </span>
+                                    <span class="vr-header">|</span>
+                                    <span id="risk_security_likelihood_span" class="likelihood-value">--</span>
+
+                                </button>
+                            </div>
+                            <div id="collapseSecurity" class="accordion-collapse collapse"
+                                 aria-labelledby="headingSecurity" data-bs-parent="#riskAccordion">
+                                <div class="accordion-body">
+
+                                    <div class="col">
+                                        {{ render_field(form.risk_security_impact, layout='inline-label-below') }}
+                                        {{ render_field(form.risk_security_likelihood, layout='inline-label-below') }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Data Loss Risk Accordion Item -->
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center" id="headingData">
+                                <div class="ms-2">
+                                    {{ render_field(form.risk_data) }}
+                                </div>
+                                <button class="accordion-button d-flex flex-grow-1 align-items-center text-start"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseData"
+                                        aria-controls="collapseData"
+                                        disabled
+                                >
+                                    <span class="flex-grow-1">Data Loss</span>
+                                    <span id="risk_data_impact_span"
+                                          class="impact-likelihood-display  impact-value"
+                                          data-target-checkbox="risk_data"
+                                          data-target-impact="risk_data_impact"
+                                          data-target-likelihood="risk_data_likelihood">--
+                                    </span>
+                                    <span class="vr-header">|</span>
+                                    <span id="risk_data_likelihood_span" class="likelihood-value">--</span>
+                                </button>
+                            </div>
+                            <div id="collapseData" class="accordion-collapse collapse"
+                                 aria-labelledby="headingData" data-bs-parent="#riskAccordion">
+                                <div class="accordion-body">
+                                    <div class="col">
+                                        {{ render_field(form.risk_data_impact, layout='inline-label-below') }}
+                                        {{ render_field(form.risk_data_likelihood, layout='inline-label-below') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Business Continuity Risk Accordion Item -->
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center" id="headingContinuity">
+                                <div class="ms-2">
+                                    {{ render_field(form.risk_continuity) }}
+                                </div>
+                                <button class="accordion-button d-flex flex-grow-1 align-items-center text-start"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseContinuity"
+                                        aria-controls="collapseContinuity">
+                                    <span class="flex-grow-1"> Bus. Continuity</span>
+                                    <span id="risk_continuity_impact_span"
+                                          class="impact-likelihood-display  impact-value"
+                                          data-target-checkbox="risk_continuity"
+                                          data-target-impact="risk_continuity_impact"
+                                          data-target-likelihood="risk_continuity_likelihood">--
+                                    </span>
+                                    <span class="vr-header">|</span>
+                                    <span id="risk_continuity_likelihood_span" class="likelihood-value">--</span>
+                                </button>
+                            </div>
+                            <div id="collapseContinuity" class="accordion-collapse collapse"
+                                 aria-labelledby="headingContinuity" data-bs-parent="#riskAccordion">
+                                <div class="accordion-body">
+                                    <div class="col">
+                                        {{ render_field(form.risk_continuity_impact, layout='inline-label-below') }}
+                                        {{ render_field(form.risk_continuity_likelihood, layout='inline-label-below') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Risk Accordion Item -->
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center" id="headingCustomer">
+                                <div class="ms-2">
+                                    {{ render_field(form.risk_customer) }}
+                                </div>
+                                <button class="accordion-button flex-grow-1"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseCustomer"
+                                        aria-controls="collapseCustomer">
+                                    <span class="flex-grow-1">Customer</span>
+                                    <span id="risk_customer_impact_span"
+                                          class="impact-likelihood-display impact-value"
+                                          data-target-checkbox="risk_customer"
+                                          data-target-impact="risk_customer_impact"
+                                          data-target-likelihood="risk_customer_likelihood">
+                                        --
+                                    </span>
+                                    <span class="vr-header">|</span>
+                                    <span id="risk_customer_likelihood_span" class="likelihood-value">--</span>
+                                </button>
+                            </div>
+                            <div id="collapseCustomer" class="accordion-collapse collapse"
+                                 aria-labelledby="headingCustomer" data-bs-parent="#riskAccordion">
+                                <div class="accordion-body">
+
+                                    <div class="col">
+                                        {{ render_field(form.risk_customer_impact, layout='inline-label-below') }}
+                                        {{ render_field(form.risk_customer_likelihood, layout='inline-label-below') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reputation Risk Accordion Item -->
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center" id="headingReputation">
+                                <div class="ms-2">
+                                    {{ render_field(form.risk_reputation) }}
+                                </div>
+                                <button class="accordion-button flex-grow-1"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseReputation" aria-controls="collapseReputation">
+                                    <span class="flex-grow-1">Reputation</span>
+                                    <span id="risk_reputation_impact_span"
+                                          class="impact-likelihood-display  impact-value"
+                                          data-target-checkbox="risk_reputation"
+                                          data-target-impact="risk_reputation_impact"
+                                          data-target-likelihood="risk_reputation_likelihood">
+                                        --
+                                    </span>
+                                    <span class="vr-header">|</span>
+                                    <span id="risk_reputation_likelihood_span" class="likelihood-value">
+                                        --
+                                    </span>
+                                </button>
+                            </div>
+                            <div id="collapseReputation" class="accordion-collapse collapse"
+                                 aria-labelledby="headingReputation" data-bs-parent="#riskAccordion">
+                                <div class="accordion-body">
+
+                                    <div class="col">
+                                        {{ render_field(form.risk_reputation_impact, layout='inline-label-below') }}
+                                        {{ render_field(form.risk_reputation_likelihood, layout='inline-label-below') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Financial Risk Accordion Item -->
+                        <div class="accordion-item">
+                            <div class="accordion-header d-flex align-items-center" id="headingFinancial">
+                                <div class="ms-2">
+                                    {{ render_field(form.risk_financial) }}
+                                </div>
+                                <button class="accordion-button d-flex flex-grow-1 align-items-center text-start"
+                                        type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFinancial"
+                                        aria-controls="collapseFinancial">
+                                    <span class="flex-grow-1">Financial</span>
+                                    <span id="risk_financial_impact_span"
+                                          class="impact-likelihood-display  impact-value"
+                                          data-target-checkbox="risk_financial"
+                                          data-target-impact="risk_financial_impact"
+                                          data-target-likelihood="risk_financial_likelihood">--
+                                    </span>
+                                    <span class="vr-header">|</span>
+                                    <span id="risk_financial_likelihood_span" class="likelihood-value">--</span>
+                                </button>
+                            </div>
+                            <div id="collapseFinancial" class="accordion-collapse collapse"
+                                 aria-labelledby="headingFinancial" data-bs-parent="#riskAccordion">
+                                <div class="accordion-body">
+                                    <div class="col">
+                                        {{ render_field(form.risk_financial_impact, layout='inline-label-below') }}
+                                        {{ render_field(form.risk_financial_likelihood, layout='inline-label-below') }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m-2 ms-4 me-4">
+                <h5>Brief Overview</h5>
+                {{ form.details }}
+                {{ change_risk_score }} {# Hidden field to store score for saving #}
+            </div>
+        </div>
+    </div>
+</div>

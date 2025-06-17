@@ -1,0 +1,51 @@
+<div class="tab-pane" id="cab-tab-pane">
+    <div class="row m-4">
+        <div class="col-6 d-flex flex-column">
+            <div class="titled-box">
+                <h3>Requirements checks</h3>
+                <div class="mt-4">
+                    {{ render_field(form.cab_check_approver_consensus) }}
+                    {{ render_field(form.cab_check_category) }}
+                    {{ render_field(form.cab_check_timing) }}
+                    {{ render_field(form.cab_check_plan_build) }}
+                    {{ render_field(form.cab_check_plan_comms) }}
+                    {{ render_field(form.cab_check_plan_implement) }}
+                    {{ render_field(form.cab_check_plan_impact) }}
+                    {{ render_field(form.cab_check_plan_rollback) }}
+                    {{ render_field(form.cab_check_plan_test) }}
+                    {{ render_field(form.cab_check_reason) }}
+                    {{ render_field(form.cab_check_no_clash) }}
+                    {{ render_field(form.cab_check_security) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-check form-check-inline  mb-3">
+                <input type="radio" class="btn-check" name="cab-approval-status" id="cab-pending-btn"
+                       value="pending"
+                       checked>
+                <label class="btn btn-outline-primary" for="cab-pending-btn">Pending</label>
+
+                <input type="radio" class="btn-check" name="cab-approval-status" id="cab-approved-btn"
+                       value="approved">
+                <label class="btn btn-outline-primary" for="cab-approved-btn">Approved</label>
+
+                <input type="radio" class="btn-check" name="cab-approval-status" id="cab-denied-btn" value="denied">
+                <label class="btn btn-outline-primary" for="cab-denied-btn">Denied</label>
+                {{ form.cab_approval_status() }} {# Only used to email Change owner of the status #}
+            </div>
+            <div class="d-flex ms-4">
+                {{ render_field(form.cab_date) }}
+            </div>
+
+            <div class="row m-4">
+                <label for="cab-notes" class="form-label">CAB Notes</label>
+                {{ form.cab_notes }}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

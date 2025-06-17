@@ -1,0 +1,40 @@
+{% extends "layouts/base.html" %}
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+{% from 'macros/macros.html' import render_select_field %}
+
+{% block app_header %}
+    {% include "./includes/portal-header.html" %}
+{% endblock app_header %}
+
+{% block content %}
+    {{ form.csrf_token }}
+    <div class="d-flex justify-content-center">
+        <div class="input-group" style="width: 30%;">
+            <input id="kba-search" class="form-control" type="text" style="font-size: 18pt;">
+            <button id="kba-search-btn" type="button" class="btn btn-outline-success">
+                <img src="{{ url_for('portal_bp.static', filename='images/brain-search.svg') }}" alt="">
+            </button>
+        </div>
+    </div>
+    <div class="row mt-1 g-2">
+        <ul class="nav nav-tabs" id="myTab">
+            {% include "includes/tabs/dashboard/portal-knowledge-top-tab.html" %}
+            {% include "includes/tabs/dashboard/portal-knowledge-all-tab.html" %}
+        </ul>
+        {#  Tab Content    #}
+        <div class="tab-content" id="myTabContent">
+            {% include "includes/tabs/dashboard/portal-knowledge-top-tab-pane.html" %}
+            {% include "includes/tabs/dashboard/portal-knowledge-all-tab-pane.html" %}
+        </div>
+    </div>
+
+    {% include "includes/offcanvas/portal-kba-search-results.html" %}
+    {% include "includes/offcanvas/portal-kba-article.html" %}
+
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('portal_bp.static', filename='js/knowledge/knowledge.js') }}"></script>
+{%- endblock scripts %}

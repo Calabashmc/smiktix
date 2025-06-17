@@ -1,0 +1,155 @@
+{% from 'macros/macros.html' import render_field %}
+
+<div id="interaction-admin-offcanvas" class="offcanvas offcanvas-end border border-4 w-50 h-100" data-bs-scroll="true"
+     data-bs-backdrop="false" style="overflow: visible;">
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="offcanvas-header">
+            {% include 'includes/offcanvas/header.html' %}
+        </div>
+        <div class="offcanvas-body" style="overflow: visible;">
+            {% include 'includes/offcanvas/common.html' %}
+
+            <div class="d-flex gap-2 mt-4">
+                <div class="col-4">
+                    <div>
+                        <div class="d-none d-lg-block">
+                            <table id="priority-buttons-table">
+                                <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td colspan="3">
+                                        <div class="display-9 text-center">Impact</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="border border-secondary text-center">
+                                        <span>High</span>
+                                    </td>
+                                    <td class="border border-secondary text-center">
+                                        <span>Med</span>
+                                    </td>
+                                    <td class="border border-secondary text-center">
+                                        <span>Low</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">
+                                        <div class="rotate-l-90">
+                                            <div class="display-9">Urgency</div>
+                                        </div>
+                                    </td>
+                                    <td class="border border-secondary text-center">
+                                        <span>High</span>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check bnt-sm" name="priority-matrix"
+                                               id="1" value="P1-High-High">
+                                        <label class="btn btn-outline-danger py-0" for="1">P1</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="2" value="P2-High-Medium">
+                                        <label class="btn btn-outline-warning py-0" for="2">P2</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="3"
+                                               value="P3-High-Low">
+                                        <label class="btn btn-outline-primary py-0" for="3">P3</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-secondary text-center">
+                                        <span class="p-2">Medium</span>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="4"
+                                               value="P2-Medium-High">
+                                        <label class="btn btn-outline-warning py-0" for="4">P2</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="5"
+                                               value="P3-Medium-Medium">
+                                        <label class="btn btn-outline-primary py-0" for="5">P3</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="6"
+                                               value="P4-Medium-Low">
+                                        <label class="btn btn-outline-info py-0" for="6">P4</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-secondary text-center">
+                                        <span>Low</span>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="7"
+                                               value="P3-Low-High">
+                                        <label class="btn btn-outline-primary py-0" for="7">P3</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix"
+                                               id="8"
+                                               value="P4-Low-Medium">
+                                        <label class="btn btn-outline-info py-0" for="8">P4</label>
+                                    </td>
+                                    <td>
+                                        <input type="radio" class="btn-check" name="priority-matrix" id="9"
+                                               value="P5-Low-Low">
+                                        <label class="btn btn-outline-success py-0" for="9">P5</label>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-4">
+                    <div class="row text-center">
+                        <div class="d-flex mt-4">
+                            {{ form.priority(class="no-border h2 w-100 text-center m-0") }}
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center text-center gap-2 m-0">
+                        <div class="d-flex flex-column align-items-center m-0">
+                            <div class="m-0">Urgency:</div>
+                            {{ form.priority_urgency(class="no-border h4 w-100 text-center m-0") }}
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-0">
+                            <div class="m-0">Impact:</div>
+                            {{ form.priority_impact(class="no-border h4 w-100 text-center m-0") }}
+                        </div>
+                    </div>
+
+                    <div class="mt-2 text-center">
+                        <div class="d-flex justify-content-center">
+                            {{ render_field(form.is_major) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    {{ render_field(form.respond_by) }}
+                    {{ render_field(form.resolve_by) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <div class="button-group ms-auto">
+                <button id="submit-btn" type="button" class="btn btn-primary">Save</button>
+                <button id="cancel-btn" type="button" class="btn btn-danger me-4"
+                        data-bs-dismiss="offcanvas">Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

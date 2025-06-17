@@ -1,0 +1,20 @@
+<div class="tab-pane show" id="analysis-tab-pane">
+    <div class="row m-4">
+        <h4>Choose Analysis Method</h4>
+        <p>Based on the Problem Statement (Details tab), determine the best analysis method.</p>
+        {{ render_field(form.analysis_method, layout='inline') }}
+    </div>
+    <!-- Tab headers -->
+    <ul class="nav nav-tabs" role="tablist">
+        {% include "includes/tabs/analysis/generic-tab.html" %}
+        {% include "includes/tabs/analysis/five-whys-tab.html" %}
+        {% include "includes/tabs/analysis/kt-tab.html" %}
+    </ul>
+
+    <!-- Tab contents -->
+    <div class="tab-content" id="myTabContent">
+        {% include "includes/tabs/analysis/generic-tab-pane.html" %}
+        {% include "includes/tabs/analysis/five-whys-tab-pane.html" %}
+        {% include "includes/tabs/analysis/kt-tab-pane.html" %}
+    </div>
+</div>

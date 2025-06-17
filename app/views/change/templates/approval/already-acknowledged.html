@@ -1,0 +1,9 @@
+{%  extends "approval/layout/approval-base.html" %}
+
+{% block content %}
+    <p>Hi {{ approver }}></p>
+    <p>Thanks for taking time to consider this change</p>
+    <p>You have already acknowledged Change <strong>{{ ticket_number }}</strong> on {{ approval_date }}</p>
+    <p>You chose to <strong>{{ approval_response }}</strong> the change</p>
+    <p>If you would like to change your response please contact the Change owner {{ change_owner }}.</p>
+{% endblock %}

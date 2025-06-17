@@ -1,0 +1,28 @@
+<div class="d-flex gap-3 ms-auto">
+    <div>
+        <span class="invisible">{{ form.sla_response_breach }}</span>
+        {# This is hidden field used by javascript to see if ticket breached  #}
+        <span class="invisible">{{ form.sla_resolve_breach }}</span>
+        {# This is hidden field used by javascript to see if ticket breached #}
+        <span>
+            <img id="sla-face" src="{{ url_for('static', filename='images/sla/happy.svg') }}"
+                   data-base-url="{{ url_for('static', filename='images/sla/') }}" alt="sla face">
+        </span>
+    </div>
+    <div class="col">
+        <div class="d-flex gap-2">
+            <span>Respond by:</span>
+            <span id="sla-respond-text"
+                         class="fw-bold">{{ form.sla_respond_by.data }}</span>
+            <span id="responded-check"></span>
+            {{ form.sla_responded() }} {# hidden #}
+        </div>
+        <div class="d-flex gap-2 mt-2">
+            <span>Resolve by:</span>
+            <span id="sla-resolve-text"
+                         class="fw-bold ms-2">{{ form.sla_resolve_by.data }}</span>
+            <span id="resolved-check"></span>
+            {{ render_field(form.sla_resolved) }} {# hidden #}
+        </div>
+    </div>
+</div>

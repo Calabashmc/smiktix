@@ -1,0 +1,26 @@
+<div class="tab-pane" id="release-release-pane">
+    <div class="row d-flex align-items-center m-4">
+        <div class="col-3">
+            {{ render_field(form.release_date) }}
+        </div>
+        <div class="col-3">
+            {{ render_field(form.release_method) }}
+        </div>
+        <div class="col-3">
+            {{ render_field(form.release_stage) }}
+        </div>
+        <div class="col-3">
+            <div class="d-flex mt-4">
+                {{ render_field(form.release_successful) }}
+            </div>
+        </div>
+    </div>
+    <div class="row m-4">
+        <div class="col-6">
+            {{ render_field(form.release_dependencies) }}
+        </div>
+        <div class="col-6">
+            {{ render_field(form.release_risks) }}
+        </div>
+    </div>
+</div>

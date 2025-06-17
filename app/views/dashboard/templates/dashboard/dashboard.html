@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+{% from "macros/macros.html" import render_field %}
+
+
+{% block app_header %}
+    {% include '/portal/main-header.html' %}
+{% endblock app_header %}
+
+{% block content %}
+    <div class="row mt-4">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            {% include "includes/tabs/interactions-tab.html" %}
+        </ul>
+    </div>
+    <div class="tab-content" id="myTabContent">
+        {%  include "includes/tabs/interactions-tab-pane.html" %}
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('dashboard_bp.static', filename='js/dashboard.js') }}" type="module"></script>
+
+{% endblock scripts %}
+
+
+

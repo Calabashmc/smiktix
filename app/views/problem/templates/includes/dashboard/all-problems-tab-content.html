@@ -1,0 +1,56 @@
+<div class="tab-pane" id="all-problem-tab-pane">
+    <div class="tab-content">
+        <div class="card border-0 shadow mb-4 m-2">
+            <div class="card-header">
+                <div class="col d-flex gap-4">
+                    <div id="all-problems-type-count" class="chart-container"></div>
+                    <div id="all-problems-priority-count" class="chart-container"></div>
+                    <div id="all-problems-status-count" class="chart-container"></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex gap-2">
+                    <div class="titled-box">
+                        <div class="d-flex gap-4">
+                            <div class="hstack gap-2 mt-4">
+                                <label for="all-problems-filter-field" class="form-label">Field</label>
+                                <select id="all-problems-filter-field" class="form-control">
+                                    <option></option>
+                                    <option value="ticket_number">Ticket #</option>
+                                    <option value="requested_by">Requester</option>
+                                    <option value="supported_by">Supported By</option>
+                                </select>
+                                <label for="all-problems-filter-value" class="form-label">Value</label>
+                                <input id="all-problems-filter-value" type="text" class="form-control" name="filter-value"
+                                       placeholder="value to filter" disabled>
+                            </div>
+                            <div>
+                                <button type="button" id="all-problems-clear-filter-btn"
+                                        class="mt-4 btn btn-sm btn-outline-danger">
+                                    Clear
+                                    filters
+                                </button>
+                            </div>
+                            <div class="mt-2">
+                                <div id="param-info" title="Graph filters take precedence over head filters"
+                                     data-bs-toggle="tooltip"></div>
+                                <div id="all-filter-info">Not filtered</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hstack ms-auto">
+                        <div class="titled-box ms-auto">
+                            <div class="mt-4 btn-group-sm">
+                                <button type="button" class="btn btn-outline-primary" id="all-problems-download-csv"
+                                        title="Exports visible data">Export
+                                    CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="all-problems-table"></div>
+            </div>
+        </div>
+    </div>
+</div>

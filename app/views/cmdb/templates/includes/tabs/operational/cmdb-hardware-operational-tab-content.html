@@ -1,0 +1,47 @@
+<div class="tab-pane fade" id="cmdb-hardware-operational-tab-pane">
+    <div class="d-flex gap-2">
+        <div class="col">
+            <div class="titled-box">
+                <h3>OS Details</h3>
+                <div class="mt-4">
+                    {{ render_field(form.operating_system_id) }}
+                    <div class="d-flex gap-4">
+                        {{ render_field(form.version) }}
+                        <div class="d-flex align-items-center">
+                            {{ render_field(form.virtual_machine) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="titled-box">
+                <h3>Network</h3>
+                <div class="mt-4">
+                    {{ render_field(form.mac_address ) }}
+                    {{ render_field(form.fixed_ip_address) }}
+                </div>
+                <div class="d-flex gap-2">
+                    {{ render_field(form.ssid) }}
+                    {{ render_field(form.wifi_password) }}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="titled-box">
+                <h3>Capacity</h3>
+                <div class="mt-4">
+                    <div class="d-flex gap-2">
+                        {{ render_field(form.capacity_cpu ) }}
+                        {{ render_field(form.capacity_memory) }}
+                    </div>
+                    <div class="d-flex gap-2">
+                        {{ render_field(form.capacity_storage) }}
+                        {{ render_field(form.capacity_throughput) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

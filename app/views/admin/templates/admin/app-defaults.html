@@ -1,0 +1,55 @@
+{% extends "/layout/admin-base.html" %}
+
+{% block content %}
+<div>
+    <ul class="nav nav-tabs" id="config-admin-tab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active"
+               id="app-defaults-admin-tab"
+               data-bs-toggle="tab"
+               data-bs-target="#app-defaults-admin-pane"
+               type="button"
+            >
+                <span class="h4"><i class="bi bi-window-stack h4 me-2"></i>App Defaults</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+               id="sla-admin-tab"
+               data-bs-toggle="tab"
+               data-bs-target="#sla-admin-pane"
+               type="button"
+            >
+                <span class="h4"><i class="bi bi-stopwatch h4 me-2"></i>SLA Config</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+               id="lookup-admin-tab"
+               data-bs-toggle="tab"
+               data-bs-target="#lookup-tables-admin-pane"
+               type="button"
+            >
+                <span class="h4"><i class="bi bi-search h4 me-2"></i>Lookup Tables</span>
+            </a>
+        </li>
+    </ul>
+    {# Tab Content #}
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="app-defaults-admin-pane" role="tabpanel" aria-labelledby="app-defaults-admin-tab">
+            {% include "includes/tabs/config/app-defaults-pane.html" %}
+        </div>
+        <div class="tab-pane fade" id="sla-admin-pane" role="tabpanel" aria-labelledby="sla-admin-tab">
+            {% include "includes/tabs/config/sla-admin-pane.html" %}
+        </div>
+        <div class="tab-pane fade" id="lookup-tables-admin-pane" role="tabpanel" aria-labelledby="lookup-admin-tab">
+            {% include "includes/tabs/config/lookup-tables-pane.html" %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('admin_bp.static', filename='js/config-admin/app-defaults.js') }}"></script>
+{%- endblock scripts %}

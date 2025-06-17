@@ -1,0 +1,46 @@
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        {% include 'includes/_header-logo.html' %}
+        <div class="container-fluid">
+            <div class="vstack">
+                <div class="hstack gap-3">
+                    <div id="stepper-stage" class="stage">
+                        <input id="step-1" type="radio" name="stepper-radio" class="btn btn-check current" value="New"
+                               checked>
+                        <label for="step-1" class="steps">
+                            <div class="step-icon-circle"><i class="mdi mdi-clipboard-plus-outline"></i></div>
+                            New
+                        </label>
+                        <input id="step-2" type="radio" name="stepper-radio" class="btn btn-check" value="Testing">
+                        <label for="step-2" class="steps">
+                            <div class="step-icon-circle"><i class="bi bi-speedometer2"></i></div>
+                            Testing
+                        </label>
+                        <input id="step-3" type="radio" name="stepper-radio" class="btn btn-check" value="Operational"
+                               disabled>
+                        <label for="step-3" class="steps">
+                            <div class="step-icon-circle"><i class="mdi mdi-cog-sync-outline"></i></div>
+                            Operational
+                        </label>
+                        <input id="step-4" type="radio" name="stepper-radio" class="btn btn-check" value="Retired"
+                               disabled>
+                        <label for="step-4" class="steps">
+                            <div class="step-icon-circle"><i class="mdi mdi-archive"></i></div>
+                            Retired
+                        </label>
+                        <input id="step-5" type="radio" name="stepper-radio" class="btn btn-check" value="Disposed"
+                               disabled>
+                        <label for="step-5" class="steps">
+                            <div class="step-icon-circle"><i class="bi bi-trash"></i></div>
+                            Disposed
+                        </label>
+                    </div>
+
+                    {% include 'includes/_header-common.html' %}
+                </div>
+                {% include 'includes/forms/form-header-common.html' %}
+            </div>
+        </div>
+        <hr>
+    </nav>
+</header>

@@ -1,0 +1,22 @@
+<div>
+    <div class="text-center mt-4">
+        <h5>Risk</h5>
+
+        <input type="radio" class="btn-check" name="priority-matrix" id="cr-3" value="CR3">
+        <label class="btn btn-outline-primary" for="cr-3">CR3</label>
+
+        <input type="radio" class="btn-check" name="priority-matrix" id="cr-4" value="CR4">
+        <label class="btn btn-outline-info" for="cr-4">CR4</label>
+
+        <input type="radio" class="btn-check" name="priority-matrix" id="cr-5" value="CR5">
+        <label class="btn btn-outline-success" for="cr-5">CR5</label>
+    </div>
+
+    <div class="row">
+        <div class="col mt-4 d-flex justify-content-center flex-column align-items-center">
+            {{ form.risk_set.label }}
+            {{ form.risk_set }}
+        </div>
+    </div>
+
+</div>

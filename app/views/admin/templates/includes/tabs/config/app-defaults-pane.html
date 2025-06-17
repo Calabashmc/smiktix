@@ -1,0 +1,46 @@
+{% from 'macros/macros.html' import render_field %}
+
+<div class="tab-content">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="d-flex gap-2">
+                <button id="save-btn" class="btn btn-primary disabled">Save</button>
+                <button id="cancel-btn" class="btn btn-danger disabled">Cancel</button>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div class="titled-box">
+                        <h3>Service Desk Settings</h3>
+                        <div class="mt-4">
+                            {{ render_field(form.servicedesk_phone) }}
+                            {{ render_field(form.servicedesk_email) }}
+                            {{ render_field(form.open_hour) }}
+                            {{ render_field(form.close_hour) }}
+                            {{ render_field(form.timezone) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="titled-box">
+                        <h3>Default Priorities</h3>
+                        <div class="mt-4">
+                            {{ render_field(form.incident_default_priority) }}
+                            {{ render_field(form.incident_default_impact) }}
+                            {{ render_field(form.incident_default_urgency) }}
+                            {{ render_field(form.problem_default_priority) }}
+                            {{ render_field(form.change_default_risk) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="titled-box">
+                        <h3>Default Support Team</h3>
+                        <div class="mt-4">
+                            {{ render_field(form.support_team_default_id) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

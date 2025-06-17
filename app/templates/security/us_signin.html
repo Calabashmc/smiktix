@@ -1,0 +1,91 @@
+{% extends "security/base.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field, render_field_errors %}
+
+{% block metas %}
+    {{ super() }}
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href='{{ url_for("static", filename="images/favicon.ico") }}'/>
+{% endblock metas %}
+
+{% block styles %}
+    {{ bootstrap.load_css() }}
+{% endblock styles %}
+
+{% block content %}
+    {% include "security/_messages.html" %}
+    <section class="vh-100" style="background-color: #9A616D;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img src="{{ url_for('static', filename='images/key-in-lock.jpg') }}"
+                                     alt="login form" class="img-fluid h-100" style="border-radius: 1rem 0 0 1rem;"/>
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    <!-- Unified signin form -->
+                                    <form action="{{ url_for_security('us_signin') }}" method="POST" name="us_signin_form">
+                                        {{ us_signin_form.hidden_tag() }}
+
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0">SmiKTix</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                                        <!-- Identity field for email or username -->
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(us_signin_form.identity, class="form-control form-control-lg", placeholder="Email or Username") }}
+                                        </div>
+
+                                        <!-- THIS IS THE CORRECTED LINE -->
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(us_signin_form.passcode, class="form-control form-control-lg", placeholder="Password") }}
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(us_signin_form.remember) }}
+                                        </div>
+
+                                        {{ render_field_errors(us_signin_form.csrf_token) }}
+
+                                        <div class="pt-1 mb-4">
+                                            {{ render_field(us_signin_form.submit, class="btn btn-dark btn-lg btn-block") }}
+                                        </div>
+
+                                        {% if security.registerable or security.recoverable or security.confirmable %}
+                                            <ul>
+                                                {% if security.registerable %}
+                                                    <li><a class="mb-5 pb-lg-2" style="color: #393f81;" href="
+                                                            {{ url_for_security('register') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _fsdomain('Register') }}</a><br/>
+                                                    </li>
+                                                {% endif %}
+                                                {% if security.recoverable %}
+                                                    <li><a class="mb-5 pb-lg-2" style="color: #393f81;"
+                                                           href="{{ url_for_security('forgot_password') }}">{{ _fsdomain('Forgot password') }}</a><br/>
+                                                    </li>
+                                                {% endif %}
+                                                {% if security.confirmable %}
+                                                    <li><a class="mb-5 pb-lg-2" style="color: #393f81;"
+                                                           href="{{ url_for_security('send_confirmation') }}">{{ _fsdomain('Resend confirmation email') }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        {% endif %}
+                                        <a href="#!" class="small text-muted">Terms of use.</a>
+                                        <a href="#!" class="small text-muted">Privacy policy</a>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

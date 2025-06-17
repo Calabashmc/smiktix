@@ -1,0 +1,27 @@
+<!-- modal for sending an email to the ticket requester -->
+<div class="modal fade" id="send-email-modal" data-bs-backdrop="static" tabindex="-1" role="dialog">
+    <div id="emailModal" class="modal-dialog modal-lg" role="document">
+        <div class="modal-content h-auto" id="send-email-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Email Requester</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="hstack gap-2 mb-2 h6">
+                    {{ form.comms_email_addresses.label }}
+                    {{ form.comms_email_addresses(class="w-100 h4 form-control-plaintext overflow-x") }}
+                </div>
+
+                <p>{{ form.email_subject.label }}{{ form.email_subject(class="form-control w-100") }}</p>
+
+                {{ form.comms_journal() }}
+                <!-- the empty image is used to trigger onload as inputs can't do this  -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button id="email-requester-btn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Send Email
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

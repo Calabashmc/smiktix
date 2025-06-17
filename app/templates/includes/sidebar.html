@@ -1,0 +1,136 @@
+
+<!-- Mobile toggle button -->
+<button class="sidebar-toggle" id="sidebarToggle">
+    <i class="bi bi-list"></i>
+</button>
+
+<!-- Sidebar overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+{% if not portal %}
+    <div class="sidebar scroll">
+        <div id="sidebar" class="side-bar-content scroll">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{{ url_for('portal_bp.index_get') }}" target="_blank" class="nav-link text-center">
+                        <img src="{{ url_for('static', filename='images/sidebar/portal.svg') }}" alt="portal"
+                             width="50px">
+                    </a>
+                    <a href="{{ url_for('portal_bp.index_get') }}" target="_blank" class="nav-link text-center">
+                        Portal
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('dashboard_bp.dashboard') }}" class="nav-link text-center">
+                        <img src="{{ url_for('static', filename='images/sidebar/dashboard.svg') }}" alt="dashboard"
+                             width="50px">
+                    </a>
+                    <a href="{{ url_for('dashboard_bp.dashboard') }}" class="nav-link text-center">
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center pb-0" href="{{ url_for('interaction_bp.ticket_table') }}">
+                        <img src="{{ url_for('static', filename='images/sidebar/ticket.svg') }}" alt="ticket"
+                             width="50px">
+                    </a>
+                    <a class="nav-link text-center pt-0" href="{{ url_for('interaction_bp.ticket_table') }}">
+                        Tickets
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('problem_bp.ticket_table') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/problem.svg') }}" alt="problem"
+                             width="50px">
+                    </a>
+                    <a href="{{ url_for('problem_bp.ticket_table') }}" class="nav-link text-center pt-0">
+                        Problems
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('change_bp.ticket_table') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/change.svg') }}" alt="change"
+                             width="50px">
+                    </a>
+                    <a href="{{ url_for('change_bp.ticket_table') }}" class="nav-link text-center pt-0">
+                        Change
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('release_bp.ticket_table') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/release.svg') }}" alt="change"
+                             width="50px">
+                    </a>
+                    <a href="{{ url_for('release_bp.ticket_table') }}" class="nav-link text-center pt-0">
+                        Release/Deploy
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('knowledge_bp.ticket_table') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/knowledge.svg') }}" alt="knowledge"
+                             width="50px">
+                    </a>
+                    <a href="{{ url_for('knowledge_bp.ticket_table') }}" class="nav-link text-center pt-0">
+                        Knowledge
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('idea_bp.ticket_table') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/idea.svg') }}" alt="idea" width="50px">
+                    </a>
+                    <a href="{{ url_for('idea_bp.ticket_table') }}" class="nav-link text-center pt-0">
+                        Ideas
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('cmdb_bp.ticket_table') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/cmdb.svg') }}" alt="idea" width="50px">
+                    </a>
+                    <a href="{{ url_for('cmdb_bp.ticket_table') }}" class="nav-link text-center pt-0">
+                        CMDB
+                    </a>
+                </li>
+            </ul>
+            {% include '/includes/context_menu.html' %}
+        </div>
+    </div>
+{% else %}
+    <div class="sidebar scroll">
+        <div id="sidebar" class="side-bar-content scroll">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a href="{{ url_for('portal_bp.index_get') }}" target="_self" class="nav-link text-center">
+                        <img src="{{ url_for('static', filename='images/sidebar/portal.svg') }}" alt="portal" width="50px">
+                    </a>
+                    <a href="{{ url_for('portal_bp.index_get') }}" target="_blank" class="nav-link text-center">
+                        Portal
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-center pb-0" href="{{ url_for('portal_bp.get_my_tickets') }}">
+                        <img src="{{ url_for('static', filename='images/sidebar/ticket.svg') }}" alt="ticket" width="50px">
+                    </a>
+                    <a class="nav-link text-center pt-0" href="{{ url_for('portal_bp.get_my_tickets') }}">
+                        My Tickets
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('portal_bp.self_help') }}" class="nav-link text-center pb-0">
+                        <img src="/static/images/sidebar/knowledge.svg" alt="knowledge" width="50px">
+                    </a>
+                    <a href="{{ url_for('portal_bp.self_help') }}" class="nav-link text-center pt-0">
+                        Knowledge
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('portal_bp.get_ideas') }}" class="nav-link text-center pb-0">
+                        <img src="{{ url_for('static', filename='images/sidebar/idea.svg') }}" alt="idea" width="50px">
+                    </a>
+                    <a href="{{ url_for('portal_bp.get_ideas') }}" class="nav-link text-center pt-0">
+                        Ideas
+                    </a>
+                </li>
+            </ul>
+            {% include '/includes/context_menu.html' %}
+        </div>
+    </div>
+{% endif %}

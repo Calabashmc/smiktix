@@ -1,0 +1,96 @@
+{% extends "security/base.html" %}
+{% from "security/_macros.html" import render_field_with_errors, render_field, render_field_errors %}
+
+{% block metas %}
+    {{ super() }}
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href='{{ url_for("static", filename="sm4sb/images/favicon.ico") }}'/>
+{% endblock metas %}
+
+{% block styles %}
+    {{ bootstrap.load_css() }}
+{% endblock styles %}
+
+{% block content %}
+    {% include "security/_messages.html" %}
+    <section class="vh-100" style="background-color: #9A616D;">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img src="{{ url_for('static', filename='/images/key.jpg') }}"
+                                     alt="login form" class="img-fluid h-100" style="border-radius: 1rem 0 0 1rem;"/>
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+                                    <form action="{{ url_for_security('register') }}" method="POST"
+                                          name="register_user_form">
+                                        {{ register_user_form.hidden_tag() }}
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0">SmicTix</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register
+                                            Account</h5>
+
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(register_user_form.email, class="form-control form-control-lg") }}
+                                        </div>
+
+                                        {% if security.username_enable %}
+                                            <div class="form-outline mb-4">
+                                                {{ render_field_with_errors(register_user_form.username, class="form-control form-control-lg") }}
+                                            </div>
+                                        {% endif %}
+
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(register_user_form.first_name, class="form-control form-control-lg") }}
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(register_user_form.last_name, class="form-control form-control-lg") }}
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(register_user_form.full_name, class="form-control form-control-lg") }}
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(register_user_form.password, class="form-control form-control-lg") }}
+                                        </div>
+                                        <div class="form-outline mb-4">
+                                            {{ render_field_with_errors(register_user_form.password_confirm, class="form-control form-control-lg") }}
+                                        </div>
+
+                                        <div class="pt-1 mb-4">
+                                            {{ render_field(register_user_form.submit, class="btn btn-dark btn-lg btn-block") }}
+                                        </div>
+
+                                        {% if security.registerable or security.recoverable or security.confirmable or security.unified_signin %}
+                                            <ul>
+                                                {% if security.unified_signin and not skip_login_menu %}
+                                                    <li><a class="small text-muted" href="
+                                                            {{ url_for_security('us_signin') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _fsdomain("Unified Sign In") }}</a><br/>
+                                                    </li>
+                                                {% endif %}
+                                                {% if not skip_login_menu %}
+                                                    <li><a class="mb-5 pb-lg-2" style="color: #393f81;" href="
+                                                            {{ url_for_security('login') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _fsdomain('Login') }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        {% endif %}
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% block scripts %}
+        <script type="module" src='{{ url_for("static", filename="js/includes/fullname.js") }}?v=123'></script>
+    {% endblock scripts %}
+{% endblock %}

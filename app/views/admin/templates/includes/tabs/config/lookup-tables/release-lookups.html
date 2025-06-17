@@ -1,0 +1,27 @@
+{% from 'macros/macros.html' import render_field %}
+<div class="tab-content active">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="col-6">
+                <h3>Release Categories</h3>
+                <div class="mb-3" id="release-category-table"></div>
+            </div>
+
+            <div class="row align-items-end">
+                <h3>Release Resolution Codes Lookup</h3>
+                <div class="col">
+                    {{ render_field(form.release_resolution_code) }}
+                </div>
+                <div class="col">
+                    {{ render_field(form.release_resolution_comment) }}
+                </div>
+                <div class="col">
+                    <button id="add-release-resolution-code" class="btn btn-primary mb-3">Add</button>
+                </div>
+            </div>
+
+            <div class="mb-3" id="release-resolution-table"></div>
+
+        </div>
+    </div>
+</div>

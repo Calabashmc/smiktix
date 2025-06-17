@@ -1,0 +1,49 @@
+<div class="tab-pane" id="change-approvals-tab-pane">
+    <div class="row m-4">
+        <div class="col-6 d-flex flex-column gap-2">
+            <div>{{ render_field(form.approval_stakeholders) }}</div>
+            <div class="hstack gap-4 justify-content-center">
+                <button id="add-approver-btn" type="button" class="btn btn-outline-success" style="width:150px">
+                    <i class="bi bi-arrow-bar-down"></i>Add
+                </button>
+                <button id="remove-approver-btn" type="button" class="btn btn-outline-danger"
+                        style="width:150px"><i
+                        class="bi bi-arrow-bar-up"></i>Remove
+                </button>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-center align-items-center">
+            <div class="mb-3">
+                {{ render_field(form.cab_ready) }}
+            </div>
+        </div>
+    </div>
+    <div class="row m-4">
+        <div class="col">
+            <div class="titled-box">
+                <h3>Approvals:  &emsp;
+                    Pending [<span id="pending-count">0</span>] &emsp;
+                    Approved [<span id="approved-count">0</span>] &emsp;
+                    Denied [<span id="denied-count">0</span>]
+                </h3>
+                <div class="mt-4">
+                    {{ render_field(form.approvers_selection) }}
+                </div>
+
+            </div>
+            <div>
+                <button id="notify-approvers-btn" type="button" class="btn btn-outline-primary"><i
+                        class="bi bi-envelope-at-fill me-2"></i>Re-Notify Selected Approvers
+                </button>
+            </div>
+        </div>
+{#        <div class="col">#}
+{#            <div class="titled-box">#}
+{#                <h3>Approval Status [<span id="approved-count">0</span>]</h3>#}
+{#                <div class="mt-4">#}
+{#                    {{ render_field(form.approved_selection) }}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+</div>

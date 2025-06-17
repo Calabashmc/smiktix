@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+{% block app_header %}
+    {% include 'includes/forms/form-header.html' %}
+{% endblock app_header %}
+
+{% block content %}
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+    {{ form.csrf_token }}
+    <div class="row g-2">
+        <div class="col-3 px-3 border-end border-white">
+            {% include "/includes/forms/requester-fields.html" %}
+            {% include "/includes/form/emergency-change-risk.html" %}
+
+            <div class="text-center">
+                <button type="button"
+                        id="open-network-modal-btn"
+                        class="btn btn-sm btn-outline-primary w-100"
+                >
+                    Open in modal<i class="las la-external-link-alt"></i>
+                </button>
+                <div id="network-container" class="border-primary-subtle">
+
+                </div>
+            </div>
+        </div>
+        <div class="col-9 px-3">
+            <div class="row">
+                <div class="col">
+                    {{ render_field(form.short_desc, label="Change title / Short Summary") }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ render_field(form.change_reason) }}
+                    {{ render_field(form.category_id) }}
+                </div>
+                <div class="col">
+                    {{ render_field(form.cmdb_id) }}
+                    {{ render_field(form.departments_impacted) }}
+                </div>
+                <div class="col">
+                    {% include "includes/forms/supporter-details.html" %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="titled-box">
+                        <h3>Approval</h3>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <div class="d-flex align-items-end gap-2">
+                                    <div class="flex-grow-1">
+                                        {{ render_field(form.ecab_approver_id) }}
+                                    </div>
+                                    <div class="ms-auto mb-3">
+                                        {{ render_field(form.ecab_approved) }}
+                                    </div>
+                                </div>
+                                {{ render_field(form.child_ticket_id) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="titled-box">
+                        <h3>Timing</h3>
+                        <div class="row mt-4">
+                            <div class="d-flex gap-2">
+                                <div class="flex-grow-1">{{ render_field(form.start_date) }}</div>
+                                <div class="flex-grow-1">{{ render_field(form.start_time) }}</div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <div class="flex-grow-1">{{ render_field(form.end_date) }}</div>
+                                <div class="flex-grow-1">{{ render_field(form.end_time) }}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mt-4">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    {% include "includes/tabs/emergency/emergency-change-details-tab.html" %}
+                    {% include "includes/tabs/journal-tab.html" %} {# main template not blueprint template #}
+                    {% include "includes/tabs/emergency/emergency-change-plan-tab.html" %}
+                    {% include "includes/tabs/change-resolution-tab.html" %}
+                    {% include "includes/tabs/change-review-tab.html" %}
+                    {% include "includes/tabs/info-tab.html" %}
+                </ul>
+                {#  Tab Content    #}
+                <div class="tab-content" id="myTabContent">
+                    {% include "includes/tabs/emergency/emergency-change-details-tab-content.html" %}
+                    {% include "includes/tabs/journal-tab-content.html" %}
+                    {% include "includes/tabs/emergency/emergency-change-plan-pane.html" %}
+                    {% include "includes/tabs/change-resolution-tab-content.html" %}
+                    {% include "includes/tabs/change-review-tab-content.html" %}
+                    {% include "includes/tabs/info-tab-content.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include "includes/modals/modal-set-children.html" %}
+    {% include "includes/modals/modal-worknote.html" %}
+    {% include "includes/modals/modal-network-view.html" %}
+    {% include "includes/modals/modal-email-requester.html" %}
+    {% include "includes/modals/modal-resolution.html" %}
+{% endblock content %}
+</form>
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('static', filename='js/ticket.js') }}"></script>
+    <script type="module" src="{{ url_for('change_bp.static', filename='js/change.js') }}"></script>
+{%- endblock scripts %}

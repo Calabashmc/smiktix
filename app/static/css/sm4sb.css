@@ -1,0 +1,1427 @@
+:root {
+    --topDashNavbarHeight: 90px;
+    --topNavbarHeight: 150px;
+    --sidebar: 150px;
+    --logoWidth: 120px;
+
+    /* ====== Transition ====== */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+
+    --circle-size: clamp(1.5rem, 5vw, 3rem);
+    --spacing: clamp(0.25rem, 2vw, 0.5rem);
+
+    --min: 0;
+    --max: 4;
+    --darkmode-toggle-size: 2rem;
+
+    --thumb-rotate: 10deg;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #060606;
+        --color-text: #ebe8e8;
+    }
+}
+
+/* These classes are for when a user decides to not go with their browser setting */
+.lightswitch-emoji {
+    font-size: var(--darkmode-toggle-size);
+}
+
+/* Limit the maximum width and height of images within Suneditor */
+.sun-editor-editable img {
+    max-width: 400px; /* Adjust this value as needed */
+    max-height: 400px; /* Adjust this value as needed */
+}
+
+
+/* Add a class to the logo for the animation */
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030
+}
+
+.status-block {
+    text-align: center;
+}
+
+#status-btn {
+    width: 120px;
+    text-align: center;
+    margin-right: 4px
+}
+
+/* style to rotate text to be vertical */
+.rotate-l-90 {
+    transform: rotate(-90deg);
+}
+
+
+/* IMPROVEMENT: consolidate these 3 noborder styles? */
+.no-border {
+    border: 0 !important;
+    outline: none;
+    width: 90%;
+}
+
+.number-no-border {
+    border: 0 !important;
+    outline: none;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 5px;
+    max-width: 150px;
+}
+
+.type-no-border {
+    border: 0 !important;
+    outline: none;
+    font-weight: bold;
+    font-size: 30px;
+    padding-top: 5px;
+    width: auto;
+}
+
+
+.hide {
+    display: none;
+}
+
+.form-control-plaintext {
+    outline: none;
+}
+
+.parent-number {
+    border: 0 !important;
+    width: 100px;
+    background-color: transparent;
+}
+
+
+.navbar {
+    height: var(--topNavbarHeight)
+}
+
+.branding {
+    margin-right: calc((var(--sidebar) / 2) - (var(--logoWidth) / 2));
+    margin-left: calc((var(--sidebar) / 2) - (var(--logoWidth) / 2));
+    margin-top: 50px;
+}
+
+.ticket-scope {
+    font-size: 30px;
+}
+
+/* so image can overlap the navbar */
+.logo {
+    position: static;
+    width: var(--logoWidth);
+}
+
+
+/* hide arrow on profile dropdown */
+.noarrow::after {
+    content: none;
+}
+
+.scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+
+/* don't show button as active */
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+
+/* needed for mode swithing? */
+#lightSwitch {
+    transform: scale(1.8);
+}
+
+.rounded-full {
+    border-radius: 100%;
+}
+
+
+/* scrollbar mods */
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0d6efd;
+}
+
+#search {
+    max-width: 90px;
+    margin-left: 20px;
+}
+
+.main {
+    flex: 1;
+    min-height: 100vh;
+    padding-top: var(--topNavbarHeight);
+}
+
+.main-content {
+    margin-left: calc(var(--sidebar) + 10px);
+    margin-right: 10px;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: var(--topNavbarHeight);
+    height: 100vh;
+    width: var(--sidebar);
+    background-color: #f8f9fa;
+    border-right: 1px solid #dee2e6;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    font-size: .875rem;
+}
+
+.side-bar-content {
+    padding: 1rem;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* Mobile hamburger menu button */
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1001;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Overlay for mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Main content adjustment */
+.main-content {
+    margin-left: 180px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Tablet styles (768px and below) */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    /* Stack nav items vertically on mobile */
+    .nav-item {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Mobile styles (480px and below) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
+    .nav-link img {
+        width: 40px !important;
+    }
+}
+
+/* Collapsed sidebar for desktop (optional) */
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed .nav-link span,
+.sidebar.collapsed .nav-link:not(:has(img)) {
+    display: none;
+}
+
+.sidebar.collapsed + .main-content {
+    margin-left: 80px;
+}
+
+
+
+
+
+.verticaltext {
+    position: relative;
+    padding-left: 50px;
+    height: 100%;
+}
+
+.verticaltext_content {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    left: -40px;
+    top: 0;
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.list-group-item {
+    border: none;
+    padding: 20px 30px;
+}
+
+.list-group-item.active {
+    font-weight: bold;
+    border: none;
+}
+
+
+#department input {
+    border: 0;
+    background: none;
+}
+
+
+.modal-link {
+    cursor: pointer;
+}
+
+.alert {
+    width: 80%
+}
+
+
+/* idea voting  */
+.vote {
+    font-family: 'Dosis', Helvetica, Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 4em;
+    width: 120px;
+}
+
+/* slider on change form from here https://codepen.io/pwambach/pen/MWWNaJO */
+input[type='range'][id^='change'] {
+    --range: calc(var(--max) - var(--min));
+    --ratio: calc((var(--val) - var(--min)) / var(--range));
+    --sx: calc(0.5 * 1.5em + var(--ratio) * (100% - 1.5em));
+    -webkit-appearance: none;
+    background: #eee;
+    width: 90%;
+    max-width: 500px;
+    outline: none;
+    border-radius: 10px;
+}
+
+
+input[id='change-duration']::-moz-range-thumb,
+input[id='change-downtime']::-moz-range-thumb {
+    border: none;
+    height: 1em;
+    width: 1em;
+    background-color: transparent;
+    background-position: 0 0;
+    background-size: cover;
+    transform: scale(1.9) rotateZ(var(--thumb-rotate, 10deg));
+    cursor: pointer;
+}
+
+input[id='change-duration']::-webkit-slider-thumb,
+input[id='change-downtime']::-webkit-slider-thumb {
+    border: none;
+    height: 1em;
+    width: 1em;
+    background-color: transparent;
+    background-position: 0 0;
+    background-size: cover;
+    transform: scale(1.9) rotateZ(var(--thumb-rotate, 10deg));
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+input[id='change-duration']::-moz-range-thumb {
+    background-image: url('/static/images/duration-icon.png');
+}
+
+input[id='change-downtime']::-moz-range-thumb {
+    background-image: url('/static/images/outage-icon.png');
+}
+
+
+input[type='range'][id^='change']::-moz-range-track {
+    width: 100%;
+    height: 20px;
+    background: #eee;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px var(--theme_black);
+    cursor: pointer;
+}
+
+input[id='change-duration']::-moz-range-progress {
+    height: 20px;
+    background: var(--theme_blue);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[id='change-downtime']::-moz-range-progress {
+    height: 20px;
+    background: var(--theme_red);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+input[id='change-duration']::-webkit-slider-thumb {
+    background-image: url('/static/images/duration-icon.png');
+}
+
+input[id='change-downtime']::-webkit-slider-thumb {
+    background-image: url('/static/images/outage-icon.png');
+}
+
+input[id='change-duration']::-webkit-slider-runnable-track,
+input[id='change-downtime']::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px var(--theme_black);
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+
+.slider-label {
+    position: relative;
+    background: #eee;
+    border-radius: 15%;
+    padding: 0;
+    font-family: Roboto, 'Helvetica Neue', Arial, serif;
+    font-size: 20px;
+    width: 75px;
+    text-align: center;
+    color: #2968bb;
+    font-weight: bold;
+}
+
+
+/* end slider on change form*/
+
+/* Stepper */
+.stepper-container {
+    display: flex;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 25px;
+    /*background: var(--bs-dark)*/
+}
+
+.stepper-stage {
+    display: flex;
+    overflow-x: auto;
+    padding: 0px 0;
+
+}
+
+.step {
+    display: flex;
+    flex-direction: column; /* Changed from row to column */
+    align-items: center;
+    min-width: 100px;
+    position: relative;
+    min-height: 100%;
+    text-align: center;
+}
+
+/*.step:last-child {*/
+/*    flex: 0;*/
+/*}*/
+
+.step-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Changed from row to column */
+    align-items: center;
+    width: 100%;
+    color: #ccc;
+    position: relative; /* Ensures stacking order applies */
+    z-index: 1; /* Puts it above the connector */
+}
+
+.step-button:disabled {
+    cursor: not-allowed;
+}
+
+.step-button.enabled {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.step-button.current {
+    opacity: 1;
+    color: white;
+    font-weight: 700;
+}
+
+.step-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    background: var(--bs-dark);
+    color: #ccc;
+    transition: all 0.3s ease;
+}
+
+.step-button.current .step-icon-circle {
+    border-color: white;
+    background: var(--bs-primary);
+}
+
+.step-button.enabled:hover .step-icon-circle {
+    border-color: white;
+    background: var(--bs-primary);
+}
+
+.step-button.completed .step-icon-circle {
+    background: var(--bs-success);
+    border-color: white;
+    color: white;
+}
+
+.step-button.final-step .step-icon-circle {
+    background: var(--bs-danger);
+    border-color: white;
+    color: white;
+}
+
+.step-label {
+    font-size: 18px;
+    font-weight: 400;
+    /* Allow text to wrap */
+    white-space: pre-wrap;
+    word-break: break-word; /* Add this line */
+    /* Center the text */
+    text-align: center; /* changed */
+    /* Limit to 2 lines with ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.step-connector {
+    position: absolute;
+    top: 20px; /* Adjust to align with the middle of the step */
+    left: 80%;
+    width: 100px; /* Control the width of the line */
+    height: 4px; /* Keep it visible but not affecting layout */
+    background-color: var(--bs-gray-800);
+    transform: translateX(-50%);
+    transition: background-color 0.5s ease;
+    z-index: 0; /* Push it behind the steps */
+}
+
+.step-connector.active {
+    background-color: var(--bs-success);
+}
+
+.step:last-child .step-connector {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .step {
+        width: 100px;
+        min-width: 100px;
+    }
+
+    .step-connector {
+        margin-left: 50px;
+        margin-right: -50px;
+    }
+
+    .step-label {
+        font-size: 12px;
+    }
+}
+
+/* end stepper*/
+
+/* Journal Timeline */
+.timeline {
+    padding: 30px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+.timeline > ul {
+    list-style-type: none;
+    border-left: 2px solid #094a68;
+    padding: 10px 5px;
+}
+
+.timeline > ul > li {
+    padding: 20px 20px;
+    position: relative;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.worklog-time {
+    display: block;
+    background-color: #1685b8;
+    color: white;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 2px 5px;
+    font-size: 15px;
+    text-align: left;
+    width: 50%;
+}
+
+
+.timeline ul li .content h3 {
+    color: #34ace0;
+    font-size: 17px;
+    padding-top: 5px;
+}
+
+.timeline ul li .content p {
+    padding: 5px 0 15px 0;
+    font-size: 15px;
+}
+
+.timeline > ul > li:before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    background-color: #34ace0;
+    border-radius: 50%;
+    left: -11px;
+    top: 28px;
+    transition: .5s;
+}
+
+.journal-entry {
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    /*border: 1px groove #ddd !important;*/
+}
+
+
+/* end journal timeline */
+
+.swal-center-buttons {
+    text-align: center;
+}
+
+.titled-box {
+    border: 1px groove #ddd !important;
+    padding: 0 1.4em 1.4em 1.4em !important;
+    margin: 1.5em 1.5em 1.5em 1.5em !important;
+}
+
+.titled-box > h3 {
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    position: absolute;
+    height: 20px;
+    margin-top: -12px;
+    margin-left: 5px;
+    padding: 0 10px;
+}
+
+.titled-box > h4 {
+    font-size: 1em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    position: absolute;
+    height: 20px;
+    margin-top: -12px;
+    margin-left: 5px;
+    padding: 0 10px;
+}
+
+.titled-box > label {
+    font-size: 1em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    position: absolute;
+    height: 20px;
+    margin-top: -12px;
+    margin-left: 5px;
+    padding: 0 10px;
+}
+
+.network-modal {
+    max-width: 70%;
+    width: 70%;
+}
+
+.network-modal-content {
+    height: 70%;
+}
+
+#network-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border: 1px solid lightgray;
+}
+
+#modal-network-container {
+    position: relative;
+    width: 100%; /* Optionally, you can set a specific width */
+    height: 400px; /* Set your desired height for the vis-network container */
+    overflow: hidden; /* Hide any overflow content */
+}
+
+.priority-label {
+    font-size: 20px;
+
+}
+
+.nav-link.disabled .mdi {
+    /* Apply the blur effect to the icon */
+    filter: blur(1px); /* Adjust the blur strength as needed */
+}
+
+.nav-link.disabled span {
+    /* Apply the blur effect to the label text */
+    filter: blur(2px); /* Adjust the blur strength as needed */
+}
+
+#announcement-carousel {
+    height: 250px;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height: 100%; /* Set each carousel item to adjust its height based on content */
+}
+
+
+.carousel-inner,
+.carousel-item,
+.carousel-caption {
+    -webkit-user-select: none; /* Disable text selection for Safari */
+    -moz-user-select: none; /* Disable text selection for Firefox */
+    -ms-user-select: none; /* Disable text selection for Internet Explorer/Edge */
+    user-select: none; /* Disable text selection for other browsers */
+}
+
+.number-font {
+    font-size: 4ch;
+}
+
+.chart-container {
+    width: 350px;
+    height: 300px;
+    margin: 2px auto;
+}
+
+.chart-container-wide {
+    width: 700px;
+    height: 300px;
+    margin: 2px auto;
+}
+
+#selected-icon {
+    width: 100px;
+}
+
+.change-timeline {
+    width: 800px;
+    height: 400px;
+}
+
+/* change window lead times radio/slider*/
+#change-window-slider {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    position: relative;
+    width: 100%;
+    height: 50px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* the line between the radios */
+#change-window-slider::before {
+    content: ' ';
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    width: calc(100% * (4 / 5));
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+}
+
+#change-window-slider label {
+    display: inline-block;
+    position: relative;
+    width: 20%;
+    height: 100%;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* draws the circle replacing the radio button*/
+#change-window-slider label::after {
+    content: ' ';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 2px solid #000;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+/* The moving dot that shows the checked radio */
+#change-window-slider #slider-position {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 0 0 0 10%;
+    background: #000;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    opacity: 1;
+    z-index: 2;
+    transition: all 0.15s ease-in-out;
+    transform: translate(-50%, -50%);
+    animation-timing-function: ease-in-out;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+/* puts the label text under the circles */
+#change-window-slider label::before {
+    content: attr(data-change-lead);
+    position: absolute;
+    left: 50%;
+    padding-top: 10px;
+    transform: translate(-50%, 45px);
+    font-size: 14px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    white-space: nowrap;
+    opacity: 0.85;
+    transition: all 0.15s ease-in-out;
+}
+
+#change-window-slider input:checked + label::before {
+    font-weight: 800;
+    opacity: 1;
+}
+
+/*#change-window-slider input:checked + label::after {*/
+/*  border-width: 4px;*/
+/*  transform: translate(-50%, -50%) scale(0.75);*/
+/*}*/
+
+/* hide the html radio check */
+#change-window-slider input[type='radio'] {
+    display: none;
+}
+
+#window1:checked ~ #slider-position {
+    left: 0;
+}
+
+#window2:checked ~ #slider-position {
+    left: 20%;
+}
+
+#window3:checked ~ #slider-position {
+    left: 40%;
+}
+
+#window4:checked ~ #slider-position {
+    left: 60%;
+    background: darkorange;
+}
+
+#window5:checked ~ #slider-position {
+    left: 80%;
+    background: red;
+}
+
+#catalogue-container.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cards width */
+    gap: 20px; /* Spacing between cards */
+}
+
+#catalogue-container .card {
+    width: 100%; /* Ensures all cards take full width within the grid cell */
+    border: 1px solid #ccc !important;
+    border-radius: 8px;
+}
+
+#catalogue-container .card-header {
+    height: 100px;
+    padding: 10px;
+    margin: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#catalogue-container .card-body {
+    height: 250px;
+    padding: 10px;
+}
+
+
+.avatar-wrapper {
+    --s: 64px;      /* size */
+    --b: 2px;       /* border thickness */
+    --c: #C02942;   /* border color */
+    --f: 1;         /* scale factor */
+
+    width: var(--s);
+    top: 5px;
+    aspect-ratio: 1;
+    position: relative;
+    border-radius: 50%;
+    overflow: visible;
+    cursor: pointer;
+    transition: transform 0.5s;
+
+    /* Background circle */
+    background: radial-gradient(
+        circle closest-side,
+        #ECD078 calc(99% - var(--b)),
+        var(--c) calc(100% - var(--b)) 99%,
+        #0000
+    );
+    outline: var(--b) solid var(--c);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: scale(var(--f));
+    transition: transform 0.5s;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 2;
+
+}
+
+.avatar-wrapper:hover {
+    --f: 1.5;
+    transform: scale(0.8); /* shrink background to enhance the "pop-out" effect */
+}
+
+.modal:not(.show) {
+    display: none;
+}
+
+#chart-container {
+    position: relative;
+    height: 450px;
+    border: 2px solid #57585a;
+    overflow: auto;
+    text-align: center;
+}
+
+
+#chart-container .title {
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#chart-container .content {
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#chart-container .avatar {
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    margin-bottom: -5px;
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.swal2-html-container {
+    margin-left: 2rem !important;
+}
+
+/* need the following to prevent tomselect going to the next line on narrow inputs */
+/* default is min-width: 7rem */
+.ts-control > input {
+    min-width: 4rem !important;
+}
+
+.approvers-select {
+    height: 15rem !important;
+    font-family: monospace !important;
+    white-space: pre !important;
+}
+
+.approved-select {
+    height: 15rem !important;
+}
+
+#event-calendar {
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+}
+
+.ec-timeline .ec-time, .ec-timeline .ec-line {
+    width: 80px;
+}
+
+.ec-event-title {
+    font-size: 0.8rem;
+}
+
+/*used for idea buttons*/
+.small-img {
+    width: 50px; /* Adjust the size as needed */
+}
+
+
+#network {
+    width: 100%;
+    height: 600px;
+    border: 1px solid lightgray;
+}
+
+.offcanvas {
+    max-height: 100vh; /* Adjust the height as needed */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#change-freeze-list {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    font-family: monospace; /* Optional: gives it a more 'table-like' appearance */
+    white-space: pre-wrap; /* Preserve spaces and line breaks */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#change-freeze-list option {
+    padding: 5px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid #ddd;
+}
+
+#downstream-list {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    font-family: monospace; /* Optional: gives it a more 'table-like' appearance */
+    white-space: pre-wrap; /* Preserve spaces and line breaks */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#upstream-list {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    font-family: monospace; /* Optional: gives it a more 'table-like' appearance */
+    white-space: pre-wrap; /* Preserve spaces and line breaks */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.benefit-checkboxes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between rows */
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between checkbox, label, and comment */
+}
+
+.benefit-label {
+    min-width: 200px; /* Fixed width for labels to align comments */
+    text-align: left; /* Align text to the left */
+}
+
+.benefit-comment {
+    flex: 1; /* Allow comments to take the remaining space */
+    text-align: left; /* Align text to the left */
+}
+
+/* Hide the default radio */
+input.custom-radio[type='radio'] {
+    opacity: 0;
+    position: absolute;
+}
+
+/* Style the label next to the custom radio */
+input.custom-radio[type='radio'] + label {
+    position: relative;
+    display: inline-block;
+    padding-left: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Custom circle */
+input.custom-radio[type='radio'] + label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+/* Show dot when radio is checked */
+input.custom-radio[type='radio']:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #000000; /* White dot on black background */
+}
+
+/* Checked state */
+input.custom-radio[type='radio'][value='Low']:checked + label::before {
+    background-color: green;
+    border-color: white;
+}
+input.custom-radio[type='radio'][value='Medium']:checked + label::before {
+    background-color: orange;
+    border-color: white;
+}
+input.custom-radio[type='radio'][value='High']:checked + label::before {
+    background-color: red;
+    border-color: white;
+}
+
+/* Inner dot */
+input.custom-radio[type='radio'][value='Low']:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: green;
+    border-radius: 50%;
+}
+input.custom-radio[type='radio'][value='Medium']:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: orange;
+    border-radius: 50%;
+}
+input.custom-radio[type='radio'][value='High']:checked + label::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+
+#compliance-list {
+    width: 100%;
+    height: 300px;
+    padding: 5px;
+    font-family: monospace; /* Optional: gives it a more 'table-like' appearance */
+    white-space: pre-wrap; /* Preserve spaces and line breaks */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+#affected-ci + .ts-wrapper .ts-dropdown .option,
+#compliance-select {
+    font-family: monospace !important;
+    white-space: pre !important;
+}
+
+
+/* Change Risk Accordion settings to align the impact and radio values in the header */
+.risk-header {
+    position: relative;
+}
+
+
+.risk-header .risk-type-label {
+    margin-left: 1rem;
+    flex: 1 1 20%;
+
+}
+
+.risk-header .impact-label {
+    position: absolute;
+    right: 140px;
+}
+
+.risk-header .likelihood-label {
+    position: absolute;
+    right: 25px;
+}
+
+.vr-header {
+    position: absolute;
+    right: 120px;
+    height: 1.5em;
+}
+
+
+.risk-type-input {
+    margin-left: 0.5rem;
+}
+
+.risk-type-name {
+    margin-left: 1rem;
+}
+
+.impact-value {
+    position: absolute;
+    right: 130px;
+    text-align: center;
+    width: 100px;
+
+}
+
+.likelihood-value {
+    position: absolute;
+    right: 30px;
+    text-align: center;
+    width: 100px;
+}
+
+/* using these rather than directly manipulating the element.style */
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}
+
+/* graphs on dashboard */
+#interactions-graph {
+    width: 600px;  /* Or a fixed width */
+    height: 400px;  /* Set an explicit height */
+}
+
+#team-load-graph{
+    width: 600px;  /* Or a fixed width */
+    height: 400px;  /* Set an explicit height */
+}
+
+.modal-xxl {
+        max-width: 98%;
+        width: 98%;
+    }
+    @media (min-width: 1200px) {
+        .modal-xxl {
+            max-width: 98%;
+            width: 98%;
+        }
+    }
+
+#hashtags {
+    height: 120px;
+    max-height: 120px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.picker-only-time {
+    width: 80px !important;
+}
+
+.picker-date{
+    width: 120px !important;
+}
+
+
+.editor {
+    min-height: 250px;
+    max-height: 600px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+#details {
+    height: 250px;
+}
+
+
+/* Portal offcanvas forms */
+.offcanvas-wide {
+    --bs-offcanvas-width: 90vw;
+    max-width: 90%;
+}
+
+@media (min-width: 768px) {
+    .offcanvas-wide {
+        --bs-offcanvas-width: 70vw;
+    }
+}
+
+@media (min-width: 992px) {
+    .offcanvas-wide {
+        --bs-offcanvas-width: 60vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .offcanvas-wide {
+        --bs-offcanvas-width: 50vw;
+    }
+}
+
+/* Ensure table cells don't break awkwardly */
+.offcanvas-wide .table td {
+    white-space: nowrap;
+}
+
+.offcanvas-wide .table td:last-child {
+    white-space: normal;
+    word-break: break-word;
+}
+
+/* Make content areas scrollable if needed */
+#short-desc-div, #ticket-details {
+    max-height: 300px;
+    overflow-y: auto;
+}

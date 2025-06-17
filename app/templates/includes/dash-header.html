@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg fixed-top">
+    {% include 'includes/_header-logo.html' %}
+    <div id="topnav" class="container-fluid">
+        <div class="vstack">
+            <div class="h2 mt-3 dash-title">
+                {{ title }}
+            </div>
+            <div class="d-flex gap-3">
+                <a id="new-form-btn" class="btn btn-success text-white px-3" target="_self"
+                   title="Opens new record">
+                    <i class="bi bi-pencil-square me-2" title="New Record"></i>
+                    New {% if model == "Change" %}Normal{% endif %} {{ model }}
+                </a>
+                {% if model == "Change" %}
+                    <a href = '/ui/change/ticket/standard/' class="btn btn-warning text-dark px-3" target="_self"
+                       title="Opens new record">
+                        <i class="bi bi-box me-2" title="New Record"></i>
+                        New Standard Change
+                    </a>
+                    <a href = '/ui/change/ticket/emergency/' class="btn btn-danger text-white px-3" target="_self"
+                       title="Opens new record">
+                        <i class="bi bi-fire me-2" title="New Emergency Change Record"></i>
+                        New Emergency Change
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        {% include 'includes/_header-common.html' %}
+
+    </div>
+    <hr>
+</nav>

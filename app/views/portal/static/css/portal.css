@@ -1,0 +1,19 @@
+#idea-image {
+    width: 30%;
+}
+
+#portal-idea-offcanvas,
+#portal-kba-article-offcanvas,
+#portal-ticket-offcanvas {
+    width: 70vw;
+}
+
+
+#ticket-image {
+    width: 30%;
+}
+
+#kba-search {
+    width: 50%;
+}
+

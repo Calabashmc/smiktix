@@ -1,0 +1,20 @@
+<div class="tab-pane" id="release-build-pane">
+    <div class="row m-4">
+        <div class="col-4">
+            {{ render_field(form.build_leader_id) }}
+            {{  render_field(form.build_date) }}
+            {{ render_field(form.cis_selection) }}
+            <div class="d-flex gap-2 mb-3 ms-4 me-4">
+                <button id="add-cis-btn" type="button" class="btn btn-primary w-75"><strong><i
+                        class="bi bi-arrow-bar-down"></i></strong></button>
+                <button id="remove-cis-btn" type="button" class="btn btn-danger w-75"><strong><i
+                        class="bi bi-arrow-bar-up"></i></strong></button>
+            </div>
+
+            {{ render_field(form.affected_cis) }}
+        </div>
+        <div class="col">
+            {{ render_field(form.build_plan) }}
+        </div>
+    </div>
+</div>

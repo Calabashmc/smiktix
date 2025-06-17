@@ -1,0 +1,79 @@
+<div class="sidebar scroll">
+    <div id="sidebar" class="side-bar-content scroll">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.app_defaults')}}" target="_self" class="nav-link text-center">
+                    <img src="{{ url_for('static', filename='images/sidebar/settings.svg') }}" alt="portal" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.app_defaults')}}" target="_blank" class="nav-link text-center">
+                    App Defaults
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.user_admin')}}" class="nav-link text-center">
+                    <img src="{{ url_for('static', filename='images/sidebar/people.svg') }}" alt="portal" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.user_admin')}}" class="nav-link text-center">
+                    People
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-center pb-0" href="{{ url_for('admin_bp.interaction_admin') }}">
+                    <img src="{{ url_for('static', filename='images/sidebar/ticket.svg') }}" alt="ticket" width="50px">
+                </a>
+                <a class="nav-link text-center pt-0" href="{{ url_for('admin_bp.interaction_admin') }}">
+                    Tickets
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.problem_admin') }}" class="nav-link text-center pb-0">
+                    <img src="{{ url_for('static', filename='images/sidebar/problem.svg') }}" alt="problem" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.problem_admin') }}" class="nav-link text-center pt-0">
+                    Problems
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.change_admin')}}" class="nav-link text-center pb-0">
+                    <img src="{{ url_for('static', filename='images/sidebar/change.svg') }}" alt="change" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.change_admin')}}" class="nav-link text-center pt-0">
+                    Change
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.release_admin')}}" class="nav-link text-center pb-0">
+                    <img src="{{ url_for('static', filename='images/sidebar/release.svg') }}" alt="change" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.release_admin')}}" class="nav-link text-center pt-0">
+                    Release/Deploy
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.knowledge_admin')}}" class="nav-link text-center pb-0">
+                    <img src="{{ url_for('static', filename='images/sidebar/knowledge.svg') }}" alt="knowledge" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.knowledge_admin')}}" class="nav-link text-center pt-0">
+                    Knowledge
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.idea_admin')}}" class="nav-link text-center pb-0">
+                    <img src="{{ url_for('static', filename='images/sidebar/idea.svg') }}" alt="idea" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.idea_admin')}}" class="nav-link text-center pt-0">
+                    Ideas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('admin_bp.cmdb_admin')}}" class="nav-link text-center pb-0">
+                    <img src="{{ url_for('static', filename='images/sidebar/cmdb.svg') }}" alt="idea" width="50px">
+                </a>
+                <a href="{{ url_for('admin_bp.cmdb_admin')}}" class="nav-link text-center pt-0">
+                    CMDB
+                </a>
+            </li>
+        </ul>
+    {% include '/includes/context_menu.html' %}
+    </div>
+</div>

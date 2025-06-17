@@ -1,0 +1,54 @@
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+<div id="problem-admin-offcanvas" class="offcanvas offcanvas-end border border-4 w-50 h-100" data-bs-scroll="true"
+     data-bs-backdrop="false" style="overflow: visible;">
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="offcanvas-header">
+            {% include 'includes/offcanvas/header.html' %}
+        </div>
+        <div class="offcanvas-body" style="overflow: visible;">
+            {% include 'includes/offcanvas/common.html' %}
+            <div class="row">
+                <div class="col text-center">
+                    <div class="text-center">
+                        <h5>Priority</h5>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="1" value="P1">
+                        <label class="btn btn-outline-danger" for="1">P1</label>
+
+                        <input type="radio" class="btn-check" name="priority-matrix" id="2" value="P2">
+                        <label class="btn btn-outline-warning" for="2">P2</label>
+
+                        <input type="radio" class="btn-check" name="priority-matrix" id="3" value="P3">
+                        <label class="btn btn-outline-primary" for="3">P3</label>
+
+                        <input type="radio" class="btn-check" name="priority-matrix" id="4" value="P4">
+                        <label class="btn btn-outline-info" for="4">P4</label>
+
+                        <input type="radio" class="btn-check" name="priority-matrix" id="5" value="P5">
+                        <label class="btn btn-outline-success" for="5">P5</label>
+                    </div>
+                    <div class="mt-4">
+                        {{ form.priority(class="no-border h1 text-center") }}
+                    </div>
+                </div>
+            </div>
+            <div class="col ms-1 me-1">
+                <div class="h4 mt-4 mb-2">Child Tickets</div>
+                <div id="child-tickets-table"></div>
+            </div>
+        </div>
+
+        <div class="offcanvas-footer">
+            <div class="d-flex gap-2 ms-auto">
+                <div class="button-group ms-auto">
+                    <button id="submit-btn" type="button" class="btn btn-primary">Save</button>
+                    <button id="cancel-btn" type="button" class="btn btn-danger me-4"
+                            data-bs-dismiss="offcanvas">Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,64 @@
+{% extends "layouts/base.html" %}
+{% block title %} My Open Tickets {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block app_header %}
+    {% include '/includes/dash-header.html' %}
+{% endblock app_header %}
+
+{% block content %}
+    <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link show active"
+                   id="my-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#my-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-person-arms-up h4 me-2"></i>My Tickets</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="team-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#team-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-people-fill h4 me-2"></i>My Teams Tickets</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="all-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#all-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-infinity h4 me-2"></i>All Tickets</span>
+                </a>
+            </li>
+        </ul>
+        {#  Tab Content    #}
+        <div class="tab-content" id="myTabContent">
+            {% include "/includes/dashboard/my-tickets-tab-content.html" %}
+            {% include "/includes/dashboard/team-tickets-tab-content.html" %}
+            {% include "/includes/dashboard/all-tickets-tab-content.html" %}
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('interaction_bp.static', filename='js/dashboard.js') }}"></script>
+{% endblock scripts %}

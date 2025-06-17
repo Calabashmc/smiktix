@@ -1,0 +1,101 @@
+<div>
+    <div class="d-flex justify-content-center">
+        <div class="d-flex gap-2">
+            <table id="priority-buttons-table">
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td colspan="3">
+                        <div class="display-9 text-center">Impact</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="border border-secondary text-center">High</td>
+                    <td class="border border-secondary text-center">Med</td>
+                    <td class="border border-secondary text-center">Low</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">
+                        <div class="rotate-l-90">
+                            <div class="display-9">Urgency</div>
+                        </div>
+                    </td>
+                    <td class="border border-secondary text-center">High</td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="high-high"
+                               data-priority="P1" data-urgency="high" data-impact="high">
+                        <label class="btn btn-outline-danger py-0" for="high-high">P1</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="high-med"
+                               data-priority="P2" data-urgency="high" data-impact="medium">
+                        <label class="btn btn-outline-warning py-0" for="high-med">P2</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="high-low"
+                               data-priority="P3" data-urgency="high" data-impact="low">
+                        <label class="btn btn-outline-primary py-0" for="high-low">P3</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border border-secondary text-center">Medium</td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="med-high"
+                               data-priority="P2" data-urgency="medium" data-impact="high">
+                        <label class="btn btn-outline-warning py-0" for="med-high">P2</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="med-med"
+                               data-priority="P3" data-urgency="medium" data-impact="medium">
+                        <label class="btn btn-outline-primary py-0" for="med-med">P3</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="med-low"
+                               data-priority="P4" data-urgency="medium" data-impact="low">
+                        <label class="btn btn-outline-info py-0" for="med-low">P4</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="border border-secondary text-center">Low</td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="low-high"
+                               data-priority="P3" data-urgency="low" data-impact="high">
+                        <label class="btn btn-outline-primary py-0" for="low-high">P3</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="low-med"
+                               data-priority="P4" data-urgency="low" data-impact="medium">
+                        <label class="btn btn-outline-info py-0" for="low-med">P4</label>
+                    </td>
+                    <td>
+                        <input type="radio" class="btn-check" name="priority-matrix" id="low-low"
+                               data-priority="P5" data-urgency="low" data-impact="low">
+                        <label class="btn btn-outline-success py-0" for="low-low">P5</label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="mt-4">
+                {{ form.priority(class="no-border h1 w-100 text-center") }}
+            </div>
+        <div class="col-6 mx-auto">
+            <div class="text-center">Urgency:</div>
+            {{ form.priority_urgency(class="no-border h4 w-100 text-center") }}
+        </div>
+        <div class="col-6 mx-auto">
+            <div class="text-center">Impact:</div>
+            {{ form.priority_impact(class="no-border h4 w-100 text-center") }}
+        </div>
+    </div>
+    <div class="mt-2 text-center">
+        <div class="d-flex justify-content-center">
+            <span id="is-major-span" class="hide">{{ render_field(form.is_major) }}</span>
+        </div>
+    </div>
+</div>

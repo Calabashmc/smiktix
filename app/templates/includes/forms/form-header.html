@@ -1,0 +1,88 @@
+<header>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        {% include 'includes/_header-logo.html' %}
+        <div class="container-fluid">
+            <div class="col">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="stepper-container">
+                        <div id="stepper-stage" class="stepper-stage">
+                            <!-- Steps will be inserted here by JavaScript -->
+                        </div>
+
+                    </div>
+                    {% if form.ticket_type.data == "Incident" or form.ticket_type.data == "Request" %}
+                        <div id="parent-details" class="border border-white p-1 align-items-center d-none">
+                            <div class="hstack gap-1">
+                                {# need to use form="form" as this is outside <form></form>#}
+                                {{ form.is_parent(class_="align-self-center" ) }}
+                                {{ form.is_parent.label }}
+                                <span id="parent-number" style="display: none"></span>
+                                <button type="button"
+                                        id="parent-id-btn"
+                                        class="btn btn-sm btn-outline-primary bi bi-diagram-3"
+                                        title="Select parent">
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% include 'includes/_header-common.html' %}
+                </div>
+                <div class="d-flex">
+                    <div class="col-3 ms-4">
+                        <div class="d-flex gap-2">
+                            {{ form.ticket_type(hidden=true) }}
+                            {% if model == 'Change' %}
+                                {{ form.change_type(hidden=true) }}
+                                <div class="type-no-border">{{ form.change_type.data }}</div>
+                            {% endif %}
+                            <div id="ticket-type-text" class="type-no-border">
+                                {{ form.ticket_type.data }}
+                            </div>
+
+                            {% if exists %}
+                                <div>{{ form.ticket_number }}</div>
+
+                            {% else %}
+                                <div class="type-no-border">New</div>
+                            {% endif %}
+
+                        </div>
+                        {{ form.status }}
+                    </div>
+                    <div class="col d-flex gap-lg-4">
+                        <div class="btn-group-lg ms-auto">
+                            <button form="form"
+                                    type="button"
+                                    class="btn btn-success live"
+                                    id="submit-btn"
+                                    hidden>
+                                Save
+                            </button>
+                            <button type="button"
+                                    class="btn btn-danger live"
+                                    id="cancel-btn"
+                                    hidden>
+                                Cancel
+                            </button>
+                        </div>
+
+                        <div class="btn-group-sm">
+                            <button type="button" id="previous-btn" class="btn btn-outline-secondary live"
+                                    data-bs-toggle="tooltip" data-bs-title="Open a previous Ticket">
+                                <i class="bi bi-skip-backward"></i>
+                            </button>
+                            <button type="button" id="new-form-btn" class="btn btn-outline-success live"
+                                    data-bs-toggle="tooltip" data-bs-title="Open a new Ticket!">
+                                <i class="bi bi-plus-circle"></i>
+                            </button>
+                            <button type="button" id="next-btn" class="btn btn-outline-secondary live"
+                                    data-bs-toggle="tooltip" data-bs-title="Open next Ticket">
+                                <i class="bi bi-skip-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

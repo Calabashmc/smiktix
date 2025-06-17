@@ -1,0 +1,74 @@
+<div class="offcanvas offcanvas-end border border-4 offcanvas-wide" data-bs-scroll="true" data-bs-backdrop="false"
+     id="portal-kba-article-offcanvas">
+    <div class="offcanvas-header">
+        <div class="col-1 border-end border-white">
+            <div class="mt-2">
+                <button type="button" class="btn btn-icon" data-bs-dismiss="offcanvas">
+                    <i class="bi bi-box-arrow-in-right h1"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col ms-2">
+            <h1 id="offcanvas-title" class="offcanvas-title"></h1>
+            <div id="article-type" class="h3">type</div>
+            <div id="article-category" class="h4"></div>
+        </div>
+    </div>
+    <div class="offcanvas-body col-auto">
+        <div class="row mt-1 g-2">
+            <div class="col-1">
+                <div class="mb-3 mt-4">
+                    <label for="thumbs-up" class="rounded-full">
+                        <img id="thumbs-up-img" src="../static/images/up-arrow.svg" alt="">
+                    </label>
+                    <input id="thumbs-up" type="button" class="btn-check rounded-full" name="feedback-thumbs">
+                </div>
+                <div class="mb-3">
+                    <h6>Helpful?</h6>
+                </div>
+                <div class="mb-3">
+                    <label for="thumbs-down">
+                        <img src="../static/images/down-arrow.svg" alt="">
+                    </label>
+                    <input id="thumbs-down" type="button" class="btn-check" name="feedback-thumbs">
+                </div>
+            </div>
+            <div class="col px-3">
+                <div class="mb-4">
+                    <label for="title" class="h4 form-label">Title</label>
+                    <div id="title" class="border border-primary p-2"></div>
+                </div>
+                <div class="mb-4">
+                    <label for="short-desc" class="form-label">Summary</label>
+                    <div id="short-desc" class="border border-primary p-2"></div>
+                </div>
+                <div class="mb-4">
+
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="nav-item">
+                            <a class="nav-link active"
+                               id="details-tab"
+                               data-bs-toggle="tab"
+                               data-bs-target="#details-tab-pane"
+                            >
+                                <span><i class="mdi mdi-note-text-outline h3"></i>Details</span>
+                            </a>
+                        </li>
+                    </ul>
+                    {#  Tab Content    #}
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane show active" id="details-tab-pane">
+                            <div class="row m-4">
+                                <textarea id="article-details" class="timeline-editor"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

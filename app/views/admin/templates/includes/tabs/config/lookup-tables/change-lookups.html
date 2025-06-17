@@ -1,0 +1,46 @@
+{% from 'macros/macros.html' import render_field %}
+
+<div class="tab-content">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-6">
+                     <h3>Change Categories</h3>
+                    <div class="mb-3" id="change-category-table"></div>
+                    <h3>Change Types</h3>
+                    <div class="mb-3" id="change-type-table"></div>
+                    <h3>Change Windows</h3>
+                    <div class="hstack gap-2">
+                        {{ render_field(form.change_window_day) }}
+                        {{ render_field(form.change_window_start) }}
+                        {{ render_field(form.change_window_duration) }}
+                        <button id="add-change-window" class="btn btn-primary mt-3">Add</button>
+                    </div>
+
+                    <div class="mb-3" id="change-window-table"></div>
+                    <h3>Change Risk Codes</h3>
+                    <div class="mb-3" id="change-risk-table"></div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <h3>Change Resolution Codes Lookup</h3>
+                <div class="row align-items-end">
+                    <div class="col">
+                        {{ render_field(form.change_resolution_code) }}
+                    </div>
+                    <div class="col">
+                        {{ render_field(form.change_resolution_comment) }}
+                    </div>
+                    <div class="col">
+                        <button id="add-change-resolution-code" class="btn btn-primary mb-3">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col">
+                    <div id="change-resolution-table"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

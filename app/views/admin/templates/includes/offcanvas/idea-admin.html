@@ -1,0 +1,62 @@
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+<div id="idea-admin-offcanvas" class="offcanvas offcanvas-end border border-4 w-50 h-100" data-bs-scroll="true"
+     data-bs-backdrop="false" style="overflow: visible;">
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="offcanvas-header">
+            {% include 'includes/offcanvas/header.html' %}
+        </div>
+        <div class="offcanvas-body" style="overflow: visible;">
+            <div class="row">
+                <div class="d-flex gap-2">
+                    <div class="flex-grow-1 w-100">
+                        {{ render_field(form.short_desc) }}
+                    </div>
+                </div>
+                <div class="col-6">
+                    {{ render_field(form.requester_id) }}
+                </div>
+                <div class="col-6">
+                    {{ render_field(form.category_id) }}
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <div class="row text-center">
+                        <div class="mt-4">
+{#                            {{ form.priority(style="width: 15%;") }}#}
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center text-center gap-2 m-0">
+                        <div class="d-flex flex-column align-items-center m-0">
+                            <div class="m-0">Urgency:</div>
+                            {{ form.vote_count(class="no-border h4 w-100 text-center m-0") }}
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-0">
+                            <div class="m-0">Impact:</div>
+                            {{ form.vote_score(class="no-border h4 w-100 text-center m-0") }}
+                        </div>
+                        <div class="d-flex flex-column align-items-center m-0">
+                            <div class="m-0">Likelihood:</div>
+                            {{ form.likelihood(class="no-border h4 w-100 text-center m-0") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <div class="button-group ms-auto">
+                <button id="submit-btn" type="button" class="btn btn-primary">Save</button>
+                <button id="cancel-btn" type="button" class="btn btn-danger me-4"
+                        data-bs-dismiss="offcanvas">Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

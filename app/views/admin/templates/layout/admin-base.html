@@ -1,0 +1,94 @@
+{% block doc %}
+    <!DOCTYPE html>
+    <html lang="en">
+    {% block html %}
+        {% from 'bootstrap5/utils.html' import render_messages %}
+        {% from 'macros/macros.html' import render_field %}
+
+        <head>
+            {%- block metas %}
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta name="description" content="">
+                <meta name="author" content="Marty Miller-Crispe">
+                <title>SmicTix - Service Management for Small Business</title>
+            {%- endblock metas %}
+
+            {%- block head %}
+                <link rel="shortcut icon" type="image/x-icon"
+                      href='{{ url_for("static", filename="/images/favicon.ico") }}'>
+
+                {%- block styles %}
+                    <script src="{{ url_for('static', filename='js/popper/popper.js') }}"></script>
+                    {# Needs to load before bootstrap #}
+                    {{ bootstrap.load_css() }}
+
+                    <!--  Suneditor-->
+                    <link href='{{ url_for("static", filename="css/suneditor/suneditor.min.css") }}'
+                          rel="stylesheet">
+                    <!--  Tom Select-->
+                    <link href='{{ url_for("static", filename="css/tom-select.bootstrap5.css") }}'
+                          rel="stylesheet">
+                    <!--  animations-->
+                    <link href='{{ url_for("static", filename="css/animate.css/animate.min.css") }}'
+                          rel="stylesheet">
+                    <!--  icons-->
+                    <link href='{{ url_for("static", filename="iconfonts/icons.css") }}' rel="stylesheet">
+                    <!--  Sweet Alert-->
+                    <link href='{{ url_for("static", filename="css/sweetalert2/dark.min.css") }}'
+                          rel="stylesheet">
+                    <link href='{{ url_for("static", filename="css/orgchart/orgchart.css") }}'
+                          rel="stylesheet">
+
+                    {{ bootstrap.load_js() }}
+                    <script src="{{ url_for('static', filename='js/sweetalert/sweetalert2.min.js') }}"></script>
+                    <!-- Suneditor -->
+                    <script src="{{ url_for('static', filename='js/suneditor/suneditor.min.js') }}"></script>
+
+                    <link href='{{ url_for("static", filename="css/tabulator/tabulator_site.css") }}'
+                          rel="stylesheet">
+                    <!--  Smiktix-->
+                    <link href='{{ url_for("static", filename="css/colour.css") }}' rel="stylesheet">
+                    <link href='{{ url_for("static", filename="css/sm4sb.css") }}' rel="stylesheet">
+
+                {%- endblock styles %}
+            {%- endblock head %}
+        </head>
+
+        <body class="bg-dark">
+        {%- block body %}
+            <header class="app-header fixed-top">
+                {% include 'includes/admin-header.html' %}
+            </header>
+
+            <div class="main">
+                <div id="form-vars"
+                     data-exists="{{ exists|lower }}"
+                     data-model="{{ model }}"
+                     data-id="{{ id }}"
+                     data-highest-number="{{ highest_number }}"
+                >
+                    {% include 'includes/admin-sidebar.html' %}
+
+                    <div class="main-content scroll">
+                        {% block content %}
+
+                        {% endblock content %}
+                    </div>
+
+                    {% include 'includes/flash-alerts.html' %}
+                    {% include "includes/forms/user-profile.html" %}
+                    {% include "includes/modals/modal-set-avatar.html" %}
+                </div>
+            </div>
+        {% endblock body -%}
+        {% block scripts %}
+            <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+            <!-- DarkMode.js -->
+            <script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/tom-select/tom-select.complete.min.js') }}"></script>
+        {%- endblock scripts %}
+        </body>
+    {%- endblock html %}
+    </html>
+{% endblock doc -%}

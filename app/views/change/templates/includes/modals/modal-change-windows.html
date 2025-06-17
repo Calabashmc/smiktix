@@ -1,0 +1,49 @@
+<div class="modal fade" id="change-window-modal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Choose a Change Window</h5>
+            </div>
+            <div class="modal-body">
+                <div class="vstack gap-4">
+                    <div>
+                        {{ render_field(form.change_windows) }}
+                    </div>
+                    <div>
+                        <div id="change-window-slider" class="mb-4">
+                            <input id="window1" name="change-window-radio" type="radio" value="1">
+                            <label for="window1" data-change-lead="This week"></label>
+
+                            <input id="window2" name="change-window-radio" type="radio" value="2">
+                            <label for="window2" data-change-lead="Next Week"></label>
+
+                            <input id="window3" name="change-window-radio" type="radio" value="3">
+                            <label for="window3" data-change-lead="In 2 Weeks"></label>
+
+                            <input id="window4" name="change-window-radio" type="radio" value="4">
+                            <label for="window4" data-change-lead="In 3 Weeks"></label>
+
+                            <input id="window5" name="change-window-radio" type="radio" value="5">
+                            <label for="window5" data-change-lead="In 4 Weeks"></label>
+
+                            <span id="slider-position"></span>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div id="change-window-date" class="h5 text-center"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel-btn"
+                        type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel
+                </button>
+                <button id="modal-ok-btn"
+                        type="button"
+                        class="btn btn-primary"
+                        data-bs-dismiss="modal">OK
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

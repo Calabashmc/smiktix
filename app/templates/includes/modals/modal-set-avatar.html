@@ -1,0 +1,31 @@
+<!-- Modal dialog to get CI Icon/image -->
+{% from 'macros/macros.html' import render_field %}
+<div class="modal fade" id="set-avatar-modal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Avatar Choice</h5>
+            </div>
+            <div class="modal-body col-auto">
+                <div class="hstack gap-4">
+                    <div class="flex-grow-1">
+                        {{ render_field(form.avatar) }}
+                    </div>
+                    <img id="selected-avatar" src="" alt="Selected avatar" style="height: 100px; width: 100px;">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel-btn"
+                        type="button"
+                        class="btn btn-secondary">
+                    Close
+                </button>
+                <button id="modal-set-icon-btn"
+                        type="button"
+                        class="btn btn-primary">
+                    Select
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

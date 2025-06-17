@@ -1,0 +1,94 @@
+<ul class="nav nav-tabs mt-2" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link active"
+           id="incident-lookups-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#incident-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-ticket h4 me-2"></i>Incident</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           id="problem-lookup-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#problem-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-tools h4 me-2"></i>Problem</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           id="change-lookup-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#change-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-sign-merge-left h4 me-2"></i>Change</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           id="release-lookup-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#release-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-rocket-takeoff h4 me-2"></i>Release</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           id="kba-types-lookup-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#kba-types-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-book h4 me-2"></i>Knowledge</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           id="idea-lookup-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#idea-types-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-lightbulb h4 me-2"></i>Idea</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link"
+           id="general-lookup-admin-tab"
+           data-bs-toggle="tab"
+           data-bs-target="#common-lookup-tables-admin-pane"
+           type="button"
+        >
+            <span class="h4"><i class="bi bi-card-list h4 me-2"></i>Common</span>
+        </a>
+    </li>
+</ul>
+{#  Tab Content    #}
+<div class="tab-content">
+    <div class="tab-pane active" id="incident-lookup-tables-admin-pane">
+        {% include "includes/tabs/config/lookup-tables/incident-lookups.html" %}
+    </div>
+    <div class="tab-pane" id="problem-lookup-tables-admin-pane">
+        {% include "includes/tabs/config/lookup-tables/problem-lookups.html" %}
+    </div>
+    <div class="tab-pane" id="change-lookup-tables-admin-pane">
+        {% include "includes/tabs/config/lookup-tables/change-lookups.html" %}
+    </div>
+    <div class="tab-pane" id="kba-types-lookup-tables-admin-pane">
+        {% include "includes/tabs/config/lookup-tables/knowledge-lookups.html" %}
+    </div>
+    <div class="tab-pane" id="idea-types-lookup-tables-admin-pane">
+        {% include "includes/tabs/config/lookup-tables/idea-lookups.html" %}
+    </div>
+    <div class="tab-pane" id="common-lookup-tables-admin-pane">
+        {% include "includes/tabs/config/lookup-tables/common-lookups.html" %}
+    </div>
+</div>
+

@@ -1,0 +1,63 @@
+<div class="tab-pane fade" id="info-tab-pane">
+    <div class="row mt-4">
+        <div class="col-3 align-self-start ms-4">
+            <h3>Ticket Changes</h3>
+            <span class="align-self-start">
+                {{ form.created_by_id.label() }}
+                <small>{{ form.created_by_id(class="form-control-plaintext", readonly=True) }}</small>
+                {{ form.created_at.label() }}
+                <small>{{ form.created_at }}</small>
+                {{ form.last_updated_at.label() }}
+                <small>{{ form.last_updated_at(class="form-control-plaintext") }}</small>
+            </span>
+
+            {% if model == "interaction" %}
+                <div class="align-self-start">
+                    {{ form.sla_respond_by.label() }}
+                    <small>{{ form.sla_respond_by(class="form-control-plaintext") }}</small>
+                </div>
+                <div class="align-self-start">
+                    {{ form.sla_resolve_by.label() }}
+                    <small>{{ form.sla_resolve_by(class="form-control-plaintext") }}</small>
+                </div>
+                <div class="align-self-start">
+                    {{ form.sla_responded_at.label() }}
+                    <small>{{ form.sla_responded_at(class="form-control-plaintext") }}</small>
+                </div>
+            {% endif %}
+             {{ form.resolved_at.label() }}
+                <small>{{ form.resolved_at(class="form-control-plaintext") }}</small>
+                {{ form.closed_at.label() }}
+                <small>{{ form.closed_at(class="form-control-plaintext") }}</small>
+            {% if model == "interaction" %}
+                <div class="d-flex gap-2 mt-4">
+                    <div>
+                        <input type="checkbox" class="btn-check" id="sla-paused"
+                               name="sla_paused" {{ 'checked' if form.sla_paused.data else '' }}>
+                        <label id="sla-pause-btn" class="btn btn-danger" for="sla-paused"><i
+                                class="h2 bi bi-pause-fill"></i><span
+                                class="d-flex align-items-center">Pause SLA</span></label>
+                    </div>
+                </div>
+                <div class="flex-column">
+                    <div class="h5 mt-4">SLA Pause History</div>
+                    {{ form.sla_pause_journal }}
+                    <span class="align-self-start">
+                            <small>
+                                <span id="pause-history"></span>
+                            </small>
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+        <div class="col">
+            <div class="mt-4 mx-2">
+                <h4>Ticket History</h4>
+                <div class="timeline">
+                    {# a list will be created here from journalTimeline() in journal-class.js   #}
+                    <ul id="system-timeline"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

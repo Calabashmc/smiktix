@@ -1,0 +1,55 @@
+<div class="tab-pane show active" id="portal-my-tickets-tab-pane">
+    <div class="tab-content" id="myTabContent">
+        <div class="card border-0 shadow mb-4 m-2">
+            <div class="card-header">
+                <div class="col d-flex gap-4">
+                    <div id="my-type-count" class="chart-container"></div>
+                    <div id="my-incidents-priority-count" class="chart-container"></div>
+                    <div id="my-requests-priority-count" class="chart-container"></div>
+                    <div id="my-status-count" class="chart-container"></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex gap-2">
+                    <div class="titled-box">
+                        <div class="d-flex gap-4">
+                            <div class="hstack gap-2 mt-4">
+                                <label for="my-filter-field" class="form-label">Field</label>
+                                <select id="my-filter-field" class="form-control">
+                                    <option></option>
+                                    <option value="ticket_number">Ticket #</option>
+                                    <option value="requested_by">Requester</option>
+                                    <option value="supported_by">Supported By</option>
+                                </select>
+                                <label for="my-filter-value" class="form-label">Value</label>
+                                <input id="my-filter-value" type="text" class="form-control" name="filter-value"
+                                       placeholder="value to filter" disabled>
+                            </div>
+                            <div>
+                                <button type="button" id="my-clear-filter-btn"
+                                        class="mt-4 btn btn-sm btn-outline-danger">
+                                    Clear
+                                    filters
+                                </button>
+                            </div>
+                            <div class="mt-2">
+                                <div id="filter-info">Not filtered</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hstack ms-auto">
+                        <div class="titled-box ms-auto">
+                            <div class="mt-4 btn-group-sm">
+                                <button type="button" class="btn btn-outline-primary" id="my-tickets-download-csv"
+                                        title="Exports visible data">Export
+                                    CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="my-tickets-table"></div>
+            </div>
+        </div>
+    </div>
+</div>

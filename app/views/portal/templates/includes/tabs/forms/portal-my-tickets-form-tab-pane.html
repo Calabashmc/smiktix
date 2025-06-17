@@ -1,0 +1,123 @@
+<div class="tab-pane" id="portal-interaction-form-tab-pane">
+    <div class="tab-content m-4">
+        <form id="form" class="row g-3 needs-validation" novalidate method="post">
+            {{ form.csrf_token }}
+            {{ form.support_team_id }}
+            <div class="row mt-1 g-2">
+                <div class="col-9 px-3">
+                    <div class="row">
+                        <div class="col">
+                            {{ render_field(form.requester_id, label="Log ticket for:", btn='true', button_label='Me', button_class='btn-outline-primary') }}
+                            {{ render_field(form.category_id) }}
+                            {{ render_field(form.subcategory_id) }}
+                            <div class="d-flex justify-content-center">
+                            </div>
+
+                        </div>
+                        <div class="col ms-4">
+                            {{ render_field(form.short_desc) }}
+                            <div class="titled-box">
+                                <h3>Urgency and Impact</h3>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="btn-group mt-4">
+                                            <input id="user-low" type="radio" class="btn-check" name="user-priority"
+                                                   value="low"
+                                                   checked>
+                                            <label for="user-low" type="button" class="btn btn-outline-success m-1">
+                                                <img src={{ url_for('portal_bp.static', filename='images/low.png') }} width="40"
+                                                     height="40" alt="low">
+                                            </label>
+
+                                            <input id="user-medium" type="radio" class="btn-check" name="user-priority"
+                                                   value="medium">
+                                            <label for="user-medium" type="button" class="btn btn-outline-warning m-1">
+                                                <img src={{ url_for('portal_bp.static', filename='images/medium.png') }} width="40"
+                                                     height="40" alt="medium">
+                                            </label>
+
+                                            <input id="user-high" type="radio" class="btn-check" name="user-priority"
+                                                   value="high">
+                                            <label for="user-high" type="button" class="btn btn-outline-danger m-1">
+                                                <img src={{ url_for('portal_bp.static', filename='images/high.png') }} width="40"
+                                                     height="40" alt="high">
+                                            </label>
+                                        </div>
+                                        <div id="user-urgency-info" class="h6 mt-2">I can work but need support</div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="btn-group mt-4">
+                                            <input id="single-user" type="radio" class="btn-check" name="user-impact"
+                                                   value="low" checked>
+                                            <label for="single-user" type="button" class="btn btn-outline-success m-1">
+                                                <img src={{ url_for('portal_bp.static', filename='images/person-single.svg') }} width="40"
+                                                     height="40" alt="single">
+                                            </label>
+                                            <input id="team-users" type="radio" class="btn-check" name="user-impact"
+                                                   value="medium">
+                                            <label for="team-users" type="button" class="btn btn-outline-warning m-1">
+                                                <img src={{ url_for('portal_bp.static', filename='images/people-team.svg') }} width="40"
+                                                     height="40" alt="team">
+                                            </label>
+                                            <input id="department-users" type="radio" class="btn-check"
+                                                   name="user-impact"
+                                                   value="high">
+                                            <label for="department-users" type="button"
+                                                   class="btn btn-outline-danger m-1">
+                                                <img src={{ url_for('portal_bp.static', filename='images/people-department.svg') }} width="40"
+                                                     height="40" alt="dpt">
+                                            </label>
+                                        </div>
+                                        <div id="user-impact-info" class="h6 mt-2">This only affects me</div>
+                                    </div>
+                                    <div class="d-flex mt-2 justify-content-center">
+                                        <div class="col text-center">
+                                            {{ form.priority(value='P3', class='h1 text-center form-control text-primary type-no-border') }}
+                                        </div>
+                                        <div class="col text-center">
+                                            Urgency:
+                                            {{ form.priority_urgency(class="no-border h5 w-100 text-center") }}
+                                        </div>
+                                        <div class="col text-center">
+                                            Impact:
+                                            {{ form.priority_impact(class="no-border h5 w-100 text-center") }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 text-center">
+                    <div>{{ form.ticket_type(class="h3 text-center no-border") }}</div>
+                    <div>
+                        <button form="form"
+                                type="button"
+                                class="btn btn-success my-1 ms-auto hi"
+                                id="submit-btn"
+                        >
+                            Submit Ticket
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger my-1 ms-auto hi"
+                                id="cancel-btn"
+                        >
+                            Clear Form
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <a type="button" id="ticket-img-btn">
+                            <img id="ticket-image" alt="ideas"
+                                 src={{ url_for('portal_bp.static', filename='images/helping-hands.png') }}>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mt-2">
+                        {{ render_field(form.details) }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

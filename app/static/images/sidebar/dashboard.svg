@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="135.46666mm"
+   height="114.30001mm"
+   viewBox="0 0 135.46666 114.30001"
+   version="1.1"
+   id="svg460"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview462"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false" />
+  <defs
+     id="defs457" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-2.847844,-52.565295)">
+                        
+                        <g
+   id="SVGRepo_iconCarrier-dash1"
+   transform="matrix(0.26458333,0,0,0.26458333,2.847844,41.981962)"> <polygon
+   style="fill:#ffffff"
+   points="16,296 16,120 240,120 240,216 352,216 352,296 272,296 "
+   id="polygon466" />
+
+                            <path
+   style="fill:#67c18c"
+   d="m 168,208 c 0,35.36 -28.64,64 -64,64 -17.68,0 -33.68,-7.2 -45.28,-18.72 L 81.36,230.64 C 87.2,236.4 95.2,240 104,240 c 17.68,0 32,-14.32 32,-32 z"
+   id="path468" />
+
+                            <path
+   style="fill:#53b7e8"
+   d="m 104,144 v 32 c -17.68,0 -32,14.32 -32,32 0,8.8 3.6,16.8 9.36,22.64 L 58.72,253.28 C 47.2,241.68 40,225.68 40,208 c 0,-35.36 28.64,-64 64,-64 z"
+   id="path470" />
+
+                            <path
+   style="fill:#ffd768"
+   d="m 168,208 h -32 c 0,-17.68 -14.32,-32 -32,-32 v -32 c 35.36,0 64,28.64 64,64 z"
+   id="path472" />
+
+                            <g
+   id="g482"> <rect
+   x="256"
+   y="56"
+   style="fill:#ffffff"
+   width="208"
+   height="144"
+   id="rect474" />
+
+                                <polygon
+   style="fill:#ffffff"
+   points="233.048,424 134.952,424 144,410.424 144,376 224,376 224,410.424 "
+   id="polygon476" />
+
+                                <polygon
+   style="fill:#ffffff"
+   points="272,312 272,360 240,360 224,360 144,360 128,360 16,360 16,312 "
+   id="polygon478" />
+
+                                <rect
+   x="288"
+   y="312"
+   style="fill:#ffffff"
+   width="208"
+   height="144"
+   id="rect480" />
+ </g>
+
+                            <g
+   id="g488"> <rect
+   x="184"
+   y="312"
+   style="fill:#dcddde"
+   width="88"
+   height="48"
+   id="rect484" />
+
+                                <path
+   style="fill:#dcddde"
+   d="m 248,432 -16,-24 v -40 h -48 v 8 h -40 v 8 h 24 c 8.84,0 16,7.16 16,16 v 32 z"
+   id="path486" />
+ </g>
+
+                            <rect
+   x="280"
+   y="304"
+   style="fill:#f37053"
+   width="224"
+   height="160"
+   id="rect490" />
+
+                            <polygon
+   style="fill:#53b7e8"
+   points="416,112 440,88 440,176 288,176 320,144 360,144 376,112 "
+   id="polygon492" />
+
+                            <g
+   id="g514"> <rect
+   x="112"
+   y="40"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect494" />
+
+                                <rect
+   x="144"
+   y="40"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect496" />
+
+                                <rect
+   x="176"
+   y="40"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect498" />
+
+                                <rect
+   x="208"
+   y="40"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect500" />
+
+                                <rect
+   x="464"
+   y="232"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect502" />
+
+                                <rect
+   x="464"
+   y="264"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect504" />
+
+                                <rect
+   x="80"
+   y="40"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect506" />
+
+                                <rect
+   x="80"
+   y="72"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect508" />
+
+                                <rect
+   x="176"
+   y="328"
+   style="fill:#0c3847"
+   width="16"
+   height="16"
+   id="rect510" />
+
+                                <path
+   style="fill:#0c3847"
+   d="M 368,296 V 216 H 480 V 40 H 240 v 64 H 0 v 192 16 64 h 128 v 29.576 L 105.048,440 H 262.944 L 240,405.576 V 376 h 32 v 96 H 512 V 296 Z M 256,56 H 464 V 200 H 256 Z M 16,120 h 224 v 40 h -40 v 16 h 40 v 16 h -40 v 16 h 40 v 8 h 112 v 80 H 272 16 Z M 233.048,424 H 134.952 L 144,410.424 V 376 h 80 v 34.424 z M 240,360 H 224 144 128 16 v -48 h 256 v 48 z m 256,96 H 288 V 312 h 208 z"
+   id="path512" />
+ </g>
+
+                            <g
+   id="g528"> <rect
+   x="400"
+   y="344"
+   style="fill:#ffffff"
+   width="16"
+   height="96"
+   id="rect516" />
+
+                                <rect
+   x="464"
+   y="328"
+   style="fill:#ffffff"
+   width="16"
+   height="112"
+   id="rect518" />
+
+                                <rect
+   x="432"
+   y="376"
+   style="fill:#ffffff"
+   width="16"
+   height="64"
+   id="rect520" />
+
+                                <rect
+   x="368"
+   y="376"
+   style="fill:#ffffff"
+   width="16"
+   height="64"
+   id="rect522" />
+
+                                <rect
+   x="336"
+   y="408"
+   style="fill:#ffffff"
+   width="16"
+   height="32"
+   id="rect524" />
+
+                                <rect
+   x="304"
+   y="392"
+   style="fill:#ffffff"
+   width="16"
+   height="48"
+   id="rect526" />
+ </g>
+
+                            <g
+   id="g538"> <path
+   style="fill:#0c3847"
+   d="m 104,136 c -39.696,0 -72,32.296 -72,72 0,39.704 32.304,72 72,72 39.696,0 72,-32.296 72,-72 0,-39.704 -32.304,-72 -72,-72 z m 55.36,64 H 143.192 C 140,184.352 127.648,172 112,168.808 V 152.64 c 24.472,3.528 43.832,22.888 47.36,47.36 z M 80,208 c 0,-13.232 10.768,-24 24,-24 13.232,0 24,10.768 24,24 0,13.232 -10.768,24 -24,24 -13.232,0 -24,-10.768 -24,-24 z m 16,-55.36 v 16.168 c -18.232,3.72 -32,19.88 -32,39.192 0,8.136 2.472,15.696 6.664,22.024 L 59.216,241.472 C 52.208,232.12 48,220.56 48,208 48,179.848 68.904,156.544 96,152.64 Z M 104,264 C 91.44,264 79.88,259.792 70.528,252.784 L 81.976,241.336 C 88.304,245.528 95.864,248 104,248 c 19.312,0 35.472,-13.768 39.192,-32 h 16.168 c -3.904,27.088 -27.208,48 -55.36,48 z"
+   id="path530" />
+
+                                <rect
+   x="200"
+   y="224"
+   style="fill:#0c3847"
+   width="104"
+   height="16"
+   id="rect532" />
+
+                                <rect
+   x="200"
+   y="256"
+   style="fill:#0c3847"
+   width="56"
+   height="16"
+   id="rect534" />
+
+                                <polygon
+   style="fill:#0c3847"
+   points="404.688,104 363.056,104 347.056,136 308.688,136 288,156.688 288,72 272,72 272,184 448,184 448,168 299.312,168 315.312,152 356.944,152 372.944,120 411.312,120 443.312,88 432,76.688 "
+   id="polygon536" />
+ </g>
+ </g>
+</g>
+</svg>

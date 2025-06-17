@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{%- block doc %}
+    {% from 'bootstrap5/utils.html' import render_messages %}
+    {% from 'macros/macros.html' import render_field %}
+
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    {%- block html %}
+        <head>
+            {%- block metas %}
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta name="description" content="">
+                <meta name="author" content="Marty Miller-Crispe">
+                <title>SmicTix - Service Management for Small Business</title>
+            {%- endblock metas %}
+
+            {%- block head %}
+                <link rel="shortcut icon" type="image/x-icon"
+                      href='{{ url_for("static", filename="/images/favicon.ico") }}'>
+
+                {%- block styles %}
+                    <script src="{{ url_for('static', filename='js/popper/popper.js') }}"></script>
+                    {# Needs to load before bootstrap #}
+                    {{ bootstrap.load_css() }}
+
+                    <!--  Suneditor-->
+                    <link href='{{ url_for("static", filename="css/suneditor/suneditor.min.css") }}' rel="stylesheet">
+                    <!--  Tom Select-->
+                    <link href='{{ url_for("static", filename="css/tom-select/tom-select.bootstrap5.css") }}'
+                          rel="stylesheet">
+                    <!--  animations-->
+                    <link href='{{ url_for("static", filename="css/animate.css/animate.min.css") }}' rel="stylesheet">
+                    <!--  icons-->
+                    <link href='{{ url_for("static", filename="iconfonts/icons.css") }}' rel="stylesheet">
+                    <!--  Sweet Alert-->
+                    <link href='{{ url_for("static", filename="css/sweetalert2/dark.min.css") }}' rel="stylesheet">
+                    <link href='{{ url_for("static", filename="css/orgchart/orgchart.css") }}' rel="stylesheet">
+
+                    <link href='{{ url_for("static", filename="css/tabulator/tabulator_site.css") }}' rel="stylesheet">
+                    {#   flatpickt and plugins    #}
+                    <link href='{{ url_for("static", filename="css/flatpickr/confirmDate.css") }}' rel="stylesheet">
+                    <link href='{{ url_for("static", filename="css/flatpickr/bootstrap_blue.css") }}' rel="stylesheet">
+
+                    <!--  Smiktix-->
+                    <link href='{{ url_for("static", filename="css/colour.css") }}' rel="stylesheet">
+                    <link href='{{ url_for("static", filename="css/sm4sb.css") }}' rel="stylesheet">
+
+                    <link href='{{ url_for("static", filename="css/event-calendar/event-calendar.min.css") }}'
+                          rel="stylesheet">
+
+                    {# Some javascript needs to be at the top of the file  #}
+                    {{ bootstrap.load_js() }}
+                    <script src="{{ url_for('static', filename='js/sweetalert/sweetalert2.min.js') }}"></script>
+                    <!-- Suneditor -->
+                    <script src="{{ url_for('static', filename='js/suneditor/suneditor.min.js') }}"></script>
+
+                {%- endblock styles %}
+            {%- endblock head %}
+        </head>
+
+        <body class="bg-dark">
+
+        {%- block body %}
+            <!-- block for app-header so different headers can be used for different applications.  -->
+            <!-- Easier than doing conditionals in jinja   -->
+            <header class="app-header fixed-top">
+                {% block app_header %}{% endblock app_header %}
+
+            </header>
+
+            <div class="main container-fluid">
+                <div id="form-vars"
+                     data-exists="{{ exists|lower }}"
+                     data-model="{{ model }}"
+                     data-id="{{ id }}"
+                     data-highest-number="{{ highest_number }}"
+                >
+
+                    {% include 'includes/sidebar.html' %}
+                    <div class="main-content scroll mt-4 h-100">
+                        {% block content %}
+                        {% endblock content %}
+                    </div>
+                    {% include 'includes/flash-alerts.html' %}
+                    {% include "includes/forms/user-profile.html" %}
+                    {% include "includes/modals/modal-set-avatar.html" %}
+                </div>
+            </div>
+
+        {% endblock body -%}
+        {% block scripts %}
+            <!-- DarkMode.js -->
+            <script src="{{ url_for('static', filename='js/darkmode.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/tom-select/tom-select.complete.min.js') }}"></script>
+            {#  flatpickr and plugins #}
+            <script src="{{ url_for('static', filename='js/flatpickr/flatpickr.js') }}"></script>
+            <script src="{{ url_for('static', filename='js/flatpickr/confirmDate.js') }}"></script>
+
+            <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {%- endblock scripts %}
+        </body>
+
+    {%- endblock html %}
+    </html>
+{% endblock doc -%}

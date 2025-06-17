@@ -1,0 +1,59 @@
+<div class="tab-pane" id="portal-idea-form-tab-pane">
+    <div class="tab-content m-4">
+        <form id="form" class="row g-3 needs-validation" novalidate method="post">
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="col-3">
+                    {{ render_field(form.requester_id, label="Who's Idea?", btn='true', button_label='Me', button_class='btn-outline-primary') }}
+                    {{ render_field(form.category_id) }}
+                </div>
+                <div class="col">
+                    {{ render_field(form.short_desc) }}
+                    {{ form.supporter_id(class='hidden') }}
+                </div>
+
+                <div class="col-3 text-center">
+                    <div class="h1">New Idea!</div>
+                    <div>
+                        <button form="form"
+                                type="button"
+                                class="btn btn-success my-1 ms-auto hi"
+                                id="submit-btn"
+                        >
+                            Save
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger my-1 ms-auto hi"
+                                id="cancel-btn"
+                        >
+                            Cancel
+                        </button>
+                    </div>
+                    <div class="mt-4">
+                        <a type="button" id="idea-img-btn">
+                            <img id="idea-image"  class="small-img" alt="ideas"
+                                 src={{ url_for('portal_bp.static', filename='images/idea.svg') }}>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-1 g-2">
+                <div class="col">
+                    <div>
+                        <ul class="nav nav-tabs" id="portal-ideas-tab">
+                            {% include "/includes/tabs/details/details-tab.html" %}
+                            {% include "/includes/tabs/considerations/considerations-tab.html" %}
+                            {% include "/includes/tabs/benefit-impact/benefit-impact-tab.html" %}
+                        </ul>
+                        {#  Tab Content    #}
+                        <div class="tab-content" id="portal-ideas-tab-content">
+                            {% include "/includes/tabs/details/details-tab-content.html" %}
+                            {% include "/includes/tabs/considerations/considerations-tab-content.html" %}
+                            {% include "/includes/tabs/benefit-impact/benefit-impact-tab-content.html" %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

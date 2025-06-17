@@ -1,0 +1,43 @@
+# Git
+.git
+.gitignore
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database files (if you have local SQLite)
+*.db
+*.sqlite
+
+# Docker files (don't copy these into container)
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Node modules (if you have any frontend build)
+node_modules/
+
+# Environment files with secrets
+.env

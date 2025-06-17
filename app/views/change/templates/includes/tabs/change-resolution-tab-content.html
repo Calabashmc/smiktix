@@ -1,0 +1,43 @@
+<div class="tab-pane" id="resolution-tab-pane">
+    <div class="row m-4">
+        <div class="hstack gap-2">
+                <div class="mt-2">
+                    {{ render_field(form.change_successful) }}
+                </div>
+            <div>
+                <img id="change-joy" src="{{ url_for('change_bp.static', filename='images/happy-change.svg') }}" alt="">
+            </div>
+            
+            <div id="fail-reasons" class="hstack gap-4 ms-4 border border-2 p-2 border-primary-subtle">
+                <div>
+                    {{ render_field(form.change_cancelled) }}
+                </div>
+                <div>
+                    {{ render_field(form.rollback_required) }}
+                </div>
+                <div>
+                    {{ render_field(form.extended_outage) }}
+                </div>
+                <div>
+                    {{ render_field(form.vendor_issue) }}
+                </div>
+                <div class="col-4">
+                    {{ render_field(form.other_fail_reason) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row m-4">
+        <div class="m-2">
+            <button type="button" id="btn-edit-resolution"
+                    class="btn btn-primary"
+                    title="Edit resolution">
+                <i class="h2 bi bi-pencil-square mb-3"></i>
+            </button>
+        </div>
+        <div class="m-2">
+            <h4>Resolution: {{ form.resolution_code_text(class="no-border w-75") }}</h4>
+            {{ form.resolution_journal }}
+        </div>
+    </div>
+</div>

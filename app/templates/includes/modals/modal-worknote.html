@@ -1,0 +1,19 @@
+<!-- Modal dialog for resolution notes -->
+<div class="modal fade" id="workNoteModal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content h-auto" id="resolution-note-modal">
+            <div class="modal-header">
+                <h5 class="modal-title">Work Note</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ form.worklog(form="tickform") }}
+            </div>
+            <div class="modal-footer">
+                <button id="modal-worknote-cancel-btn" type="button" class="btn btn-danger live" data-bs-dismiss="modal">Cancel</button>
+                <button id="modal-add-worknote-btn" type="button" class="btn btn-primary live" data-bs-dismiss="modal">Add Note</button>
+            </div>
+        </div>
+    </div>
+</div>

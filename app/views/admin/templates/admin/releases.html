@@ -1,0 +1,86 @@
+{% extends "/layout/admin-base.html" %}
+
+{% block content %}
+    <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link show active"
+                   id="releases-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#releases-pane"
+                   type="button"
+                   role="tab"
+                   aria-controls="releases-pane"
+                   aria-selected="true"
+                >
+                    <span class="h4"><i class="bi bi-person-arms-up h4 me-2"></i>Releases</span>
+                </a>
+            </li>
+        </ul>
+
+        {# Tab Content #}
+        <div class="tab-content">
+            <div class="tab-pane show active" id="releases-pane" role="tabpanel" aria-labelledby="releases-tab">
+                <div class="card border-0 shadow mb-4 m-2">
+                    <div class="card-header">
+                        <div class="col d-flex gap-4">
+                            <div id="all-releases-type-count" class="chart-container"></div>
+                            <div id="all-releases-category-count" class="chart-container"></div>
+                            <div id="all-releases-status-count" class="chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-2">
+                            <div class="titled-box">
+                                <div class="d-flex gap-4">
+                                    <div class="hstack gap-2 mt-4">
+                                        <label for="release-filter-field" class="form-label">Field</label>
+                                        <select id="release-filter-field" class="form-control">
+                                            <option></option>
+                                            <option value="ticket_number">Ticket #</option>
+                                            <option value="requested_by">Requester</option>
+                                            <option value="supported_by">Supported By</option>
+                                        </select>
+                                        <label for="release-filter-value" class="form-label">Value</label>
+                                        <input id="release-filter-value" type="text" class="form-control"
+                                               name="release-filter-value"
+                                               placeholder="value to filter" disabled>
+                                    </div>
+                                    <div>
+                                        <button type="button" id="clear-filter-btn"
+                                                class="mt-4 btn btn-sm btn-outline-danger">
+                                            Clear
+                                            filters
+                                        </button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="param-info" title="Graph filters take precedence over head filters"
+                                             data-bs-toggle="tooltip"></div>
+                                        <div id="filter-info">Not filtered</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hstack ms-auto">
+                                <div class="titled-box ms-auto">
+                                    <div class="mt-4 btn-group-sm">
+                                        <button type="button" class="btn btn-outline-primary" id="download-csv"
+                                                title="Exports visible data">Export
+                                            CSV
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="all-releases-table"></div>
+                </div>
+            </div>
+        </div>
+        {% include "includes/offcanvas/release-admin.html" %}
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('admin_bp.static', filename='js/release-dashboard.js') }}"></script>
+{%- endblock scripts %}

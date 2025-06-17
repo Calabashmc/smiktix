@@ -1,0 +1,14 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+    <p>Hello {{ name }},</p>
+    <p>Your ticket <strong>{{ ticket_number }}</strong> has been updated.</p>
+    <p>The ticket status is: <strong>{{ status }}.</strong></p>
+    <p>and has been assigned to the <strong>{{ support_team }} team.</strong></p>
+    <p>The ticket has a priority of: <strong>{{ priority }}</strong> and should be resolved by:
+        <strong>{{ resolve_by }}</strong></p>
+    <p>For more information you can view the ticket <a href="{{ ticket_url }}">here</a> or call the Service Desk
+        on {{ service_desk_phone }}</p>
+    <p>Timestamp: {{ time_stamp }}</p>
+
+{% endblock %}

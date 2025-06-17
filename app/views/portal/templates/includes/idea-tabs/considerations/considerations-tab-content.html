@@ -1,0 +1,18 @@
+<div class="tab-pane show" id="portal-considerations-tab-pane">
+    <div class="row m-4 gap-2">
+        <div class="col-6">
+            {{ render_field(form.estimated_effort, layout='inline') }}
+            {{ render_field(form.estimated_cost, layout='inline') }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{ render_field(form.offcanvas_dependencies) }}
+        </div>
+        <div class="col">
+            {{ render_field(form.offcanvas_risks) }}
+        </div>
+
+    </div>
+</div>
+

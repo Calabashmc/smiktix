@@ -1,0 +1,36 @@
+<div class="tab-pane" id="team-admin-pane">
+    <div class="tab-content">
+        <div class="card border-0 shadow mb-4 m-2">
+            <div class="card-body">
+                <div class="d-flex gap-2">
+                    <div class="titled-box">
+                        <div class="d-flex gap-4">
+                            <div class="hstack gap-2 mt-4">
+                                <label for="team-value" class="form-label">Value</label>
+                                <input id="team-value" type="text" class="form-control" name="team-value"
+                                       placeholder="Add new team">
+                            </div>
+                            <div>
+                                <button type="button" id="add-team-btn"
+                                        class="mt-4 btn btn-sm btn-outline-success">
+                                    Add Team
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hstack ms-auto">
+                        <div class="titled-box ms-auto">
+                            <div class="mt-4 btn-group-sm">
+                                <button type="button" class="btn btn-outline-primary" id="teams-download-csv"
+                                        title="Exports visible data">Export
+                                    CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="teams-table" class="col-6"></div>
+        </div>
+    </div>
+</div>

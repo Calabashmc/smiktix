@@ -1,0 +1,21 @@
+{% from 'macros/macros.html' import render_field %}
+<div class="tab-content active">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="col-6">
+                <h3>Knowledge Categories</h3>
+                <div class="mb-3" id="knowledge-category-table"></div>
+                <h3>Knowledge Types</h3>
+                <div class="row align-items-end">
+                    <div class="col">
+                        {{ render_field(form.kba_type) }}
+                    </div>
+                    <div class="col">
+                        <button id="add-kba-type" class="btn btn-primary mb-3">Add</button>
+                    </div>
+                </div>
+                <div class="mb-3" id="kba-types-table"></div>
+            </div>
+        </div>
+    </div>
+</div>

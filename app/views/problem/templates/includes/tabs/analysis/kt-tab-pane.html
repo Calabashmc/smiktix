@@ -1,0 +1,107 @@
+<div class="tab-pane fade disabled" id="kt-tab-pane" role="tabpanel">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="text-primary mb-3 mt-3">
+                <i class="bi bi-question-circle"></i> Kepner-Tregoe Problem Analysis
+            </h5>
+            <p>The Kepner-Tregoe Problem Analysis method is a structured, logical approach to identify the
+                root-cause of a problem.
+                It is used by comparing where and when the issue is occurring versus where and when it is not,
+                helping eliminate false leads and focus on causes that fully explain the observed pattern.</p>
+        </div>
+    </div>
+    <div class="row mb-">
+        <h5 class="text-primary mb-3 mt-3">Overview</h5>
+        <div class="col-md-6">
+            {{ render_field(form.what_is_happening) }}
+        </div>
+        <div class="col-md-6">
+            {{ render_field(form.what_should_be_happening) }}
+        </div>
+    </div>
+
+    <!-- IS/IS NOT Analysis Section -->
+    <div class="row">
+        <div class="col-12">
+            <h5 class="text-primary mb-3">
+                Location, Timing, and Extent (Where, When, What?)
+            </h5>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            {{ render_field(form.where_is) }}
+        </div>
+        <div class="col-md-4">
+            {{ render_field(form.where_is_not) }}
+        </div>
+        <div class="col-md-4">
+            {{ render_field(form.where_distinction) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-4">
+            {{ render_field(form.when_is) }}
+        </div>
+        <div class="col-md-4">
+            {{ render_field(form.when_is_not) }}
+        </div>
+        <div class="col-md-4">
+            {{ render_field(form.when_distinction) }}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            {{ render_field(form.what_extent_is) }}
+        </div>
+        <div class="col-md-4">
+            {{ render_field(form.what_extent_is_not) }}
+        </div>
+        <div class="col-md-4">
+            {{ render_field(form.what_extent_distinction) }}
+        </div>
+    </div>
+
+    <!-- Analysis Section -->
+    <div class="row">
+        <div class="col-12">
+            <h5 class="text-primary mb-3">
+                <i class="fas fa-microscope"></i> Analysis & Root Cause
+            </h5>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            {{ render_field(form.distinctions) }}
+        </div>
+        <div class="col-md-6">
+
+            {{ render_field(form.changes) }}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            {{ render_field(form.possible_causes) }}
+        </div>
+        <div class="col-md-6">
+            {{ render_field(form.most_probable_cause) }}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            {{ render_field(form.test_results) }}
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            {{ render_field(form.kt_root_cause) }}
+        </div>
+    </div>
+</div>

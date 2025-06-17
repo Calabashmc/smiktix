@@ -1,0 +1,12 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+    <div class="mt-4">
+        <p>Hi,</p>
+        <p>Change <strong>{{ ticket_number }}</strong> has been evaluated by the CAB</p>
+        <p><strong>This change has been {{ outcome }}.</strong></p>
+        <p>The CAB Notes are:</p>
+        <p>{{ body_text }}</p>
+        <hr>
+    </div>
+{% endblock %}

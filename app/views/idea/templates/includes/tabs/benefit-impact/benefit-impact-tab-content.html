@@ -1,0 +1,21 @@
+<div class="tab-pane show" id="benefit-impact-tab-pane">
+    <div class="row">
+        <div class="col m-4">
+            <div class="titled-box">
+                <h3>Benefits</h3>
+                <div class="mt-4">
+                    {# this is a custom field type that calls render_checkbox_group macro #}
+                    {{ render_field(form.benefits) }}
+                </div>
+            </div>
+        </div>
+        <div class="col m-4">
+            <div class="titled-box">
+                <h3>Impact</h3>
+                <div class="mt-4">
+                    {{ render_field(form.impact) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

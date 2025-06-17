@@ -1,0 +1,76 @@
+<div class="offcanvas offcanvas-end offcanvas-wide" data-bs-backdrop="static" tabindex="-1" id="portal-ticket-offcanvas">
+    <div class="offcanvas-header">
+        <div class="col">
+            <div id="offcanvas-title" class="offcanvas-title h1"></div>
+        </div>
+        <div class="col-auto">
+            <input id="status" hidden/>
+            <div id="stepper-stage" class="stepper-stage"></div>
+        </div>
+    </div>
+    <div class="offcanvas-body">
+        <div class="container-fluid">
+            <div class="row g-3 border-top pt-3">
+                <!-- Left column - Agent info and priority -->
+                <div class="col-12 col-lg-4">
+                    <div class="titled-box mb-4">
+                        <h3 class="h5 mb-3">Support Agent and SLA</h3>
+                        <div class="table-responsive mt-4">
+                            <table class="table table-sm">
+                                <tbody>
+                                <tr>
+                                    <td class="fw-semibold">Agent:</td>
+                                    <td id="support-agent"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Team:</td>
+                                    <td id="support-team"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Respond by:</td>
+                                    <td id="respond-by"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Resolve by:</td>
+                                    <td id="resolve-by"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Created:</td>
+                                    <td id="created-at"></td>
+                                </tr>
+                                <tr>
+                                    <td class="fw-semibold">Last Updated:</td>
+                                    <td id="last-updated"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="text-center mb-4">
+                        <div class="h6 mb-2">Priority</div>
+                        <div id="ticket-priority" class="h2 mb-0"></div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Close</button>
+                    </div>
+                </div>
+
+                <!-- Right column - Ticket details -->
+                <div class="col-12 col-lg-8">
+                    <div class="mb-4">
+                        <h5 class="mb-3">Short Description</h5>
+                        <div id="short-desc-div" class="border rounded p-3 bg-light"></div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="mb-3">Issue Details</h5>
+                        <div id="ticket-details" class="border rounded p-3 bg-light"
+                             style="min-height: 200px; overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

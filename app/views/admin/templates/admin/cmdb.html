@@ -1,0 +1,84 @@
+{% extends "/layout/admin-base.html" %}
+
+{% block content %}
+    <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link show active"
+                   id="cmdb-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#cmdb-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-gear-wide h4 me-2"></i>CMDB</span>
+                </a>
+            </li>
+
+        </ul>
+        <div class="tab-pane show active" id="cmdb-tab-pane">
+            <div class="tab-content">
+                <div class="card border-0 shadow mb-4 m-2">
+                    <div class="card-header">
+                        <div class="col d-flex gap-4">
+                            <div id="all-cmdb-importance-count" class="chart-container"></div>
+                            <div id="all-cmdb-category-count" class="chart-container-wide"></div>
+                            <div id="all-status-count" class="chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex gap-2">
+                            <div class="titled-box">
+                                <div class="d-flex gap-4">
+                                    <div class="hstack gap-2 mt-4">
+                                        <label for="cmdb-filter-field" class="form-label">Field</label>
+                                        <select id="cmdb-filter-field" class="form-control">
+                                            <option></option>
+                                            <option value="ticket_number">CI #</option>
+                                            <option value="name">Name</option>
+                                            <option value="support_team">Supported team</option>
+                                            <option value="owned_by">Owned by</option>
+                                            <option value="vendor">Vendor</option>
+                                        </select>
+                                        <label for="cmdb-filter-value" class="form-label">Value</label>
+                                        <input id="cmdb-filter-value" type="text" class="form-control"
+                                               name="filter-value"
+                                               placeholder="value to filter" disabled>
+                                    </div>
+                                    <div>
+                                        <button type="button" id="clear-filter-btn"
+                                                class="mt-4 btn btn-sm btn-outline-danger">
+                                            Clear
+                                            filters
+                                        </button>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div id="param-info" title="Graph filters take precedence over head filters"
+                                             data-bs-toggle="tooltip"></div>
+                                        <div id="filter-info">Not filtered</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hstack ms-auto">
+                                <div class="titled-box ms-auto">
+                                    <div class="mt-4 btn-group-sm">
+                                        <button type="button" class="btn btn-outline-primary" id="download-csv"
+                                                title="Exports visible data">Export
+                                            CSV
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="all-cmdb-table"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "includes/offcanvas/cmdb-admin.html" %}
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('admin_bp.static', filename='js/cmdb-dashboard.js') }}"></script>
+{%- endblock scripts %}

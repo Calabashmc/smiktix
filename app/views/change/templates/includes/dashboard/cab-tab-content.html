@@ -1,0 +1,69 @@
+<div class="tab-pane" id="cab-tab-pane">
+    <div class="tab-content">
+        <div class="card border-0 shadow mb-4 m-2">
+            <div class="card-header">
+                <div class="col d-flex gap-4">
+                    <div id="cab-change-type-count" class="chart-container"></div>
+                    <div id="cab-change-risk-count" class="chart-container"></div>
+                    <div id="cab-status-count" class="chart-container"></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="d-flex gap-2">
+                    <div class="titled-box">
+                        <div class="d-flex gap-4">
+                            <div class="hstack gap-2 mt-4">
+                                <label for="cab-filter-field" class="form-label">Field</label>
+                                <select id="cab-filter-field" class="form-control">
+                                    <option></option>
+                                    <option value="ticket_number">Ticket #</option>
+                                    <option value="requested_by">Requester</option>
+                                    <option value="supported_by">Supported By</option>
+                                </select>
+                                <label for="cab-filter-value" class="form-label">Value</label>
+                                <input id="cab-filter-value" type="text" class="form-control"
+                                       name="cab-filter-value"
+                                       placeholder="value to filter" disabled>
+                            </div>
+                            <div>
+                                <button type="button" id="cab-clear-filter-btn"
+                                        class="mt-4 btn btn-sm btn-outline-danger">
+                                    Clear
+                                    filters
+                                </button>
+                            </div>
+                            <div class="mt-2">
+                                <div id="param-info" title="Graph filters take precedence over head filters"
+                                     data-bs-toggle="tooltip"></div>
+                                <div id="filter-info">Not filtered</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hstack ms-auto">
+                        <div class="titled-box ms-auto">
+                            <div class="mt-4 btn-group-sm">
+                                <button type="button" class="btn btn-outline-primary" id="cab-download-csv"
+                                        title="Exports visible data">Export
+                                    CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cab-tickets-table" class="mb-4"></div>
+            <div class="row ec-auto-dark mt-4">
+                <div class="d-flex gap-2 align-items-center align-content-end">
+                    <h2 class="ms-4">Change Calendar</h2>
+                    <span class="h5 ms-auto">Key:</span>
+                    <span class="h5 badge badge-pill cr1-change">CR1</span>
+                    <span class="h5 badge badge-pill cr2-change">CR2</span>
+                    <span class="h5 badge badge-pill cr3-change">CR3</span>
+                    <span class="h5 badge badge-pill cr4-change">CR4</span>
+                    <span class="h5 badge badge-pill cr5-change">CR5</span>
+                </div>
+                <div id="event-calendar" class="row mt-4"></div>
+            </div>
+        </div>
+    </div>
+</div>

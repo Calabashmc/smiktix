@@ -1,0 +1,10 @@
+<div class="tab-pane show active" id="details-tab-pane">
+    {% if form.ticket_type.data == "Problem" or form.ticket_type.data == "Known Error" %}
+    <div class="row m-4">
+        <p>Provide a <strong>Problem Statement</strong> to help with the problem for analysis </p>
+    </div>
+    {% endif %}
+    <div class="row m-4">
+        {{ form.details() }}
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="tab-pane fade show" id="cmdb-hardware-vendor-tab-pane">
+    <div class="d-flex gap-3">
+        <div class="titled-box">
+            <h3>PO and Contract Details</h3>
+            <div class="d-flex gap-3 mt-4">
+                {{ render_field(form.purchase_order) }}
+                {{ render_field(form.cost_centre) }}
+                {{ render_field(form.purchase_price) }}
+            </div>
+        </div>
+    </div>
+    <div class="d-flex gap-2">
+        <div class="col">
+            <div class="titled-box">
+                <h3>Supplied By</h3>
+                <div class="mt-4">
+                    {{ render_field(form.vendor_sales_id) }}
+                    <div class="text-muted mt-1 mb-1 pt-0">
+                        <i class="modal-link bi bi-person"
+                           title="Contact">
+                        </i>
+                        {{ form.vendor_sales_contact }}
+                    </div>
+                    <div class="text-muted mt-1 mb-1 pt-0">
+                        <i class="modal-link bi bi-envelope"
+                           title="Send email to Requester">
+                        </i>
+                        <a data-bs-toggle="modal"
+                           data-bs-target="#sendEmailModal"
+                           title="Send email to Requester"
+                           class="modal-link">
+                            {{ form.vendor_sales_email }}
+                        </a>
+                    </div>
+                    <div class="text-muted mt-1 mb-2 pt-0">
+                        <i class="bi bi-phone"></i>
+                        <a href='tel:{{ form.vendor_sales_phone }}' class="modal-link">
+                            {{ form.vendor_sales_phone() }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="titled-box">
+                <h3>Supported/Maintained By</h3>
+                <div class="mt-4">
+                    {{ render_field(form.vendor_support_id) }}
+                    <div class="text-muted mt-1 mb-1 pt-0">
+                        <i class="modal-link bi bi-person"
+                           title="Contact">
+                        </i>
+                        {{ form.vendor_support_contact }}
+                    </div>
+                    <div class="text-muted mt-1 mb-1 pt-0">
+                        <i class="modal-link bi bi-envelope"
+                           title="Send email to Requester">
+                        </i>
+                        <a data-bs-toggle="modal"
+                           data-bs-target="#sendEmailModal"
+                           title="Send email to Requester"
+                           class="modal-link">
+                            {{ form.vendor_support_email }}
+                        </a>
+                    </div>
+                    <div class="text-muted mt-1 mb-2 pt-0">
+                        <i class="bi bi-phone"></i>
+                        <a href='tel:{{ form.vendor_support_phone }}' class="modal-link">
+                            {{ form.vendor_support_phone() }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="titled-box">
+                <h3>Warranty Provider</h3>
+                <div class="mt-4">
+                    {{ render_field(form.vendor_warranty_id) }}
+                    <div class="text-muted mt-1 mb-1 pt-0">
+                        <i class="modal-link bi bi-person"
+                           title="Contact">
+                        </i>
+                        {{ form.vendor_warranty_contact }}
+                    </div>
+                    <div class="text-muted mt-1 mb-1 pt-0">
+                        <i class="modal-link bi bi-envelope"
+                           title="Send email to Requester">
+                        </i>
+                        <a data-bs-toggle="modal"
+                           data-bs-target="#sendEmailModal"
+                           title="Send email to Requester"
+                           class="modal-link">
+                            {{ form.vendor_warranty_email }}
+                        </a>
+                    </div>
+                    <div class="text-muted mt-1 mb-2 pt-0">
+                        <i class="bi bi-phone"></i>
+                        <a href='tel:{{ form.vendor_warranty_phone }}' class="modal-link">
+                            {{ form.vendor_warranty_phone() }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

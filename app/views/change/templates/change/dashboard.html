@@ -1,0 +1,57 @@
+{% extends "layouts/base.html" %}
+{% block title %} My Open Tickets {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+
+{% block stylesheets %}
+
+{% endblock stylesheets %}
+
+{% block app_header %}
+    {% include '/includes/dash-header.html' %}
+
+{% endblock app_header %}
+
+{% block content %}
+    <div>
+        <ul id="all-tabs" class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link show active"
+                   id="all-changes-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#all-changes-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-infinity h4 me-2"></i>Open Changes</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="cab-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#cab-tab-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-people-fill h4 me-2"></i>CAB</span>
+                </a>
+            </li>
+
+        </ul>
+        {#  Tab Content    #}
+        <div class="tab-content" id="myTabContent">
+            {% include "/includes/dashboard/all-changes-tab-content.html" %}
+            {% include "/includes/dashboard/cab-tab-content.html" %}
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('static', filename='js/dayjs/dayjs.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/event-calendar/event-calendar.min.js') }}"></script>
+    <script type="module" src="{{ url_for('change_bp.static', filename='js/dashboard.js') }}"></script>
+{% endblock scripts %}

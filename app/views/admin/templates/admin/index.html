@@ -1,0 +1,43 @@
+{% extends "/layout/admin-base.html" %}
+
+{% block content %}
+    <p>Application administration pages</p>
+    <ul>
+        <li>
+            <a href="{{ url_for('admin_bp.app_defaults') }}">App Defaults</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.user_admin') }}">People</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.interaction_admin') }}">Tickets</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.problem_admin') }}">Problems</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.change_admin') }}">Change</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.knowledge_admin') }}">Knowledge</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.idea_admin') }}">Ideas</a>
+        </li>
+
+        <li>
+            <a href="{{ url_for('admin_bp.cmdb_admin') }}">CMDB</a>
+        </li>
+
+    </ul>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+{%- endblock scripts %}

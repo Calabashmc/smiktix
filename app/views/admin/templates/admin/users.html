@@ -1,0 +1,62 @@
+{% extends "/layout/admin-base.html" %}
+{% from 'macros/macros.html' import render_field %}
+{% block content %}
+    <div>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active"
+                   id="user-admin-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#user-admin-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-person h4 me-2"></i>Users</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="team-admin-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#team-admin-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-people h4 me-2"></i>Teams</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="department-admin-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#department-admin-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-person-workspace h4 me-2"></i>Departments</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   id="role-admin-tab"
+                   data-bs-toggle="tab"
+                   data-bs-target="#role-admin-pane"
+                   type="button"
+                >
+                    <span class="h4"><i class="bi bi-person-gear h4 me-2"></i>Roles</span>
+                </a>
+            </li>
+        </ul>
+        {#  Tab Content    #}
+        <div class="tab-content">
+            {% include "includes/tabs/people/user-admin.html" %}
+            {% include "includes/tabs/people/team-admin.html" %}
+            {% include "includes/tabs/people/department-admin.html" %}
+            {% include "includes/tabs/people/role-admin.html" %}
+        </div>
+
+
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('admin_bp.static', filename='js/users-dashboard.js') }}"></script>
+{% endblock scripts %}

@@ -1,0 +1,56 @@
+<div class="tab-pane show active" id="all-ideas-tab-pane">
+    <div class="tab-content">
+            <div class="row g-4 mt-4">
+                    <div class="col-12 col-md-4">
+                        <div id="all-ideas-likelihood-count" class="chart-container"></div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div id="all-ideas-category-count" class="chart-container-wide"></div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div id="all-ideas-status-count" class="chart-container"></div>
+                    </div>
+            </div>
+            <div class="row g-4">
+                <div class="d-flex gap-2">
+                    <div class="titled-box">
+                        <div class="d-flex gap-4">
+                            <div class="hstack gap-2 mt-4">
+                                <label for="ideas-filter-field" class="form-label">Field</label>
+                                <select id="ideas-filter-field" class="form-control">
+                                    <option></option>
+                                    <option value="ticket_number">Idea #</option>
+                                </select>
+                                <label for="ideas-filter-value" class="form-label">Value</label>
+                                <input id="ideas-filter-value" type="text" class="form-control" name="filter-value"
+                                       placeholder="value to filter" disabled>
+                            </div>
+                            <div>
+                                <button type="button" id="ideas-clear-filter-btn"
+                                        class="mt-4 btn btn-sm btn-outline-danger">
+                                    Clear
+                                    filters
+                                </button>
+                            </div>
+                            <div class="mt-2">
+                                <div id="param-info" title="Graph filters take precedence over head filters"
+                                     data-bs-toggle="tooltip"></div>
+                                <div id="filter-info">Not filtered</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hstack ms-auto">
+                        <div class="titled-box ms-auto">
+                            <div class="mt-4 btn-group-sm">
+                                <button type="button" class="btn btn-outline-primary" id="ideas-download-csv"
+                                        title="Exports visible data">Export
+                                    CSV
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="all-ideas-table"></div>
+            </div>
+    </div>
+</div>

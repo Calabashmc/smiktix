@@ -1,0 +1,48 @@
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+<div id="knowledge-admin-offcanvas" class="offcanvas offcanvas-end border border-4 w-50 h-100" data-bs-scroll="true"
+     data-bs-backdrop="false" style="overflow: visible;">
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="offcanvas-header">
+            <div class="col">
+                {% include 'includes/offcanvas/header.html' %}
+
+                <div class="titled-box">
+                    <div class="d-flex justify-content-around mt-4">
+                        <div>Viewed: {{ form.times_viewed }}</div>
+                        <div>Useful: {{ form.times_useful }}</div>
+                        {{ render_field(form.needs_improvement) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-body" style="overflow: visible;">
+            <div class="row">
+                {{ render_field(form.short_desc) }}
+            </div>
+            <div class="row">
+                <div class="col">
+                    {{ render_field(form.author_id) }}
+                    {{ render_field(form.article_type_id) }}
+                </div>
+                <div class="col">
+                    {{ render_field(form.category_id) }}
+                    {{ render_field(form.review_at) }}
+                    {{ render_field(form.expires_at) }}
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <div class="button-group ms-auto">
+                    <button id="submit-btn" type="button" class="btn btn-primary">Save</button>
+                    <button id="cancel-btn" type="button" class="btn btn-danger me-4"
+                            data-bs-dismiss="offcanvas">Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

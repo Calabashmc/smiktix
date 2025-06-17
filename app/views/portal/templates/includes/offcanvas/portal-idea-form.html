@@ -1,0 +1,48 @@
+<div class="offcanvas offcanvas-end offcanvas-wide" data-bs-backdrop="static" tabindex="-1" id="portal-idea-offcanvas">
+    <div class="offcanvas-header">
+        <div class="col-1 border-end border-white">
+            <div class="mt-2">
+                <button type="button" class="btn btn-icon" data-bs-dismiss="offcanvas">
+                    <i class="bi bi-box-arrow-in-right h1"></i>
+                </button>
+            </div>
+        </div>
+        <div class="col ms-2">
+            <h1 class="offcanvas-title">
+                Improvement Idea
+                <input  id="ticket-number" class="number-no-border" name="ticket_number" readonly type="number" value="">
+            </h1>
+            <div id="offcanvas-category" class="h4"></div>
+        </div>
+    </div>
+    <div class="offcanvas-body col-auto">
+        <div class="row mt-1 g-2">
+            <div class="col-4 px-3 border-end border-white">
+                {% include "/includes/form/idea-vote-count.html" %}
+                <div class="mt-4 text-center">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="offcanvas">Close</button>
+                </div>
+            </div>
+            <div class="col-8 px-3">
+                <div class="mb-4">
+                    <div class="mb-2">Short Description</div>
+                    <div id="offcanvas-short-desc" class="border border-primary p-2"></div>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="myTab">
+                        {% include "includes/idea-tabs/details/details-tab.html" %}
+                        {% include "includes/idea-tabs/benefit-impact/benefit-impact-tab.html" %}
+                        {% include "includes/idea-tabs/considerations/considerations-tab.html" %}
+                    </ul>
+                    {#  Tab Content    #}
+                    <div class="tab-content" id="myTabContent">
+                        {% include "includes/idea-tabs/details/details-tab-content.html" %}
+                        {% include "includes/idea-tabs/benefit-impact/benefit-impact-tab-content.html" %}
+                        {% include "includes/idea-tabs/considerations/considerations-tab-content.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

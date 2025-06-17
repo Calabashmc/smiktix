@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="text-muted mb-1 pt-0">
+        <i class="bi bi-hammer"></i>
+        {{ form.occupation() }}
+    </div>
+    <div class="text-muted mb-1 pt-0">
+        <i class="bi bi-building"></i>
+        {{ form.department() }}
+    </div>
+    <div class="text-muted mt-1 mb-1 pt-0">
+        <a href="#" id="email-requester-link"
+           title="Send email to Requester"
+           class="bi bi-envelope">
+            {{ form.email() }}
+        </a>
+    </div>
+    <div class="text-muted mt-1 mb-2 pt-0">
+        <a href='tel:{{ form.phone.data }}' class="modal-link bi bi-phone">
+            {{ form.phone() }}
+        </a>
+    </div>
+</div>
+<hr>

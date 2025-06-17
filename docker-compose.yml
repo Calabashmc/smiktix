@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: flask_postgres
+    environment:
+      POSTGRES_DB: sm4sb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    secrets:
+      - db_password
+    networks:
+      - flask_network
+    restart: unless-stopped
+
+  web:
+    build: .
+    container_name: flask_app
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://postgres:${DB_PASSWORD}@postgres:5432/sm4sb
+      FLASK_ENV: production
+      FLASK_APP: "app:create_app('production')"
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+    volumes:
+      - .:/app
+    networks:
+      - flask_network
+    restart: unless-stopped
+    expose:
+      - "5000"
+
+  nginx:
+    image: nginx:alpine
+    container_name: flask_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./static:/app/static
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - web
+    networks:
+      - flask_network
+    restart: unless-stopped
+
+secrets:
+  db_password:
+    file: ./secrets/db_password
+
+volumes:
+  postgres_data:
+
+networks:
+  flask_network:
+    driver: bridge

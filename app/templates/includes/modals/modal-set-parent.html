@@ -1,0 +1,26 @@
+<!-- Modal dialog to get Parent Ticket ID-->
+<div class="modal fade" id="parent-modal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Parent Ticket</h4>
+            </div>
+            <div class="modal-body text-start col-auto">
+                {{ form.parent_id_label }}
+                {{ form.parent_id(class="form-select") }}
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel-parent-id-btn"
+                        type="button"
+                        class="btn btn-secondary">
+                    Close
+                </button>
+                <button id="modal-set-parent-id-btn"
+                        type="button"
+                        class="btn btn-primary disabled">
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

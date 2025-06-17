@@ -1,0 +1,33 @@
+{% from 'macros/macros.html' import render_field %}
+<div class="tab-content">
+    <div class="card border-0 shadow mb-4 m-2">
+        <div class="card-body">
+            <div class="col-6">
+                <h3>Idea Categories</h3>
+                <div class="mb-3" id="idea-category-table"></div>
+                <h3>Likelihood</h3>
+                <div class="mb-3" id="idea-likelihood-table"></div>
+            </div>
+
+            <div class="row mb-4">
+                <h3>Idea Resolution Codes Lookup</h3>
+                <div class="row align-items-end">
+                    <div class="col">
+                        {{ render_field(form.idea_resolution_code) }}
+                    </div>
+                    <div class="col">
+                        {{ render_field(form.idea_resolution_comment) }}
+                    </div>
+                    <div class="col">
+                        <button id="add-idea-resolution-code" class="btn btn-primary mb-3">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="idea-resolution-table"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<div id="profile-offcanvas" class="offcanvas offcanvas-top border border-4  h-75" data-bs-scroll="false" data-bs-backdrop="false">
+    <div class="bg-primary-subtle">
+        <div class="offcanvas-header w-100">
+            <div class="d-flex align-items-center justify-content-between w-100">
+                <div class="d-flex align-items-center">
+                    <h2 class="mb-0 me-3 mt-5">User Profile</h2>
+                     <div class="avatar-wrapper">
+                    <img id="profile-avatar" class="avatar rounded-circle"
+                         style="max-width: 64px;"
+                         src="{{ url_for('static', filename='images/users/avatar.001.png') }}"
+                         alt="User Avatar"
+                         title="Double click to change"
+                         data-bs-toggle="tooltip">
+                     </div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+        </div>
+
+
+        <div class="offcanvas-body">
+            <div class="row">
+                <div class="col-6">
+                    <div class="row gap-2">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="profile-full-name" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="profile-full-name" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-first-name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="profile-first-name" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="profile-phone" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-department" class="form-label">Department</label>
+                                <input type="text" class="form-control" id="profile-department" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-team" class="form-label">Teams</label>
+                                <input class="form-control" id="profile-team" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="profile-username" class="form-label">User Name</label>
+                                <input type="text" class="form-control" id="profile-username" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-last-name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="profile-last-name" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-email" class="form-label">Email</label>
+                                <input type="text" class="form-control" id="profile-email" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="profile-position" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profile-assets" class="form-label">Assets Assigned</label>
+                                <select multiple class="form-control" id="profile-assets" disabled></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div id="chart-container"></div>
+                </div>
+            </div>
+        </div>
+        <div class="offcanvas-footer mt-auto d-flex justify-content-end gap-2 p-3 border-top">
+            <button id="change-passwd-btn" type="button" class="btn btn-primary">Change Password</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">Close</button>
+        </div>
+    </div>
+</div>
+<script type="module" src="{{ url_for('static', filename='js/includes/org-chart.js') }}"></script>

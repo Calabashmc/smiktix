@@ -1,0 +1,159 @@
+{% extends "layouts/base.html" %}
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+{% block app_header %}
+    {% include 'includes/forms/form-header.html' %}
+{% endblock app_header %}
+
+{% block content %}
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="row g-2 mt-4">
+            <div class="col-3 px-3 border-end border-white">
+                {% include "/includes/forms/requester-fields.html" %}
+                {% include "/includes/form/normal-change-risk.html" %}
+
+                <div class="text-center">
+                    <button type="button"
+                            id="open-network-modal-btn"
+                            class="btn btn-sm btn-outline-primary w-100"
+                    >
+                        Open in modal<i class="las la-external-link-alt"></i>
+                    </button>
+                    <div id="network-container" class="border-primary-subtle">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-9 px-3">
+                <div class="row">
+                    <div class="col">
+                        {{ render_field(form.short_desc, label="Change title / Short Summary") }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{ render_field(form.change_reason) }}
+                        {{ render_field(form.category_id) }}
+                    </div>
+                    <div class="col">
+                        {{ render_field(form.cmdb_id) }}
+                        {{ render_field(form.departments_impacted) }}
+                    </div>
+                    <div class="col">
+                        {% include "includes/forms/supporter-details.html" %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="titled-box">
+                            <h3>Timing</h3>
+                            <div class="d-flex">
+                                <div class="col-3 mt-5 ms-4">
+                                    <div class="d-flex gap-2">
+                                        {{ render_field(form.start_date) }}
+                                        {{ render_field(form.start_time) }}
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                        {{ render_field(form.end_date) }}
+                                        {{ render_field(form.end_time) }}
+                                    </div>
+                                </div>
+                                <div class="col mt-4 ">
+                                    <div class="btn-group-vertical gap-4 mt-4">
+                                        <input id="in-hours-btn" type="radio" name="change-hours-radio"
+                                               class="btn-check"
+                                               autocomplete="off" value="in_hours" checked>
+                                        <label for="in-hours-btn" class="btn btn-outline-danger ">In Hours</label>
+
+                                        <input id="after-hours-btn" type="radio" name="change-hours-radio"
+                                               class="btn-check"
+                                               autocomplete="off" value="after_hours">
+                                        <label for="after-hours-btn" class="btn btn-outline-primary">After Hours</label>
+
+                                        <input id="change-window-btn" type="radio" name="change-hours-radio"
+                                               class="btn-check"
+                                               autocomplete="off" value="change_window">
+                                        <label for="change-window-btn" class="btn btn-outline-success">Change
+                                            Window</label>
+                                    </div>
+                                </div>
+                                <div class="col mt-4">
+                                    <div>
+                                        {{ form.expected_duration.label(class="form-label") }}
+                                        {% if form.expected_duration.data %}
+                                            {% set duration_value = form.expected_duration.data %}
+                                        {% else %}
+                                            {% set duration_value = 0 %}
+                                        {% endif %}
+                                        <div class="vstack gap-2">
+                                            {{ form.expected_duration(class="range-slider", value=duration_value) }}
+                                            <label for="change-duration" id="duration-slider-label"
+                                                   class="slider-label rounded-pill border border-2 border-primary">{{ duration_value }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        {{ form.downtime.label(class="form-label") }}
+                                        {% if form.downtime.data %}
+                                            {% set downtime_value = form.downtime.data %}
+                                        {% else %}
+                                            {% set downtime_value = 0 %}
+                                        {% endif %}
+                                        <div class="vstack gap-2">
+                                            {{ form.downtime(class="range-slider", value=downtime_value) }}
+                                            <label id="downtime-slider-label"
+                                                   class="slider-label rounded-pill border border-2 border-danger">{{ downtime_value }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        {% include "includes/tabs/normal/change-details-tab.html" %}
+                        {% include "includes/tabs/journal-tab.html" %} {# main template not blueprint template #}
+                        {% include "includes/tabs/children-tab.html" %}
+                        {% include "includes/tabs/normal/change-plans-tab.html" %}
+                        {% include "includes/tabs/normal/change-test-tab.html" %}
+                        {% include "includes/tabs/normal/change-approvals-tab.html" %}
+                        {% include "includes/tabs/normal/change-cab-tab.html" %}
+                        {% include "includes/tabs/change-resolution-tab.html" %}
+                        {% include "includes/tabs/change-review-tab.html" %}
+                        {% include "includes/tabs/info-tab.html" %}
+                    </ul>
+                    {#  Tab Content    #}
+                    <div class="tab-content" id="myTabContent">
+                        {% include "includes/tabs/normal/change-details-tab-content.html" %}
+                        {% include "includes/tabs/journal-tab-content.html" %}
+                        {% include "includes/tabs/children-tab-content.html" %}
+                        {% include "includes/tabs/normal/change-plans-tab-content.html" %}
+                        {% include "includes/tabs/normal/change-test-tab-content.html" %}
+                        {% include "includes/tabs/normal/change-approvals-tab-content.html" %}
+                        {% include "includes/tabs/normal/change-cab-tab-content.html" %}
+                        {% include "includes/tabs/change-resolution-tab-content.html" %}
+                        {% include "includes/tabs/change-review-tab-content.html" %}
+                        {% include "includes/tabs/info-tab-content.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% include "includes/modals/modal-change-windows.html" %}
+        {% include "includes/modals/modal-set-children.html" %}
+        {% include "includes/modals/modal-worknote.html" %}
+        {% include "includes/modals/modal-network-view.html" %}
+        {% include "includes/modals/modal-email-requester.html" %}
+        {% include "includes/modals/modal-resolution.html" %}
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('static', filename='js/ticket.js') }}"></script>
+    <script type="module" src="{{ url_for('change_bp.static', filename='js/change.js') }}"></script>
+{%- endblock scripts %}

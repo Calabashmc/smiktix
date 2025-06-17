@@ -1,0 +1,108 @@
+{% extends "layouts/base.html" %}
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+{% block app_header %}
+    {% include 'includes/forms/form-header.html' %}
+{% endblock app_header %}
+
+{% block content %}
+    {% set ci_type = "hardware" %}
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="row mt-4 g-2">
+            <div class="col-3 px-3 border-end border-white">
+                {% include "/includes/form/owner-fields.html" %}
+
+                <div class="text-center">
+                    <button type="button"
+                            id="open-network-modal-btn"
+                            class="btn btn-sm btn-outline-primary w-100"
+                    >
+                        Open in modal<i class="mdi mdi-open-in-new"></i>
+                    </button>
+                    <div id="network-container" class="border-primary-subtle bg-secondary-gradient">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-9 px-3">
+                <div class="mb-4">
+                    {{ render_field(form.short_desc) }}
+                    <div class="row mb-2">
+                        <div class="col p-2">
+                            {{ render_field(form.name) }}
+                            {{ render_field(form.support_team_id) }}
+                            {{ render_field(form.category_id) }}
+
+                        </div>
+                        <div class="col p-2">
+                            {{ render_field(form.brand) }}
+                            {{ render_field(form.serial_number) }}
+
+                            <div class="d-flex align-items-center gap-4">
+                                <span class="flex-grow-1"> {{ render_field(form.importance_id) }}</span>
+                                <span class="ms-auto mt-4 me-2"
+                                      data-bs-toggle="tooltip"
+                                      title="Check for 24x7 operation or uncheck for business hours">
+                                    {{ render_field(form.twentyfour_operation) }}</span>
+                            </div>
+                        </div>
+                        <div class="col p-2">
+                            {{ render_field(form.model) }}
+                            {{ render_field(form.asset_tag) }}
+                            {{ render_field(form.location) }}
+                        </div>
+                        <div class="col-1 p2 mt-5">
+                            <div class="ms-auto text-center border border-primary-subtle">
+                                <button id="icon-select-btn" type="button" class="btn btn-outline-primary">
+                                    <img id="icon-select-btn-img" alt="CI Image" width="100%"
+                                         src={{ url_for('static', filename=form.icons.data.split('/static/')[-1]) }}
+                                    ><span class="text-center">CI Icon</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="myTab">
+                        {% include "includes/tabs/details-tab.html" %}
+                        {% include "includes/tabs/journal-tab.html" %}
+                        {% include "includes/tabs/lifecycle/cmdb-lifecycle-tab.html" %}
+                        {% include "includes/tabs/operational/cmdb-operational-tab.html" %}
+                        {% include "includes/tabs/relationships/cmdb-relationships-tab.html" %}
+                        {% include "includes/tabs/vendor/cmdb-vendor-tab.html" %}
+                        {% include "includes/tabs/info-tab.html" %}
+                    </ul>
+                    {#  Tab Content    #}
+                    <div class="tab-content" id="myTabContent">
+                        {% include "includes/tabs/details-tab-content.html" %}
+                        {% include "includes/tabs/journal-tab-content.html" %}
+                        {% include "/includes/tabs/lifecycle/cmdb-hardware-lifecycle-tab-content.html" %}
+                        {% include "includes/tabs/operational/cmdb-hardware-operational-tab-content.html" %}
+                        {% include "includes/tabs/relationships/cmdb-hardware-relationships-tab-content.html" %}
+                        {% include "includes/tabs/vendor/cmdb-hardware-vendor-tab-content.html" %}
+                        {% include "includes/tabs/info-tab-content.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "includes/modals/modal-worknote.html" %}
+        {% include "includes/modals/modal-network-view.html" %}
+        {% include "includes/modals/modal-email-requester.html" %}
+        {# resolution modal not used but easier to include it that mess around with stepper class just to exlude this one form  #}
+        {% include "includes/modals/modal-resolution.html" %}
+        {% include "includes/modals/modal-set-icon.html" %}
+
+    </form>
+
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('static', filename='js/ticket.js') }}"></script>
+    <script type="module" src="{{ url_for('cmdb_bp.static', filename='js/cmdb.js') }}"></script>
+
+{% endblock scripts %}

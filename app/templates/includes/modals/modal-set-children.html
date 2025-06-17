@@ -1,0 +1,32 @@
+<!-- Modal dialog to get Child Ticket ID-->
+<div class='modal fade' id='children-modal' data-bs-backdrop='static' tabindex='-1' role='dialog'
+     aria-labelledby='childModalLabel'
+     aria-hidden='false'>
+    <div class='modal-dialog' role='document'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button id='child-modal-help-btn' type='button' class='btn btn-sm btn-outline bi bi-question-circle'></button>
+                <h5 class='modal-title' id='childModalLabel'>Associated Child Ticket</h5>
+                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'>
+                    <span aria-hidden='false'></span>
+                </button>
+            </div>
+
+            <div class='modal-body col-auto'>
+                {{ render_field(form.child_select) }}
+            </div>
+            <div class='modal-footer'>
+                <button id='modal-cancel-child-id-btn'
+                        type='button'
+                        class='btn btn-secondary'>
+                    Close
+                </button>
+                <button id='modal-set-child-id-btn'
+                        type='button'
+                        class='btn btn-primary'>
+                    Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

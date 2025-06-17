@@ -1,0 +1,85 @@
+{% extends "layouts/base.html" %}
+{% from 'bootstrap5/utils.html' import render_messages %}
+{% from 'macros/macros.html' import render_field %}
+
+{% block app_header %}
+    {% include 'includes/forms/form-header.html' %}
+{% endblock app_header %}
+
+{% block content %}
+    <form id="form" class="row g-3 needs-validation" novalidate method="post">
+        {{ form.csrf_token }}
+        <div class="row mt-1 g-2">
+            <div class="col-3 px-3 border-end border-white">
+                {{ render_field(form.author_id, label="", btn='true', button_label='Me', button_class='btn-primary') }}
+                {% include "/includes/forms/requester-details.html" %}
+                {{ render_field(form.review_at) }}
+                {{ render_field(form.expires_at) }}
+                <div class="titled-box">
+                    <h3>Info</h3>
+                    <div class="vstack mt-3">
+                        <div class="d-flex justify-content-between">
+                            <div>Created</div>
+                            <div id="created"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>Published</div>
+                            <div id="published"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>Reviewed</div>
+                            <div id="reviewed"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>Useful</div>
+                            <div id="useful"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>Viewed</div>
+                            <div id="viewed"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    {{ render_field(form.needs_improvement) }}
+                </div>
+            </div>
+            <div class="col-9 px-3">
+                <div class="row">
+                    <div class="col">
+                        {{ render_field(form.title) }}
+                        {{ render_field(form.article_type_id) }}
+                         {{ render_field(form.category_id) }}
+                    </div>
+                    <div class="col">
+                        {{ render_field(form.short_desc, placeholder="Provides information to ...") }}
+                        {{ render_field(form.hashtags) }}
+                    </div>
+                </div>
+                <div>
+                    <ul class="nav nav-tabs" id="myTab">
+                        {% include "includes/tabs/details-tab.html" %}
+                        {% include "includes/tabs/journal-tab.html" %}
+                        {% include "includes/tabs/info-tab.html" %}
+                    </ul>
+                    {#  Tab Content    #}
+                    <div class="tab-content" id="myTabContent">
+                        {% include "includes/tabs/details-tab-content.html" %}
+                        {% include "includes/tabs/journal-tab-content.html" %}
+                        {% include "includes/tabs/info-tab-content.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "/includes/modals/modal-worknote.html" %}
+        {% include "/includes/modals/modal-resolution.html" %}
+        {% include "includes/modals/modal-email-requester.html" %}
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+    {{ super() }}
+    <script type="module" src="{{ url_for('static', filename='js/ticket.js') }}"></script>
+    <script type="module" src="{{ url_for('knowledge_bp.static', filename='js/knowledge.js') }}"></script>
+{%- endblock scripts %}

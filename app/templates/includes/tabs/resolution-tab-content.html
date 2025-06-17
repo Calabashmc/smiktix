@@ -1,0 +1,16 @@
+<div class='tab-pane fade' id='resolution-tab-pane'>
+    <div class='m-2'>
+        <button type='button' id='btn-edit-resolution'
+                class='btn btn-primary'
+                data-bs-toggle='tooltip'
+                data-bs-html="true"
+                data-bs-title='Edit resolution?<br> Will append to resolution history'>
+            <i class='h2 bi bi-pencil-square mb-3'></i>
+        </button>
+    </div>
+    <div class='m-2'>
+        <h4>Resolution: {{ form.resolution_code_text(class='no-border w-75') }}</h4>
+        {{ form.resolution_journal() }}
+    </div>
+    <div id='resolution-history'></div>
+</div>

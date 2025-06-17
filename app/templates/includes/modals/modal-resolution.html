@@ -1,0 +1,19 @@
+<!-- Modal dialog for resolution notes -->
+<div class="modal fade" id="resolution-modal" data-bs-backdrop="static" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content h-auto">
+            <div class="modal-header">
+                <h5 class="modal-title">Resolution Notes</h5>
+            </div>
+            <div class="modal-body">
+                {{ render_field(form.resolution_code_id) }}
+                <hr>
+                {{ form.resolution_notes }}
+            </div>
+            <div class="modal-footer">
+                <button id="modal-cancel-resolution" type="button" class="btn btn-danger live">Cancel</button>
+                <button id="modal-add-resolution-btn" type="button" class="btn btn-primary live">Add Resolution</button>
+            </div>
+        </div>
+    </div>
+</div>

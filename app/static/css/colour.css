@@ -1,0 +1,780 @@
+:root {
+    /* Bootstrap Colors (included for consistency) */
+    --bs-blue: #0d6efd;
+    --bs-indigo: #6610f2;
+    --bs-purple: #6f42c1;
+    --bs-pink: #d63384;
+    --bs-red: #dc3545;
+    --bs-orange: #fd7e14;
+    --bs-yellow: #ffc107;
+    --bs-green: #198754;
+    --bs-teal: #20c997;
+    --bs-cyan: #0dcaf0;
+    --bs-white: #fff;
+    --bs-gray: #6c757d;
+    --bs-gray-dark: #343a40;
+    --bs-gray-100: #f8f9fa;
+    --bs-gray-200: #e9ecef;
+    --bs-gray-300: #dee2e6;
+    --bs-gray-400: #ced4da;
+    --bs-gray-500: #adb5bd;
+    --bs-gray-600: #6c757d;
+    --bs-gray-700: #495057;
+    --bs-gray-800: #343a40;
+    --bs-gray-900: #212529;
+    --bs-primary: #0d6efd;
+    --bs-secondary: #6c757d;
+    --bs-success: #198754;
+    --bs-info: #0dcaf0;
+    --bs-warning: #ffc107;
+    --bs-danger: #dc3545;
+    --bs-light: #f8f9fa;
+    --bs-dark: #212529;
+    --bs-primary-rgb: 13, 110, 253;
+    --bs-secondary-rgb: 108, 117, 125;
+    --bs-success-rgb: 25, 135, 84;
+    --bs-info-rgb: 13, 202, 240;
+    --bs-warning-rgb: 255, 193, 7;
+    --bs-danger-rgb: 220, 53, 69;
+    --bs-light-rgb: 248, 249, 250;
+    --bs-dark-rgb: 33, 37, 41;
+    --bs-white-rgb: 255, 255, 255;
+    --bs-black-rgb: 0, 0, 0;
+    --bs-body-color-rgb: 33, 37, 41;
+    --bs-body-bg-rgb: 255, 255, 255;
+    --bs-secondary-bg: #e2e3e5;
+
+
+    /* Your light mode variables, trying to use Bootstrap equivalents */
+    --lt-main-bg: var(--bs-light); /* Use Bootstrap's white */
+    --lt-main-text: var(--bs-gray-900); /* Use Bootstrap's darkest gray */
+    --lt-second-text: var(--bs-gray-600); /* Use a Bootstrap mid-gray */
+    --lt-ticketnumber: var(--bs-success);
+    --lt-second-bg: var(--bs-gray-100);  /* Bootstrap light gray  */
+     --lt-navlink-text: var(--bs-gray-800); /* slightly lighter dark grey*/
+    --lt-a: var(--bs-gray-800);
+    --lt-card-bg: var(--bs-light);
+    --lt-navbar-bg: var(--bs-light);
+
+
+     --btn_pid-border: var(--bs-danger); /* Red, similar to your original */
+      /* web colour scheme values. Not sure why but hex values don't work in some instances
+       such as linear gradients. So need to use syntax rgba(var(--theme_red))
+       use these to replace the ones below? */
+    --theme_red: var(--bs-danger);
+    --theme_green: var(--bs-success);
+    --theme_dark_green: #005500;  /* This doesn't have a close bootstrap equivalent so keep your original */
+    --theme_blue: var(--bs-info);
+     --theme_dark_blue: #0411fd; /* keeping original as it doesn't have a clear BS alternative */
+    --theme_grey: var(--bs-gray-600); /* Using a Bootstrap gray */
+    --theme_dark_grey: var(--bs-gray-800);
+    --theme_black: black;
+    --theme_cream: #f7f4e9; /*keeping as original as it has no clear equivalent */
+    --theme_aqua: #3cbcc3; /*keeping as original as it has no clear equivalent */
+    --theme_orange: var(--bs-orange);
+    --theme_neon_orange: #42a397; /* keeping as original as it has no clear equivalent */
+
+
+
+    /* Dark mode variables (using more Bootstrap colors where applicable) */
+
+     --bs-dark-bg: black; /* Change the background color */
+    --bs-dark-color: #fff;
+
+    /*card colour variables*/
+    --dk-card-bg: var(--bs-black);
+    --dk-card-box-shadow: var(--bs-black-rgb);
+    --dk-ticketnumber: var(--bs-white);
+    --dk-form-control-plaintext-readonly: hsla(0,0%,100%,.5); /* Reduced opacity white */
+    --dk-breadcrumb-item: hsla(0,0%,100%,.5); /* Reduced opacity white */
+     --dk-a: hsla(0,0%,100%,.5);
+
+    --dk-input-bg: #131633; /*keep original as it's likely a good contrast to the bg */
+    --dk-sidebar-bg: #3F4E4F; /*keep original*/
+     --dk-navbar-bg: #0F1313;/*keep original*/
+
+}
+
+
+.dark-mode {
+    --primary-color: var(--bs-primary);
+    --secondary-color: var(--bs-secondary);
+    --text-color: var(--bs-white);  /* White text for dark mode */
+    /* Other specific styles for dark mode */
+}
+
+.ticket-scope {
+    color: var(--theme_cream);
+}
+
+.p-colour-p1 {
+    color: var(--bs-danger) !important;
+}
+
+.p-colour-p2 {
+    color: var(--theme_orange) !important;
+}
+
+.p-colour-p3 {
+    color: var(--theme_dark_blue) !important;
+}
+
+.p-colour-p4 {
+    color: var(--theme_blue) !important;
+}
+
+.p-colour-p5 {
+    color: var(--theme_green) !important;
+}
+
+/* light mode */
+
+body.bg-light .navbar {
+    background-color: var(--lt-navbar-bg);
+}
+
+
+#btn_pid {
+    border-color: var(--btn_pid-border);
+}
+
+body.bg-dark .ts-dropdown,
+body.bg-dark .ts-control,
+body.bg-dark .ts-control input {
+    color: var(--theme_cream);
+    background-color: #1e2021;
+}
+
+.disabled .ts-control {
+    background: var(--bs-secondary-bg);
+    opacity: 1;
+}
+
+[data-align="left"] {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+.se-image-container .__se__float-left {
+    float: left;
+}
+
+.form-select:disabled {
+    background-color: #1e2021;
+    background-image: none;
+}
+
+.locked {
+    background-image: none; /* hide the down arrow in the locked tomselect */
+}
+
+/* light mode  */
+
+body.bg-light .primary-text {
+    color: var(--lt-main-text);
+}
+
+body.bg-light .second-text {
+    color: var(--lt-second-text);
+}
+
+body.bg-light .type-no-border,
+body.bg-light .number-no-border,
+body.bg-light .no-border {
+    color: var(--bs-black); /*Use black */
+    background-color: transparent;
+}
+
+body.bg-light .primary-bg {
+    background-color: var(--lt-main-bg);
+}
+
+body.bg-light .secondary-bg {
+    background-color: var(--lt-second-bg);
+}
+
+
+body.bg-light .main-container {
+    background-color: var(--lt-main-bg);
+}
+
+body.bg-light .parent-number {
+    color: var(--lt-main-text)
+}
+
+.form-control-plaintext[readonly] {
+    background: transparent;
+}
+
+body.bg-light .nav-link {
+    color: var(--lt-navlink-text);
+}
+
+
+body.bg-light a {
+    color: var(--lt-a);
+    font-weight: bold;
+}
+
+body.bg-light .card {
+    background-color: var(--lt-card-bg);
+    border: inherit !important;
+    box-shadow: 0 3px 9px 0 var(--dk-card-box-shadow);
+}
+
+body.bg-light .timeline ul li:hover {
+    background-color: var(--bs-gray-800);
+}
+
+body.bg-light .timeline ul li:hover:before {
+     background-color: #0F0; /* No real match in bootstrap, so keeping original*/
+    box-shadow: 0 0 10px 2px #0F0; /* No real match in bootstrap, so keeping original*/
+}
+
+body.bg-light .timeline ul li .sun-editor-editable {
+    background-color: whitesmoke;
+    color: var(--theme_dark_grey);
+    border-color: var(--theme_dark_grey);
+}
+
+body.bg-dark .dash-title {
+    color: var(--theme_cream);
+}
+
+body.bg-dark .timeline ul li:hover {
+    background-color: #071f2a;  /* No close BS equivalent keeping original*/
+}
+
+body.bg-dark .timeline ul li:hover:before {
+      background-color: #0F0; /* No real match in bootstrap, so keeping original*/
+    box-shadow: 0 0 10px 2px #0F0; /* No real match in bootstrap, so keeping original*/
+}
+
+
+body.bg-dark .timeline ul li .sun-editor-editable {
+    background-color: #0a0a0a;  /* No close BS equivalent keeping original*/
+    color: white;
+    border-color: #0a0a0a;  /* No close BS equivalent keeping original*/
+}
+
+
+/*body.bg-dark .timeline ul li .sun-editor-editable:hover {*/
+/*    background-color: #071f2a;*/
+/*    color: var(--theme_dark_grey);;*/
+/*}*/
+
+
+
+body.bg-dark {
+    background-color: black !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+body.bg-dark .navbar,
+body.bg-dark .sidebar,
+body.bg-dark .sidebar-content {
+    background-color: black;
+}
+
+body.bg-dark .sidebar .btn {
+    color: var(--theme_green);
+}
+
+
+
+body.bg-dark .card {
+    background-color: var(--dk-card-bg);
+    border: inherit !important;
+    box-shadow: 0 3px 9px 0 var(--dk-card-box-shadow);
+}
+
+body.bg-dark .card-header {
+    border-bottom-color: var(--theme_cream);
+}
+
+
+body.bg-dark .card-footer {
+    background-color: black;
+    border-top-color: var(--bs-black);
+    color: var(--theme_cream);
+}
+
+
+body.bg-dark #ticket_number {
+    color: var(--dk-ticketnumber);
+}
+
+body.bg-dark .type-no-border,
+body.bg-dark .number-no-border,
+body.bg-dark .no-border {
+    color: var(--dk-ticketnumber);
+    background-color: transparent;
+}
+
+body.bg-dark .number-no-border {
+    color: var(--dk-ticketnumber);
+    background-color: transparent;
+}
+
+
+body.bg-dark .parent-number {
+    color: var(--dk-ticketnumber);
+}
+
+body.bg-dark .form-control-plaintext[readonly] {
+    color: var(--dk-form-control-plaintext-readonly);
+    background: transparent;
+}
+
+body.bg-dark .form-control:disabled {
+    background-color: var(--bs-dark);
+}
+
+body.bg-dark a {
+    color: var(--dk-a);
+    font-weight: bold;
+}
+
+
+body.bg-dark .dropdown-menu {
+    background-color: var(--dk-card-bg);
+}
+
+/* Modals */
+body.bg-dark .modal-content {
+    background-color: #2a2a4a;  /* No close BS equivalent keeping original*/
+    border-color: black;
+    box-shadow: 0 5px 20px black;
+}
+
+body.bg-dark .modal-backdrop {
+    background-color: #000;
+}
+
+body.bg-dark .modal-header {
+    border-bottom-color: black;
+}
+
+body.bg-dark .modal-footer {
+    border-top-color: black;
+}
+
+.custom-theme.bg-light {
+    background-color: darkslategray !important; /*keeping original */
+    border-radius: 3px;
+    color: gainsboro;/*keeping original */
+    text-decoration: underline;
+}
+
+.custom-theme.bg-dark {
+    background-color: blanchedalmond !important; /*keeping original */
+    box-shadow: 10px 5px 5px var(--theme_cream);
+    color: dimgray;/*keeping original */
+    text-decoration: overline;
+}
+
+.step_icon_circle {
+    background-color: var(--theme_cream); /* Set your desired circle background color */
+    color: #1e2021;
+    border-color: var(--theme_dark_grey)
+}
+
+
+/* colour for progress stepper */
+.bg-light .steps {
+    background: linear-gradient(var(--theme_cream), #efede2);
+}
+
+.bg-dark .steps {
+    background: linear-gradient(var(--theme_grey), var(--bs-dark));
+}
+
+
+input[name="stepper-radio"].current + label {
+    color: white;
+     background: linear-gradient(var(--theme_blue), var(--theme_dark_blue)); /*keeping original */
+}
+
+/*hover/active styles*/
+
+
+input[name="stepper-radio"].current + label + input[name="stepper-radio"]:hover:not(.done) + label {
+       background: linear-gradient(135deg, var(--theme_blue), var(--theme_dark_blue)); /*keeping original */
+}
+
+.accordion-button .collapsed {
+    background-color: var(--theme_dark_blue)
+}
+
+.accordion-item {
+    transition: background-color 0.3s;
+}
+
+body.bg-dark .accordion-item.active {
+    background-color: var(--theme_cream); /* Add your desired active background color here */
+    color: black;
+}
+
+body.bg-light .accordion-item.active {
+    background-color: var(--theme_dark_grey); /* Add your desired active background color here */
+    color: white;
+}
+
+body.bg-light .sidebar{
+
+}
+
+.accordion-button {
+    cursor: pointer;
+}
+
+
+input[name="stepper-radio"].done + label {
+    color: white;
+   background: linear-gradient(var(--theme_green), var(--theme_dark_green)); /*keeping original */
+    transition: all 0.5s;
+}
+
+
+.steps.done:after {
+    color: var(--theme_cream);
+     background: linear-gradient(135deg, var(--theme_green), var(--theme_dark_green)); /*keeping original */
+    transition: all 0.5s;
+}
+
+.steps.done:last-child {
+    color: white;
+     background: linear-gradient(var(--bs-danger), red);
+    transition: all 0.5s;
+}
+
+.steps.done:last-child:after {
+    color: var(--theme_cream);
+       background: linear-gradient(135deg, var(--bs-danger), red);
+    transition: all 0.5s;
+}
+
+
+#sidebar-content li .btn:hover {
+    color: var(--theme_cream);
+    background: linear-gradient(135deg, var(--theme_blue), var(--theme_dark_blue));
+}
+
+.bg-light .pagination > a {
+    background: var(--theme_cream);
+}
+
+.pagination > a.selected {
+    background: var(--theme_blue);
+}
+
+
+.bg-dark #ticket-scope {
+    background: var(--bs-dark);
+    color: var(--theme_cream);
+}
+
+.bg-light #ticket-scope {
+    background: var(--theme_cream);
+    color: var(--bs-black);
+}
+
+
+a > img:hover {
+    /* noinspection CssUnknownProperty */
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+    transition: .5s;
+}
+
+a > img[alt="ticket"]:hover {
+    transform: scale(1.3) scaleX(-1);
+}
+
+/* Define styles for checked radio button */
+.bg-dark input[type="checkbox"]:checked + .status-label {
+    border: 2px solid white;
+    color: var(--bs-danger);
+}
+
+.bg-light input[type="checkbox"]:checked + .status-label {
+    border: 2px solid black;
+    color: var(--bs-danger);
+}
+
+input[type="checkbox"]:checked + svg {
+    /* noinspection CssUnknownProperty */
+    -webkit-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+
+.bg-light .priority-label {
+    color: var(--bs-black);
+}
+
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-danger);
+    --bs-tooltip-color: white;
+    font-weight: bold;
+    font-size: medium;
+}
+
+/* Override SunEditor tooltip styles */
+
+/* Tooltip text container */
+/*.se-tooltip-inner {*/
+/*    background-color: transparent; !* Match Bootstrap primary color *!*/
+/*    color: white !important;*/
+/*    font-weight: bold;*/
+/*    font-size: 0.9rem; !* Adjust to Bootstrap size *!*/
+/*    text-align: center !important;*/
+/*    padding: 6px 12px; !* Match Bootstrap's padding *!*/
+/*    border-radius: 0.25rem; !* Bootstrap default border radius *!*/
+/*    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);*/
+/*}*/
+
+.se-tooltip-text {
+    background-color: var(--bs-primary) !important;
+    text-align: center !important;
+    font-size: medium !important;
+    border-radius: 0.25rem;
+}
+
+/*!* Tooltip arrow *!*/
+.se-tooltip-text:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border: 5px solid transparent;
+    border-bottom-color: var(--bs-primary) !important;
+}
+
+/* Ensure tooltip appears slightly above the button */
+.se-tooltip.show {
+    transform: translateY(-5px); /* Slight upward shift */
+}
+
+
+.vote-score, .vote {
+    background-color: transparent;
+    border: 0.2rem solid var(--theme_neon_orange);
+    border-radius: 2rem;
+}
+
+input[name="idea-rating"]:checked + .btn {
+    border: 0.2rem solid var(--theme_neon_orange);
+    border-radius: 50%;
+    box-shadow: 0 0 .2rem var(--theme_neon_orange),
+    0 0 .2rem var(--theme_neon_orange),
+    0 0 1rem #DA9100,
+    0 0 0.2rem #DA9100,
+    0 0 0.8rem #DA9100,
+    inset 0 0 1.3rem #DA9100;
+
+}
+
+.priority-label.checked, .priority-label:hover {
+    border: 0.2rem solid white;
+    color: white !important;
+}
+
+
+body.bg-dark .swal2-popup {
+    background-color: #000 !important;;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+body.bg-dark .swal2-select {
+    background-color: #333; /* Change this to your dark background color */
+    color: #fff; /* Change this to your desired text color */
+    border: 1px solid #555; /* Adjust border color if needed */
+}
+
+body.bg-dark .swal2-select:focus {
+    outline: none; /* Remove the focus outline if desired */
+}
+
+body.bg-dark .titled-box > label,
+body.bg-dark .titled-box > h3 {
+    background: black;
+}
+
+
+body.bg-dark .offcanvas-header .titled-box > label,
+body.bg-dark .offcanvas-header .titled-box > h3,
+body.bg-dark .offcanvas-body .titled-box > h3 {
+    background: var(--bs-body-bg);
+}
+
+body.bg-light .titled-box > label,
+body.bg-light .titled-box > h3 {
+    background: var(--theme_cream);
+}
+
+body.bg-dark .btn-check:checked + .btn,
+body.bg-dark .btn-check:checked + .btn:hover {
+    border: 2px solid white;
+}
+
+body.bg-light .btn-check:checked + .btn,
+body.bg-light .btn-check:checked + .btn:hover {
+    border: 2px solid black;
+}
+
+body.bg-dark #announcement-carousel {
+    border: 2px solid white;
+}
+
+
+body.bg-light #announcement-carousel {
+    border: 2px solid black;
+}
+
+body.bg-dark .carousel {
+    background: var(--theme_cream);
+}
+
+body.bg-light .carousel {
+    background: var(--theme_dark_grey)
+}
+
+/*body.bg-dark .tabulator [class^="tabulator-cell"] {*/
+/*  color: #fff;*/
+/*}*/
+
+/*!* Change background color *!*/
+/*body.bg-dark .tabulator [class^="tabulator-row"]:nth-child(odd) {*/
+/*  background-color: #454d55;*/
+/*}*/
+
+.tabulator .tabulator-cell input,
+.tabulator .tabulator-cell textarea,
+.tabulator .tabulator-cell select {
+    color: var(--bs-black) !important; /* Set the text color to black */
+    background-color: var(--bs-white) !important; /* Ensure the background is white */
+}
+
+.vis-item.emergency-change {
+    background-color: red; /* Keep this as its important - no alternative from BS */
+    color: white;
+}
+
+.vis-item.normal-change {
+    background-color: var(--theme_blue);
+}
+
+
+.vis-item.standard-change {
+    background-color: var(--theme_green);
+}
+
+.vis-network {
+    background: whitesmoke !important;
+}
+
+/* alternating column backgrounds */
+.vis-time-axis .grid.vis-odd {
+    background: #f5f5f5;
+}
+
+
+/* gray background in weekends, white text color */
+.vis-time-axis .vis-grid.vis-saturday,
+.vis-time-axis .vis-grid.vis-sunday {
+    background: gray;
+}
+
+.vis-time-axis .vis-text.vis-saturday,
+.vis-time-axis .vis-text.vis-sunday {
+    color: white;
+}
+
+
+body.bg-light .offcanvas {
+    background: var(--theme_cream);
+}
+
+
+body.bg-dark .btn-check:checked + label + label {
+    border: 2px solid var(--bs-primary); /* Use the Bootstrap primary color */
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.accordion-button {
+    background-color: var(--bs-gray-900) !important; /* Light gray background */
+    color: white !important; /* Ensure text contrast */
+    border: 1px solid var(--bs-gray-900); /* Optional border */
+}
+
+/*.accordion-button:not(.collapsed) {*/
+/*    background-color: var(--bs-gray-900) !important; !* Slightly darker gray when opened *!*/
+/*}*/
+
+.accordion-button:not(:disabled) {
+    background-color: var(--bs-gray-800) !important; /* Bootstrap's success color */
+    color: white !important; /* Ensure text is readable */
+    border: 1px solid var(--bs-primary);
+}
+
+/* CAB Change calendar */
+.ec-button.ec-active, .ec-button:not(:disabled):hover {
+    background-color: var(--bs-primary) !important;
+    color: white !important;
+}
+
+/* Apply a light gray background to even resource headers */
+.ec-resource:nth-child(even) {
+    background-color: var(--bs-gray-800); /* Light gray */
+}
+
+/* Apply a slightly darker background to odd resource headers */
+.ec-resource:nth-child(odd) {
+    background-color: var(--bs-gray-900); /* Slightly darker gray */
+}
+
+/* Optional: Add a border to better separate the resources */
+.ec-resource {
+    border-right: 1px solid #ccc; /* Thin border between resources */
+}
+
+.cr1-change {
+    background-color: var(--bs-danger) !important;
+    color: white !important;
+}
+
+.cr2-change {
+    background-color: var(--bs-orange) !important;
+    color: black !important;
+}
+
+.cr3-change {
+    background-color: var(--bs-primary) !important;
+    color: white !important;
+}
+
+.cr4-change {
+    background-color: var(--bs-info) !important;
+    color: white !important;
+}
+
+.cr5-change {
+    background-color: var(--bs-success) !important;
+    color: white !important;
+}
+
+.emergency-change {
+    background-color: red !important;
+    color: white !important;
+    border-color: yellow !important;
+}
+
+
+

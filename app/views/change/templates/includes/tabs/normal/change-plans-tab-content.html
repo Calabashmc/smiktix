@@ -1,0 +1,32 @@
+<div class="tab-pane" id="change-plans-tab-pane">
+    <div class="row">
+        <div class="col ms-4">
+            <div class="mt-4">
+                <h5>Build Plan</h5>
+                {{ form.build_plan }}
+            </div>
+            <div class="mt-4">
+                <h5>Implementation Plan</h5>
+                {{ form.implement_plan }}
+            </div>
+            <div class="mt-4">
+            <h5>Additional Impact (Security/DR/External)</h5>
+            {{ form.effects_plan }}
+        </div>
+        </div>
+        <div class="col me-4">
+            <div class="mt-4">
+                <h5>Test Plan</h5>
+                {{ form.test_plan }}
+            </div>
+            <div class="mt-4">
+                <h5>Rollback Plan</h5>
+                {{ form.rollback_plan }}
+            </div>
+            <div class="mt-4">
+                <h5>Comms Plan</h5>
+                {{ form.comms_plan }}
+            </div>
+        </div>
+    </div>
+</div>

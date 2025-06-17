@@ -1,0 +1,22 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+    <p>Hi,</p>
+
+    <p>You were recently added as an approver for the following change:</p>
+    <p>Change <strong>{{ ticket_number }}</strong><p>
+
+    <p><strong>This change no long requires your approval.</strong></p>
+    <p>You can ignore the prior approval request</p>
+
+    <p>You may have been unintentionally added as an approver or the ticket has been cancelled.</p>
+    <p>If you think you should still be involved in this tickets approval process please contact the ticket
+        owner.</p>
+
+    <p>The Change summary is:</p>
+    <p>{{ body_text }}</p>
+
+    <p>For more information you can view the ticket <a href="{{ ticket_url }}">here</a> <p>
+
+    <hr>
+{% endblock %}

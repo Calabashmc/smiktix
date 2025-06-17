@@ -1,0 +1,31 @@
+<div class="tab-pane fade" id="cmdb-software-operational-tab-pane">
+    <div class="d-flex gap-2">
+        <div class="col">
+            <div class="titled-box">
+                <h3>Licensing</h3>
+                <div class="mt-4">
+                    {{ render_field(form.licence_expiration_date) }}
+                    {{ render_field(form.licence_count) }}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="titled-box">
+                <h3>OS Details</h3>
+                <div class="mt-4">
+                    {{ render_field(form.operating_system_id) }}
+                    {{ render_field(form.version) }}
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="titled-box">
+                <h3>Business</h3>
+                <div class="mt-4">
+                    {{ render_field(form.continuity_planning) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

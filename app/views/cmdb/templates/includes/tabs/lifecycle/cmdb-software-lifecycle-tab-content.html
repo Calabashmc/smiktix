@@ -1,0 +1,38 @@
+<div class="tab-pane fade" id="cmdb-software-lifecycle-tab-pane">
+    <div class="d-flex w-100 justify-content-start ">
+        <div class="col-3">
+            <div class="titled-box">
+                <h3>Obtain/Build</h3>
+                <div class="col gap-4 mt-4 ">
+                    {{ render_field(form.obtained_date) }}
+                    {{ render_field(form.disposed_date) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="titled-box">
+                <h3>Transition</h3>
+                <div class="d-flex gap-2 justify-content-start mt-4">
+                    <div class="col gap-4">
+                        {{ render_field(form.install_date) }}
+                        {{ render_field(form.replacement_date) }}
+                    </div>
+                    <div class="col gap-4">
+                        {{ render_field(form.retirement_date) }}
+                        {{ render_field(form.replaced_with_id) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="titled-box ">
+                <h3>Support</h3>
+                <div class="col gap-4 mt-4">
+                    {{ render_field(form.support_end_date) }}
+                    {{ render_field(form.end_life_date) }}
+                    {{ render_field(form.support_type) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

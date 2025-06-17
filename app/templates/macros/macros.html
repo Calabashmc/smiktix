@@ -1,0 +1,439 @@
+{#
+arguments guide
+select_field
+(field, label='',
+label_classes='',
+form_group_classes='',
+btn=false,
+button_label='',
+button_class='',
+label_position='above',
+placeholder="",
+aria_label="", aria_describedby="")
+#}
+
+{% macro render_button(field_id, button_label, button_class) %}
+    <div class="input-group-append">
+        <button id="{{ field_id }}-btn" class="btn {{ button_class }} me-btn" type="button">
+            {{ button_label|safe }}
+        </button>
+    </div>
+{% endmacro %}
+
+
+{# The render checkbox macro is for rendering the custom type  MultipleCheckboxField by splitting the label to align the comments #}
+{% macro render_checkbox_group(field, wrapper_classes="benefit-checkboxes", item_classes="benefit-item", label_classes="benefit-label", comment_classes="benefit-comment") %}
+    <div class="{{ wrapper_classes }}">
+        {% for subfield in field %}
+            {% set label_parts = subfield.label.text.split(' - ') %}
+            {% set label_text = label_parts[0] %}
+            {% set comment_text = label_parts[1] if label_parts|length > 1 else '' %}
+
+            <div class="{{ item_classes }}">
+                {{ subfield }} <!-- Render the checkbox -->
+                <span class="{{ label_classes }}"
+                      data-bs-toggle="tooltip"
+                      data-bs-title="{{ comment_text }}"
+                      data-bs-placement="top">
+                    {{ label_text }}
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+
+
+{% macro render_select_field(field, label='', label_classes='', form_group_classes='', btn=false, button_label='', button_class='', label_position='above', placeholder="", aria_label="", aria_describedby="") %}
+    {% set form_group_classes = form_group_classes or config.BOOTSTRAP_FORM_GROUP_CLASSES %}
+    {% set label_classes = label_classes or 'form-label' %}
+    <div class="{{ form_group_classes }}">
+        <div class="input-group {% if label_position == 'inline' %}align-items-center{% endif %}">
+            {% set select_classes = 'form-select ' ~ (field.render_kw.class if field.render_kw.class is defined else '') %}
+            {% if field.errors %}
+                {{ field(class=select_classes ~ ' is-invalid', **kwargs)|safe }}
+            {% else %}
+                {{ field(class=select_classes, **kwargs)|safe }}
+            {% endif %}
+
+            {% if btn %}
+                {{ render_button(field.id, button_label, button_class) }}
+            {% endif %}
+        </div>
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+        {% elif field.description %}
+            <small class="form-text text-muted">{{ field.description|safe }}</small>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+
+{% macro render_checkbox(field) %}
+    {% set as_switch = field.render_kw.as_switch if field.render_kw is defined %}
+    {% set additional_classes = field.render_kw.class if field.render_kw is defined else '' %}
+
+    <div class="form-check {% if as_switch %} form-switch {% endif %}{{ additional_classes }}">
+        {{ field(class="form-check-input %s" % additional_classes)|safe }}
+        {{ field.label(class="form-check-label", for=field.id)|safe }}
+    </div>
+{% endmacro %}
+
+
+{% macro render_integer_range_field(field) %}
+    <label for="{{ field.id }}">{{ field.label }}</label>
+    <input type="number" id="{{ field.id }}" name="{{ field.name }}_min" value="{{ field.data[0] }}"
+           min="{{ field.min }}" max="{{ field.max }}">
+{% endmacro %}
+
+
+{% macro render_date_time_field(field, label='', label_classes='', form_group_classes='', btn=false, button_label='', button_class='', label_position='above', placeholder="", aria_label="", aria_describedby="") %}
+    {% set additional_classes = field.render_kw.class if field.render_kw is defined else '' %}
+    {% set is_invalid = 'is-invalid' if field.errors else '' %}
+    {% set required = 'required' if 'InputRequired' in field.validators|map(attribute='__class__')|map(attribute='__name__') else '' %}
+
+    {# Get placeholder from render_kw if not provided as parameter #}
+    {% set effective_placeholder = placeholder or (field.render_kw.placeholder if field.render_kw and field.render_kw.placeholder else '') %}
+
+    {# Get aria-label from render_kw if not provided as parameter #}
+    {% set effective_aria_label = aria_label or (field.render_kw['aria-label'] if field.render_kw and field.render_kw['aria-label'] else '') %}
+
+    {# Get aria-describedby from render_kw if not provided as parameter #}
+    {% set effective_aria_describedby = aria_describedby or (field.render_kw['aria-describedby'] if field.render_kw and field.render_kw['aria-describedby'] else '') %}
+
+    {# Format value for datetime-local if it's a datetime object #}
+    {% if field.data %}
+        {% if field.data is string %}
+            {% set value = field.data %}
+        {% else %}
+            {% set value = field.data.strftime('%Y-%m-%dT%H:%M') %}
+        {% endif %}
+    {% else %}
+        {% set value = '' %}
+    {% endif %}
+
+    <div class="input-group {% if label_position == 'inline' %}align-items-center{% endif %}">
+        <input type="datetime-local" class="form-control {{ additional_classes }} {{ is_invalid }}"
+               id="{{ field.id }}" name="{{ field.name }}"
+               value="{{ value }}" {{ required }}
+               placeholder="{{ effective_placeholder }}"
+               aria-label="{{ effective_aria_label }}"
+               aria-describedby="{{ effective_aria_describedby }}">
+        {% if btn %}
+            {{ render_button(field.id, button_label, button_class) }}
+        {% endif %}
+        {% if field.errors %}
+            <div class="invalid-feedback">
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro render_date_time_local_field(field, label='', label_classes='', form_group_classes='', btn=false, button_label='', button_class='', label_position='above', placeholder="", aria_label="", aria_describedby="") %}
+    {% set additional_classes = field.render_kw.class if field.render_kw is defined else '' %}
+    {% set is_invalid = 'is-invalid' if field.errors else '' %}
+    {% set required = true if 'InputRequired' in field.validators|map(attribute='__class__')|map(attribute='__name__') else false %}
+    {% set pattern = 'pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"' %}
+
+    <div class="input-group {% if label_position == 'inline' %}align-items-center{% endif %}">
+        {{ field(class="form-control %s %s %s" % (additional_classes, is_invalid, 'is-invalid' if field.errors else ''), required=required, pattern=pattern)|safe }}
+
+        {% if btn %}
+            {{ render_button(field.id, button_label, button_class) }}
+        {% endif %}
+        {% if field.errors %}
+            <div class="invalid-feedback">
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+
+{% macro render_date_field(field, label='', label_classes='', form_group_classes='', btn=false, button_label='', button_class='', label_position='above', placeholder="", aria_label="", aria_describedby="") %}
+    {% set additional_classes = field.render_kw.class if field.render_kw is defined else '' %}
+    {% set is_invalid = 'is-invalid' if field.errors else '' %}
+    {% set required = 'required' if 'InputRequired' in field.validators|map(attribute='__class__')|map(attribute='__name__') else '' %}
+
+    <div class="input-group {% if label_position == 'inline' %}align-items-center{% endif %}">
+        <input type="date" class="form-control {{ additional_classes }} {{ is_invalid }}" id="{{ field.id }}"
+               name="{{ field.name }}" {{ required }} value="{{ field.data or '' }}">
+        {% if btn %}
+            {{ render_button(field.id, button_label, button_class) }}
+        {% endif %}
+        {% if field.errors %}
+            <div class="invalid-feedback">
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro render_time_field(field) %}
+    {% set additional_classes = field.render_kw.class if field.render_kw is defined else '' %}
+    {% set is_invalid = 'is-invalid' if field.errors else '' %}
+    {% set required = 'required' if 'InputRequired' in field.validators|map(attribute='__class__')|map(attribute='__name__') else '' %}
+    {% set pattern = 'pattern="[0-9]{2}:[0-9]{2}"' %}
+
+    {# Check if field data is a string or a datetime object #}
+    {% if field.data %}
+        {% if field.data is string %}
+            {% set value = field.data %}
+        {% else %}
+            {% set value = field.data.strftime('%H:%M') %}
+        {% endif %}
+    {% else %}
+        {% set value = '' %}
+    {% endif %}
+
+    {#    <div class="mb-3">#}
+    <input type="time" class="form-control {{ additional_classes }} {{ is_invalid }}" id="{{ field.id }}"
+           name="{{ field.name }}" {{ required }} {{ pattern }} value="{{ value }}">
+    {% if field.errors %}
+        <div class="invalid-feedback">
+            {% for error in field.errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {#    </div>#}
+{% endmacro %}
+
+
+{% macro render_radio_group(field, layout, slider=false) %}
+    {% set additional_classes = field.render_kw.class if field.render_kw and field.render_kw.class else '' %}
+
+    {% if layout == 'stacked' %}
+        <div class="radio-group">
+            {% for subfield in field %}
+                <div class="form-check">
+                    <input type="radio"
+                           class="form-check-input {{ additional_classes }}"
+                           id="{{ subfield.data }}"
+                           name="{{ field.name }}"
+                           value="{{ subfield.data }}"
+                           {% if subfield.checked %}checked{% endif %}>
+                    <label class="form-check-label" for="{{ subfield.data }}">
+                        {{ subfield.label.text }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% elif layout == 'inline' %}
+        <div class="radio-group d-flex gap-3">
+            {% for subfield in field %}
+                <div class="form-check d-flex align-items-center">
+                    <input type="radio"
+                           class="form-check-input {{ additional_classes }}"
+                           id="{{ subfield.data }}"
+                           name="{{ field.name }}"
+                           value="{{ subfield.data }}"
+                           {% if subfield.checked %}checked{% endif %}>
+                    <label class="form-check-label ms-2" for="{{ subfield.data }}">
+                        {{ subfield.label.text }}
+                    </label>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% elif layout == 'inline-label-below' %}
+        <div class="radio-group d-flex gap-3 flex-wrap">
+            {% for subfield in field %}
+                <div class="text-center">
+                    <div>
+                        <input type="radio"
+                               class="form-check-input {{ additional_classes }}"
+                               id="{{ subfield.data }}"
+                               name="{{ field.name }}"
+                               value="{{ subfield.data }}"
+                               {% if subfield.checked %}checked{% endif %}>
+                    </div>
+                    <div class="mt-1">
+                        <label class="form-check-label small" for="{{ subfield.data }}">
+                            {{ subfield.label.text }}
+                        </label>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% elif layout == 'label-left' %}
+        <div class="radio-group d-flex flex-column gap-2">
+            {% for subfield in field %}
+                <div class="d-flex align-items-center">
+                    <label class="me-2 mb-0 form-check-label" for="{{ subfield.data }}">
+                        {{ subfield.label.text }}
+                    </label>
+                    <input type="radio"
+                           class="form-check-input {{ additional_classes }}"
+                           id="{{ subfield.data }}"
+                           name="{{ field.name }}"
+                           value="{{ subfield.data }}"
+                           {% if subfield.checked %}checked{% endif %}>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% elif layout == 'inline-left' %}
+        <div class="radio-group d-flex gap-3 flex-wrap">
+            {% for subfield in field %}
+                <div class="d-flex align-items-center">
+                    <label class="me-2 mb-0 form-check-label" for="{{ subfield.data }}">
+                        {{ subfield.label.text }}
+                    </label>
+                    <input type="radio"
+                           class="form-check-input {{ additional_classes }}"
+                           id="{{ subfield.data }}"
+                           name="{{ field.name }}"
+                           value="{{ subfield.data }}"
+                           {% if subfield.checked %}checked{% endif %}>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="alert alert-warning">Unknown radio layout: {{ layout }}</div>
+    {% endif %}
+{% endmacro %}
+
+
+
+{% macro render_input_group_field(field, label='', label_classes='', form_group_classes='', prepend_text='', append_text='', prepend_classes='', append_classes='', input_group_classes='', placeholder='') %}
+    {% set form_group_classes = form_group_classes or config.BOOTSTRAP_FORM_GROUP_CLASSES %}
+    {% set label_classes = label_classes or 'form-label' %}
+    {% set input_group_classes = input_group_classes or 'input-group mb-3' %}
+
+    <div class="{{ form_group_classes }}">
+        <div class="{{ input_group_classes }}">
+            {% if prepend_text %}
+                <button class="btn btn-outline-secondary {{ prepend_classes }}" type="button"
+                        id="{{ field.id }}-prepend">
+                    <i class="bi {{ prepend_text }}"></i>
+                </button>
+            {% endif %}
+
+            {% set input_classes = 'form-control ' ~ (field.render_kw.class if field.render_kw.class is defined else '') %}
+            {% if field.errors %}
+                {{ field(class=input_classes ~ ' is-invalid', placeholder=placeholder, aria_label=aria_label, aria_describedby=aria_describedby)|safe }}
+            {% else %}
+                {{ field(class=input_classes, placeholder=placeholder, aria_label=aria_label, aria_describedby=aria_describedby)|safe }}
+            {% endif %}
+
+            {% if append_text %}
+                <span class="input-group-text {{ append_classes }}" id="{{ field.id }}-append">{{ append_text }}</span>
+            {% endif %}
+        </div>
+
+        {% if field.errors %}
+            {% for error in field.errors %}
+                <div class="invalid-feedback d-block">{{ error }}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+{% macro render_field(
+    field,
+    label='',
+    label_classes='',
+    label_position='above',
+    form_group_classes='',
+    btn=False,
+    button_label='',
+    button_class='',
+    prepend=False,
+    prepend_text='',
+    append=False,
+    append_text='',
+    placeholder='',
+    layout='stacked',
+    aria_label='',
+    aria_describedby=''
+) %}
+    {% set form_group_classes = form_group_classes or config.BOOTSTRAP_FORM_GROUP_CLASSES %}
+
+    {# Combine render_kw.class or class/class_ argument with Bootstrap classes #}
+    {% set render_kw_class = ' ' + field.render_kw.class if field.render_kw.class is defined else '' %}
+    {% set class = kwargs.pop('class', '') or kwargs.pop('class_', '') %}
+    {% if class %}
+        {# Override render_kw.class when class/class_ presents as keyword argument #}
+        {% set render_kw_class = '' %}
+        {% set render_kw_class_ = '' %}
+        {% set class = ' ' + class %}
+    {% endif %}
+    {% set extra_classes = render_kw_class + class %}
+
+    {# Use custom label if provided, else fallback to field's label #}
+    {% if label == '' %}
+        {% set label = field.label.text %}
+    {% endif %}
+    {# Determine label rendering position #}
+    {% set render_label = label_position in ['above', 'inline'] %}
+
+    <div class="{{ form_group_classes }}">
+        {% if render_label and label and field.type != 'BooleanField' %}
+            <label for="{{ field.id }}"
+                   class="{{ label_classes }} {% if label_position == 'inline' %}me-2 {% endif %}mb-2">{{ label }}</label>
+        {% endif %}
+
+        {% if prepend or append %}
+            {{ render_input_group_field(field, label=label, label_classes=label_classes, form_group_classes=form_group_classes, prepend_text=prepend_text, append_text=append_text, prepend_classes=prepend_classes, append_classes=append_classes, input_group_classes=input_group_classes, placeholder=placeholder) }}
+        {% else %}
+            {# Handle specific field types with dedicated macros #}
+            {% if field.type == 'SelectField' %}
+                {{ render_select_field(field, btn=btn, button_label=button_label, button_class=button_class, placeholder=placeholder) }}
+            {% elif field.type == 'DateTimeField' %}
+                {% set effective_placeholder = placeholder or (field.render_kw.placeholder if field.render_kw and field.render_kw.placeholder else '') %}
+                {{ render_date_time_field(field, btn=btn, button_label=button_label, button_class=button_class, placeholder=effective_placeholder) }}
+            {% elif field.type == 'DateTimeLocalField' %}
+                {{ render_date_time_local_field(field, btn=btn, button_label=button_label, button_class=button_class, placeholder=placeholder) }}
+            {% elif field.type == 'DateField' %}
+                {{ render_date_field(field) }}
+            {% elif field.type == 'TimeField' %}
+                {{ render_time_field(field) }}
+            {% elif field.type == 'IntegerRangeField' %}
+                {{ render_integer_range_field(field) }}
+            {% elif field.type == 'BooleanField' %}
+                {{ render_checkbox(field) }}
+            {% elif field.type == 'MultipleCheckboxField' %}
+                {{ render_checkbox_group(field) }}
+            {% elif field.type == 'RadioField' %}
+                {{ render_radio_group(field, layout) }}
+            {% else %}
+                {# Default field rendering #}
+                {{ field(class="form-control%s" % extra_classes, placeholder=placeholder, **kwargs)|safe }}
+            {% endif %}
+
+        {% endif %}
+
+        {% if field.errors %}
+            <div class="invalid-feedback">
+                {% for error in field.errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+
+
+
+
+
