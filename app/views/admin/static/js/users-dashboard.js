@@ -277,7 +277,6 @@ export class UserDashboard {
     }
 
     async csvImport() {
-        // todo replace with a modal
         Swal.fire({
             title: 'Upload CSV',
             input: 'file',

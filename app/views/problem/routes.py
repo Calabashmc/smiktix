@@ -134,7 +134,9 @@ def problem_post():
 
 
 def save_analysis(ticket, form, analysis_model):
-    """Helper function to save analysis forms manually using hasattr/setattr"""
+    """
+    Helper function to save analysis forms manually using hasattr/setattr
+    """
     if analysis_model == KepnerTregoeAnalysis:
         analysis = ticket.kepner_tregoe
     else:
@@ -147,14 +149,13 @@ def save_analysis(ticket, form, analysis_model):
         else:
             ticket.five_whys = analysis
 
-    # Manually assign form fields to analysis attributes
-    for field_name, field in form._fields.items():
+    # Use the public API to iterate over fields
+    for field in form:
+        field_name = field.name
         if hasattr(analysis, field_name):
             setattr(analysis, field_name, field.data)
 
-    # Set the relationship back to the problem
     analysis.problem = ticket
-
     db.session.add(analysis)
 
 

@@ -57,7 +57,7 @@ export class ChartManager {
 
     setUpTabListener() {
         this.tabLinks.forEach(tabLink => {
-            tabLink.addEventListener('click', () => {
+            tabLink.addEventListener('click', async () => {
                 if (tabLink.parentNode.parentNode.id.startsWith('portal')) {
                     return; // needed because using ideas tabs in portal tab form so no charts (see portal-idea-form-tab.html)
                 }
@@ -71,7 +71,7 @@ export class ChartManager {
 
                         // draw the change calendar.
                         if (tabId === 'cab-tab-pane') {
-                            changeCalendarClass.drawEventCalendar();
+                            await changeCalendarClass.drawEventCalendar();
                         }
                     }
                 }

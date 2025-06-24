@@ -43,6 +43,14 @@
                     Profile
                 </a>
             </li>
+            {% if "team member" in current_user.role_names %}
+                <li>
+                    <a class="dropdown-item" href="{{ url_for('dashboard_bp.dashboard') }}">
+                        <i class="bi bi-speedometer" title="Log out"></i>
+                        Dashboard
+                    </a>
+                </li>
+            {% endif %}
             {% if "admin" in current_user.role_names %}
                 <li>
                     <a class="dropdown-item" href="{{ url_for('admin_bp.admin_index') }}">

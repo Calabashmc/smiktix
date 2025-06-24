@@ -140,8 +140,8 @@ class SunEditorClass {
                     });
                 }, 100);
             },
-            action: () => {
-                this.saveNote(editorId);
+            action: async () => {
+                await this.saveNote(editorId);
             },
         };
     }

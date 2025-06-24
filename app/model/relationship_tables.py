@@ -1,5 +1,6 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:  # only used for type hinting so no circular import issues
     from model_change import Change
     from model_user import User

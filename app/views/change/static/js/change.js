@@ -83,25 +83,26 @@ document.addEventListener('DOMContentLoaded', async function () {
                 tabs: ['journal-tab', 'children-tab', 'change-plans-tab', 'change-test-tab', 'change-approvals-tab', 'cab-tab', 'resolution-tab', 'change-review-tab'],
             }
         ];
+
         if (exists) {
             const childrenTab = document.getElementById('children-tab')
             childrenTab.classList.remove('disabled')
 
             const childrenClass = new ChildrenClass(await problemDashboard.getProblemColumns());
-            childrenClass.init()
+            await childrenClass.init()
             window.childrenClass = childrenClass
         }
 
         changeApprovalsClass.init();
 
         const changeRiskClass = new ChangeRiskClass();
-        changeRiskClass.init();
+        await changeRiskClass.init();
 
         const changeCabClass = new ChangeCabClass();
         changeCabClass.init();
 
         const changeWindowClass = new ChangeWindowClass();
-        changeWindowClass.init();
+        await changeWindowClass.init();
 
     } else if (changeType.value === 'Standard') {
         steps = [
@@ -195,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         ];
     }
 
-    changeImpactClass.init();
+    await changeImpactClass.init();
     changeRiskButtonsClass.init();
 
     const statusClass = new StatusClass(steps);
@@ -205,5 +206,5 @@ document.addEventListener('DOMContentLoaded', async function () {
     changeResolutionClass.init();
 
     const changeFieldStatusClass = new ChangeFieldStatusClass();
-    changeFieldStatusClass.init();
+    await changeFieldStatusClass.init();
 })

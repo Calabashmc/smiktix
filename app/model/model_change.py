@@ -1,10 +1,11 @@
+from __future__ import annotations
 from datetime import datetime, date, time, timezone
 from jinja2.filters import Markup
 
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import expression
-from typing import Optional
+from typing import List, Optional
 from . import db
 from .relationship_tables import ChangeApprover, cab_attendees, change_followers
 from ..model.model_problem import Problem
@@ -87,7 +88,7 @@ class Change(db.Model):
         back_populates='change_category'
     )
 
-    change_approvers: Mapped[list['ChangeApprover']] = relationship(
+    change_approvers: Mapped[List['ChangeApprover']] = relationship(
         'ChangeApprover',
         back_populates='change'
     )
@@ -116,7 +117,7 @@ class Change(db.Model):
         back_populates='changes_created'
     )
 
-    departments_impacted: Mapped[list['Department']] = relationship(
+    departments_impacted: Mapped[List['Department']] = relationship(
         'Department',
         secondary='change_department',
         back_populates='changes'
@@ -129,7 +130,7 @@ class Change(db.Model):
         back_populates='changes_ecab_approved'
     )
 
-    notes: Mapped[list['Notes']] = relationship(
+    notes: Mapped[List['Notes']] = relationship(
         'Notes',
         back_populates='change',
         lazy=True,
@@ -385,7 +386,7 @@ class CabDetails(db.Model):
 
 
     # Relationships
-    attendees: Mapped[list['User']] = relationship(
+    attendees: Mapped[List['User']] = relationship(
         'User',
         secondary=cab_attendees,
         back_populates='cabs_attended'

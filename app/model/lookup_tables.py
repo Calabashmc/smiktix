@@ -1,3 +1,4 @@
+from __future__ import annotations
 from datetime import datetime, time
 from email.policy import default
 from flask import jsonify
@@ -5,7 +6,7 @@ from flask import jsonify
 import sqlalchemy as sa
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import expression
-from typing import Optional
+from typing import Optional, List
 from . import db
 from ..common.exception_handler import log_exception
 from .relationship_tables import category_model, cmdb_compliance, idea_benefit, idea_impact, status_model
@@ -65,7 +66,7 @@ class BenefitsLookup(db.Model):
     comment: Mapped[Optional[str]] = mapped_column(db.String(300), nullable=True)
 
     # Relationships
-    ideas: Mapped[list['Idea']] = relationship(
+    ideas: Mapped[List['Idea']] = relationship(
         'Idea',
         secondary=idea_benefit,
         back_populates='benefits',
@@ -116,7 +117,7 @@ class Compliance(db.Model):
     comment: Mapped[Optional[str]] = mapped_column(db.Text, nullable=True)
 
     # Relationships
-    cis: Mapped[list['CmdbConfigurationItem']] = relationship(
+    cis: Mapped[List['CmdbConfigurationItem']] = relationship(
         'CmdbConfigurationItem',
         secondary=cmdb_compliance,
         back_populates='compliances'
@@ -188,7 +189,7 @@ class KBATypesLookup(db.Model):
     comment: Mapped[Optional[str]] = mapped_column(db.String(200), nullable=True)
 
     # relationships
-    knowledge_articles: Mapped[list['KnowledgeBase']] = relationship(
+    knowledge_articles: Mapped[List['KnowledgeBase']] = relationship(
         'KnowledgeBase',
         foreign_keys='KnowledgeBase.article_type_id',
         back_populates='article_type'
@@ -220,7 +221,7 @@ class ModelLookup(db.Model):
         back_populates='model',
     )
 
-    statuses: Mapped[list["StatusLookup"]] = relationship(
+    statuses: Mapped[List["StatusLookup"]] = relationship(
         "StatusLookup",
         secondary=status_model,
         back_populates="models",
@@ -267,7 +268,7 @@ class PauseReasons(db.Model):
     id: Mapped[int] = mapped_column(sa.Identity(), primary_key=True)
     reason: Mapped[Optional[str]] = mapped_column(db.String(50), nullable=True)
 
-    pause_history: Mapped[list["TicketPauseHistory"]] = relationship(
+    pause_history: Mapped[List["TicketPauseHistory"]] = relationship(
         "TicketPauseHistory",
         back_populates="reason"
     )
@@ -330,19 +331,9 @@ class StatusLookup(db.Model):
     """
     __tablename__ = 'status_lookup'
     id: Mapped[int] = mapped_column(sa.Identity(), primary_key=True)
-    # todo possibly use these fields instead of steps in js files. Would allow for more customisation of process steps
-    allowedNext: Mapped[str] = mapped_column(db.String(200), nullable=True)
-    comment: Mapped[Optional[str]] = mapped_column(db.Text, nullable=True)
-    label: Mapped[str] = mapped_column(db.String(20), nullable=True)
-    icon: Mapped[Optional[str]] = mapped_column(db.String(20), nullable=True)
-
     status: Mapped[str] = mapped_column(db.String(20))
 
-    tabs: Mapped[str] = mapped_column(db.String, nullable=True)
-    title: Mapped[Optional[str]] = mapped_column(db.String(50), nullable=True)
-    message: Mapped[Optional[str]] = mapped_column(db.String(50), nullable=True)
-
-    models: Mapped[list["ModelLookup"]] = relationship(
+    models: Mapped[List["ModelLookup"]] = relationship(
         "ModelLookup",
         secondary=status_model,
         back_populates="statuses",

@@ -93,10 +93,10 @@ def get_status_lookup():
         .options(joinedload(StatusLookup.models))
     ).unique().scalars().all()
 
-    # Now you can access each status and its related models
+    # Now we can access each status and its related models
     tabulator_data = []
     for status in statuses_with_models:
-        if not status.models:  # If no models, still include the status
+        if not status.models:  # If no models, still include the status but should never happen
             tabulator_data.append({
                 "id": status.id,
                 "status": status.status,
@@ -111,7 +111,6 @@ def get_status_lookup():
                     "status": status.status,
                     "name": model.name,
                     "model_id": model.id,
-                    "comment": status.comment
                 })
 
     return jsonify(data=tabulator_data)

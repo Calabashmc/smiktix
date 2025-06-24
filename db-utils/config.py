@@ -90,10 +90,7 @@ class Notes(Base):
     problem = relationship(
         "Problem", foreign_keys=[problem_id], back_populates="notes"
     )
-    # change_id = Column(Integer, ForeignKey('change.id'), nullable=True)
-    # change = relationship(
-    #     "Change", foreign_keys=[change_id], back_populates="notes"
-    # )
+
 
 
 class ResolutionCodes(Base):

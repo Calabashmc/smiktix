@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from flask import flash, redirect, render_template, request, jsonify, g
 from flask_security import current_user, login_required
 import sqlalchemy as sa
-import logging  # todo consider using this globally
+import logging
 from markupsafe import Markup
 from . import change_bp
 from ...views.change.form import EmergenceyChangeForm, StandardChangeForm, NormalChangeForm

@@ -1,4 +1,5 @@
-from typing import Optional
+from __future__ import annotations
+from typing import List, Optional
 from datetime import datetime
 from flask_security import RoleMixin, UserMixin
 from sqlalchemy import and_, Identity, select
@@ -28,13 +29,13 @@ class Department(db.Model):
     name: Mapped[str] = mapped_column(db.String(100))
     description: Mapped[Optional[str]] = mapped_column(db.String(255), nullable=True)
 
-    changes: Mapped[list['Change']] = relationship(
+    changes: Mapped[List['Change']] = relationship(
         'Change',
         secondary='change_department',
         back_populates='departments_impacted'
     )
 
-    users: Mapped[list['User']] = relationship(
+    users: Mapped[List['User']] = relationship(
         'User',
         back_populates='department',
         lazy='dynamic'
@@ -58,7 +59,7 @@ class Role(db.Model, RoleMixin):
     name: Mapped[str] = mapped_column(db.String(80), unique=True)
     description: Mapped[Optional[str]] = mapped_column(db.String(255), nullable=True)
 
-    users: Mapped[list['User']] = relationship(
+    users: Mapped[List['User']] = relationship(
         'User',
         secondary=user_roles,
         back_populates='roles',
@@ -73,48 +74,48 @@ class Team(db.Model):
     name: Mapped[str] = mapped_column(db.String(50), nullable=False, unique=True)
     description: Mapped[Optional[str]] = mapped_column(db.String(255), nullable=True)
 
-    changes: Mapped[list['Change']] = relationship(
+    changes: Mapped[List['Change']] = relationship(
         'Change',
         foreign_keys=[Change.support_team_id],
         back_populates='support_team',
         lazy=True
     )
 
-    cis: Mapped[list['CmdbConfigurationItem']] = relationship(
+    cis: Mapped[List['CmdbConfigurationItem']] = relationship(
         'CmdbConfigurationItem',
         foreign_keys=[CmdbConfigurationItem.support_team_id],
         back_populates='support_team',
         lazy=True
     )
 
-    ideas: Mapped[list['Idea']] = relationship(
+    ideas: Mapped[List['Idea']] = relationship(
         'Idea',
         foreign_keys=[Idea.support_team_id],
         back_populates='support_team',
         lazy=True
     )
 
-    members: Mapped[list['User']] = relationship(
+    members: Mapped[List['User']] = relationship(
         'User',
         back_populates='team',
         lazy=True
     )
 
-    problems: Mapped[list['Problem']] = relationship(
+    problems: Mapped[List['Problem']] = relationship(
         'Problem',
         foreign_keys=[Problem.support_team_id],
         back_populates='support_team',
         lazy=True
     )
 
-    releases: Mapped[list['Release']] = relationship(
+    releases: Mapped[List['Release']] = relationship(
         'Release',
         foreign_keys=[Release.support_team_id],
         back_populates='support_team',
         lazy=True
     )
 
-    tickets: Mapped[list['Ticket']] = relationship(
+    tickets: Mapped[List['Ticket']] = relationship(
         'Ticket',
         foreign_keys=[Ticket.support_team_id],
         back_populates='support_team',
@@ -126,7 +127,6 @@ class Team(db.Model):
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
     id: Mapped[int] = mapped_column(Identity(), primary_key=True)
-    active: Mapped[bool] = mapped_column(db.Boolean(), default=True)
     avatar: Mapped[Optional[str]] = mapped_column(db.String(50), nullable=True)
     confirmed_at: Mapped[datetime | None] = mapped_column(db.DateTime(timezone=True), nullable=True)
     current_login_at: Mapped[datetime | None] = mapped_column(db.DateTime(timezone=True), nullable=True)
@@ -147,31 +147,31 @@ class User(UserMixin, db.Model):
     us_totp_secrets = db.Column(db.JSON, nullable=True)
 
     # Foreign keys and relationships
-    articles_approved: Mapped[list['KnowledgeBase']] = relationship(
+    articles_approved: Mapped[List['KnowledgeBase']] = relationship(
         'KnowledgeBase',
         foreign_keys='KnowledgeBase.approver_id',
         back_populates='approver',
     )
 
-    articles_authored: Mapped[list['KnowledgeBase']] = relationship(
+    articles_authored: Mapped[List['KnowledgeBase']] = relationship(
         'KnowledgeBase',
         foreign_keys='KnowledgeBase.author_id',
         back_populates='author'
     )
 
-    articles_created: Mapped[list['KnowledgeBase']] = relationship(
+    articles_created: Mapped[List['KnowledgeBase']] = relationship(
         'KnowledgeBase',
         foreign_keys='KnowledgeBase.created_by_id',
         back_populates='created_by'
     )
 
-    cabs_attended: Mapped[list['CabDetails']] = relationship(
+    cabs_attended: Mapped[List['CabDetails']] = relationship(
         'CabDetails',
         secondary=cab_attendees,
         back_populates='attendees'
     )
 
-    cabs_chaired: Mapped[list['CabDetails']] = relationship(
+    cabs_chaired: Mapped[List['CabDetails']] = relationship(
         'CabDetails',
         back_populates='chaired_by',
         foreign_keys='CabDetails.cab_chair_id'
@@ -381,7 +381,7 @@ class User(UserMixin, db.Model):
     )
     # Fields with default values
     active: Mapped[bool] = mapped_column(
-        db.Boolean, nullable=False, server_default=expression.false(), default=False)
+        db.Boolean, nullable=False, server_default=expression.true(), default=True)
     vip: Mapped[bool] = mapped_column(
         db.Boolean, nullable=True, server_default=expression.false(), default=False)
 

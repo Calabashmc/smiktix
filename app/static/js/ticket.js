@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     // fieldStatusClass.init();
-    requesterHandler.init();
-    formFieldHandlers.init();
+    await requesterHandler.init();
+    await formFieldHandlers.init();
     formButtonHandlers.init();
 
     const resolutionClass = new ResolutionClass();

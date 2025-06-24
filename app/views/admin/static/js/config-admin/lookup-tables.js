@@ -1,7 +1,6 @@
 import {initialiseGenericTable} from './admin-common-functions.js';
 import {CustomTabulator, deleteColumn} from '../../../../../static/js/table.js';
 import {showSwal} from '../../../../../static/js/includes/form-classes/form-utils.js';
-import {tomSelectInstances} from '../../../../../static/js/includes/tom-select.js';
 
 export class LookupTablesClass {
     constructor() {
@@ -216,7 +215,7 @@ export class LookupTablesClass {
             await this.getStatusColumns(),
             false,
             '',
-            'status',
+            'name',
         );
     }
 
@@ -282,6 +281,16 @@ export class LookupTablesClass {
                 model: 'Idea_likelihood_lookup',
                 divId: '#idea-likelihood-table',
                 columns: this.getIdeaLikelihoodColumns(),
+                addBtn: null,
+                fields: null,  // Pass all fields
+                buildRecord: null
+            }
+        );
+
+        await initialiseGenericTable({
+                model: 'Idea_Benefits_lookup',
+                divId: '#idea-benefits-table',
+                columns: this.getIdeaBenefitsColumns(),
                 addBtn: null,
                 fields: null,  // Pass all fields
                 buildRecord: null
@@ -562,6 +571,33 @@ export class LookupTablesClass {
         ];
     }
 
+    getIdeaBenefitsColumns(){
+        return [
+            {
+                title: 'ID',
+                headerHozAlign: 'center',
+                field: 'id',
+                hozAlign: 'center',
+                width: 100,
+                visible: false,
+            },
+            {
+                title: 'Benefit',
+                headerHozAlign: 'center',
+                field: 'benefit',
+                hozAlign: 'center',
+                width: 300,
+            },
+            {
+                title: 'Comment',
+                headerHozAlign: 'center',
+                field: 'comment',
+                hozAlign: 'left',
+                editor: 'input',
+            },
+        ];
+    }
+
     getIdeaLikelihoodColumns() {
         return [
             {
@@ -670,70 +706,21 @@ export class LookupTablesClass {
                 width: 100,
                 visible: false,
             },
-            {
-                title: 'Model',
-                headerHozAlign: 'center',
-                field: 'name',
-                hozAlign: 'center',
-                width: 200,
-            },
             // {
-            //     title: 'Status',
+            //     title: 'Model',
             //     headerHozAlign: 'center',
-            //     field: 'status',
+            //     field: 'name',
             //     hozAlign: 'center',
-            //     width: 150,
+            //     width: 200,
             // },
             {
-                title: 'Display Text',
+                title: 'Status',
                 headerHozAlign: 'center',
-                field: 'label',
+                field: 'status',
                 hozAlign: 'center',
                 width: 150,
             },
-            {
-                title: 'Icon (bs-icon)',
-                headerHozAlign: 'center',
-                field: 'icon',
-                hozAlign: 'center',
-                width: 150,
-            },
-            {
-                title: 'Swal title',
-                headerHozAlign: 'center',
-                field: 'title',
-                hozAlign: 'center',
-                width: 150,
-            },
-            {
-                title: 'Swal message',
-                headerHozAlign: 'center',
-                field: 'message',
-                hozAlign: 'center',
-                width: 150,
-            },
-            {
-                title: 'Tabs to reveal',
-                headerHozAlign: 'center',
-                field: 'tabs',
-                hozAlign: 'center',
-                width: 200,
-            },
-            {
-                title: 'Comment',
-                headerHozAlign: 'center',
-                field: 'comment',
-                hozAlign: 'left',
-                editor: 'input',
-            },
-            {
-                title: 'Next Allowed',
-                headerHozAlign: 'center',
-                field: 'allowedNext',
-                hozAlign: 'left',
-                editor: 'input',
-            },
-            this.deleteColumn,
+
         ];
     }
 }

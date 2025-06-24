@@ -34,8 +34,8 @@ export class ResolutionClass {
         });
 
         // add resolution button in modal
-        this.resolutionAddBtn.addEventListener('click', () => {
-            this.addResolutionHandler()
+        this.resolutionAddBtn.addEventListener('click', async () => {
+            await this.addResolutionHandler()
             // trigger custom event to notify status.js so status can be updated to resolved
             const modalAddResolutionEvent = new CustomEvent('resolutionAdded');
             document.dispatchEvent(modalAddResolutionEvent);
@@ -49,9 +49,9 @@ export class ResolutionClass {
         });
 
         // Handle statusStepChange event dispatched from status files
-        document.addEventListener('statusStepChange', (event) => {
+        document.addEventListener('statusStepChange', async (event) => {
             this.currentStep = event.detail.step;
-            this.openResolutionModal()
+            await this.openResolutionModal()
         });
     }
 
@@ -60,7 +60,7 @@ export class ResolutionClass {
             const resolution = await showSwal('', 'Resolving will also resolve any linked child tickets.', 'question');
 
             if (!resolution.isConfirmed) {
-                window.statusClass.goToPriorStep(); // see main class js such as interaction.js
+                await window.statusClass.goToPriorStep(); // see main class js such as interaction.js
                 return false;
             }
         }
@@ -98,11 +98,11 @@ export class ResolutionClass {
             const data = await response.json();
 
             if (response.ok && data.success) {
-                this.updateUIAfterResolution();
+                await this.updateUIAfterResolution();
                 await this.setType();
                 this.resolutionModal.hide();
                 resolutionTabJournalEditor.setContents(data.resolution);
-                window.childrenClass.populateChildTicketTable();
+                await window.childrenClass.populateChildTicketTable();
 
             } else {
                 await showSwal('Error', data.error, 'error');

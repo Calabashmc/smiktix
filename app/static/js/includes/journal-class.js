@@ -36,8 +36,8 @@ export class JournalClass {
 
     setupListeners() {
         // custom event triggered when worklog is saved in form-utils.js
-        document.addEventListener('worklog-saved', () => {
-            this.journalTimeline();
+        document.addEventListener('worklog-saved', async () => {
+            await this.journalTimeline();
         });
     }
 

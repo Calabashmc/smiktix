@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (exists) {
         const parentClass = new ParentClass();
-        parentClass.init();
+        await parentClass.init();
 
         const childColumns = [
             {
@@ -97,13 +97,13 @@ document.addEventListener('DOMContentLoaded', async function () {
         // childrenTab.classList.remove('disabled')
 
         const childrenClass = new ChildrenClass(childColumns);
-        childrenClass.init()
+        await childrenClass.init()
         window.childrenClass = childrenClass
 
-        slaClass.init();
+        await slaClass.init();
     }
 
-    priorityButtonsClass.init();
+    await priorityButtonsClass.init();
     outageClass.init();
     interactionFormClass.init();
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     window.statusClass = statusClass;
 
     const interactionFieldStatusClass = new InteractionFieldStatusClass();
-    interactionFieldStatusClass.init();
+    await interactionFieldStatusClass.init();
 
     //     disable changing the ticket creator
     const createdBy = document.getElementById('created-by');

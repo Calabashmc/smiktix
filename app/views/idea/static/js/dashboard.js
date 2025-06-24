@@ -4,5 +4,5 @@ newFormBtn.href = '/ui/idea/ticket/';
 
 document.addEventListener('DOMContentLoaded', async function () {
     const ideaTableDiv = document.querySelector('#all-ideas-table')
-    ideasDashboard.init();
+    await ideasDashboard.init();
 })

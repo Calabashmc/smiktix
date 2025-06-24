@@ -821,9 +821,9 @@ def delete_table_row():
     if data is None:
         return jsonify({'error': 'Invalid JSON data or incorrect Content-Type header'}), 400
 
-    model = get_model(data['model']);
-    ticket_number = data.get('ticket_number');
-    ticket_id = data.get('id');
+    model = get_model(data['model'])
+    ticket_number = data.get('ticket_number')
+    ticket_id = data.get('id')
 
     if ticket_number:
         row = db.session.execute(
@@ -948,11 +948,10 @@ def send_requester_email():
     if not data:
         return jsonify({'error': 'Invalid JSON data or incorrect Content-Type header'}), 400
 
-    DEFAULT_SUBJECT = 'A message from the IT Support team'
     # Extract required fields
     recipients = data.get('recipients')
     ticket_number = data.get('ticket-number')
-    subject_line = data.get('subject', DEFAULT_SUBJECT)
+    subject_line = data.get('subject', 'A message from the IT Support team')
     body_text = data.get('body-text')
     model = data.get('model')
     # Validate required fields
@@ -962,7 +961,7 @@ def send_requester_email():
     # Execute email sending asynchronously
     send_notification(
         ticket_number=ticket_number,
-        model=model,
+        ticket_type=model,
         template='email.html',
         subject_line=subject_line,
         body_text=body_text,

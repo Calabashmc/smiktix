@@ -23,6 +23,7 @@ from ..model.model_interaction import Source, Ticket
 from ..model.model_user import Department, Role, User
 from ..model.model_cmdb import CmdbConfigurationItem
 from ..model.lookup_tables import (
+    BenefitsLookup,
     ChangeTypeLookup,
     ChangeWindowLookup,
     LikelihoodLookup,
@@ -308,6 +309,7 @@ def get_model(model):
         # Idea-related models
         'idea': Idea,
         'ideas': Idea,
+        'idea_benefit_lookup': BenefitsLookup,
         'idea_likelihood_lookup': LikelihoodLookup,
 
         # Release model

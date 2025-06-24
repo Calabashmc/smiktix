@@ -47,7 +47,7 @@ def add_journal_notes(ticket, note_content, is_system):
 
     ticket.notes.append(note)  # ✅ Safely sets the relationship
 
-    ticket.last_updated_at = datetime.utcnow()  # Update the last_updated_at in UTC
+    ticket.last_updated_at = datetime.now(timezone.utc)  # Update the last_updated_at in UTC
 
     try:
         db.session.add(note)
@@ -108,15 +108,18 @@ def get_child_tickets(model, ticket_number):
                 sa.select(Ticket)
                 .where(Ticket.parent_id == parent.id)
             ).scalars().all()
+
         case 'Problem' | 'Known Error' | 'Workaround':
             return db.session.execute(
                 sa.select(Ticket).where(Ticket.problem_id == parent.id)
             ).scalars().all()
+
         case 'Change':
             return db.session.execute(
                 sa.select(Problem)
                 .where(Problem.change_id == parent.id)
             ).scalars().all()
+    return None
 
 
 def handle_existing_ticket(model, ticket_number, form):
@@ -193,7 +196,10 @@ def populate_fields_from_ticket(form, ticket):
                 else:
                     if isinstance(field, DateTimeLocalField) and isinstance(value, datetime):
                         # Convert to naive datetime (strip timezone)
-                        field.data = value.astimezone(datetime.utcnow().astimezone().tzinfo).strftime('%Y-%m-%dT%H:%M')
+                        field.data = value.astimezone(
+                            datetime.now().astimezone().tzinfo
+                        ).replace(tzinfo=None).strftime('%Y-%m-%dT%H:%M')
+
             else:
                 field.data = value
 
@@ -230,7 +236,10 @@ def populate_related_model_fields(form, model_instance):
                     field.data = str(value)
                 else:
                     if isinstance(field, DateTimeLocalField) and isinstance(value, datetime):
-                        field.data = value.astimezone(datetime.utcnow().astimezone().tzinfo).strftime('%Y-%m-%dT%H:%M')
+                        # Convert to naive local datetime and format as string
+                        field.data = value.astimezone(
+                            datetime.now().astimezone().tzinfo
+                        ).replace(tzinfo=None).strftime('%Y-%m-%dT%H:%M')
             else:
                 field.data = value
 
@@ -480,9 +489,9 @@ def save_ticket(ticket, exists):
 
 
 def validate_and_update_ticket(form, ticket, exists=False):
-    READONLY_FIELDS = set()
+    readonly_fields = set()
     if exists:  # Only make ticket_type read-only on updates
-        READONLY_FIELDS.add('ticket_type')
+        readonly_fields.add('ticket_type')
 
     if not form.validate_on_submit():
         flash(f'Form validation failed: {form.errors}', 'danger')
@@ -496,7 +505,7 @@ def validate_and_update_ticket(form, ticket, exists=False):
             if field.name == 'comms_journal':
                 continue
 
-            elif field.name in READONLY_FIELDS:
+            elif field.name in readonly_fields:
                 continue
 
             elif field.name == 'affected_cis':
